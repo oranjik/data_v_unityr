@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/includeHTML.js"></script>
+    <script src="./js/routing-sub.js"></script>
+    <style>
+    a {
+        text-decoration: none;
+        color: #FFF;
+    }
+    #popup {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display:none;
+        text-align: center;
+    }
+    #popup:after {
+        display: inline-block;
+        width: 0;
+        vertical-align: middle;
+        height: 100%;
+        content: '';
+    }
+    .popup-layer {
+        position: relative; /*z-index는 반드시 position:relative 속성 필요*/
+        display: inline-block; /*속성 변경*/
+        width: 80vw;
+        height: 80vh;
+        vertical-align: middle;
+        margin: auto;
+        min-height: 150px; /*min-height로 되어있어서 텍스트가 길어짐에 따라 높이가 커짐*/
+        padding-bottom: 50px; /*텍스트를 온전히 보이게 하기 위해 버튼 부분을 padding으로 밀어줌*/
+        background-color: #031436;
+        z-index: 10; /*dimmed보다 z-index 높힘*/
+        color: #FFF;
+    }
+    .button {
+        display: flex;
+        color: #834500;
+        border-color: #95854f;
+        background: #ffdd4e;
+        border: 1px solid #834500;
+        border-radius: 10px;
+        width: 282px;
+        height: 68px;
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-dimmed {
+        position: absolute; /*띄워줌*/
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #000;
+        opacity: 0.3;
+    }
+    
+    </style>
+</head>
+<body>
+    <a href="javascript:ViewLayer();">
+        <div class="button">통일 여론 조사와 지표 자료</div>
+    </a>
+    <div id="popup">
+        <div class="popup-layer">
+            <header include-html="popup-header.html"></header>
+            <article id="article" include-html="popup-unity.html"></article>
+        </div>
+        <div class="popup-dimmed"></div>
+    </div>
+    <script> 
+        function ViewLayer(){
+          document.getElementById("popup").style.display='inline'
+       };
+       includeHTML(function () {
+        });
+
+
+    </script> 
+</body>
+</html>

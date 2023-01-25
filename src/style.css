@@ -1,0 +1,8 @@
+canvas {
+    width: 100vw;
+    height: 50vh;
+    padding: 20px;
+    background-image: url('img/bg2.png');
+    background-size: 100%;
+
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .popup-header {
+        display: flex;
+        border-bottom: 1px solid #FFF;
+        padding-left: 5vh;
+        padding-right: 5vh;
+        padding-bottom: 2.5vh;
+        padding-top: 2.5vh;
+    }
+    .popup-title-bar {
+        width: 20vw;
+        align-items: center;
+    }
+    .popup-title{ 
+        display: flex;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    .popup-menu-bar {
+        display: flex;
+        font-size: 0.75rem;
+        align-items: center;
+    }
+    .topnav a.active {
+        font-weight: 700;
+    }
+    .popup-menu {
+        padding-right: 8vw;
+        color: #FFF;
+        text-align: center;
+    }
+    .popup-section {
+        width: 20vw;
+    }
+    .popup-menu.active{
+        font-weight: 700;
+    }
+    .popup-menu.inactive{
+        opacity: 50%;
+    }
+    hr {
+        width: 20px;
+        height: 5px;
+        color: white;
+        background-color: white;
+    }
+    </style>
+</head>
+<body>
+    <div class="popup-header">
+        <div class="popup-title-bar">
+            <div class="popup-title">정보그래픽</div>
+        </div>
+        <div class="popup-menu-bar">
+            <div class="popup-menu-container">
+                <div class="popup-menu active"><a href="/popup-unity">통일의식조사</a></div>
+                <!-- <hr class="popup-menu-deco"></hr> -->
+            </div>
+            <div class="popup-menu inactive"><a href="/popup-index">남북통일지수</a></div>
+        </div>
+    </div>
+</body>
+</html>

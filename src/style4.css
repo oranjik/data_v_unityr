@@ -1,0 +1,19 @@
+body {
+    background-color: #031436;
+
+}
+#code {
+    padding-top: 20px;
+    padding-left: 20px;
+    color: #FFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+canvas {
+    width: 40vw;
+    height: 50vh;
+    padding-left: 20px;
+    background-color: #031436;
+    background-size: 100%;
+
+}
