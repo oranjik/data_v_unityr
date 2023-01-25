@@ -16,28 +16,42 @@ const myChart = new Chart(ctx, {
   type: "line",
   plugins: [ChartDataLabels],
   data: {
-    labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+    labels: Array.from({ length: 7 }, (_, i) => i + 2014),
     datasets: [
       {
-        label: "지원과 협력의 대상",
+        label: "같은 민족이니까",
         data: [
-          78.5,	79.3,	68.5,	64.3,	63.9,	63,	56.8,	59.3,	54.2,	55.2,	55.7,	71.8,	67.9,	60.6,	60.2,	63,
+          23.4,	28.8,	30.7,	37.1,	42.4, 28.6,	47.1
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#F08F37",
+        borderColor: "#4162F6",
         borderWidth: 1,
         tension: 0,
         pointStyle: 'rect',
-        backgroundColor: '#F08F37',
-        pointBorderColor: '#F08F37',
+        backgroundColor: '#4162F6',
+        pointBorderColor: '#4162F6',
         hoverBorderColor: function(context) {
           return context.active? context.borderColor : 'gray';
         },
         },
       {
-        label: "선의의 경쟁 대상",
+        label: "이산가족의 고통을 해결해 주기 위해",
         data: [
-          3.3,	3.6,	2.2,	3.3,	2.3,	4.9,	5.6,	4.5,	7.6,	8,	6.3,	4.3,	4.9,	4,	6.5,	5.3,
+          7.1,	3.6,	8.8,	8.3,	4.7,	7.6,	5.8,
+        
+        ],
+        backgroundColor: ["rgba(0, 0, 0, 0)"],
+        borderColor: "#F08F37",
+        pointStyle: 'rect',
+        backgroundColor: '#F08F37',
+        pointBorderColor: '#F08F37',
+        borderWidth: 1,
+        tension: 0,
+      },
+      {
+        label: "남북 간에 전쟁위협을 없애기 위해",
+        data: [
+          12.1,	8.6,	12.4,	9.9,	14.1,	6.7,	4.8,
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
         borderColor: "#D85627",
@@ -48,9 +62,9 @@ const myChart = new Chart(ctx, {
         tension: 0,
       },
       {
-        label: "경계대상 및 안전위협대상",
+        label: "북한주민이 잘 살 수 있도록",
         data: [
-          18.2,	17.1,	29.3,	32.4,	33.8,	32.1,	37.6,	36.2,	38.1,	36.8,	38,	23.9,	27.2,	35.4,	33.3,	31.7
+          48.9,	47.5, 41.6,	29.5,	30.6,	49.5,	26,
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
         borderColor: "#B72B5B",
@@ -60,13 +74,41 @@ const myChart = new Chart(ctx, {
         borderWidth: 1,
         tension: 0,
       },
+      {
+        label: "북한이 보다 선진국이 되기 위해서",
+        data: [
+          7.8,	10.1,	4.4,	12.1,	5.9,	4.8,	11.5
+          ],
+        backgroundColor: ["rgba(0, 0, 0, 0)"],
+        borderColor: "#784EA3",
+        pointStyle: 'rect',
+        backgroundColor: '#784EA3',
+        pointBorderColor: '#784EA3',
+        borderWidth: 1,
+        tension: 0,
+
+      },
+      {
+        label: "기타",
+        data: [
+          0.7,	1.4,	2.2,	3,	2.4,	2.9,	4.8,
+          ],
+        backgroundColor: ["rgba(0, 0, 0, 0)"],
+        borderColor: "#81FA86",
+        pointStyle: 'rect',
+        backgroundColor: '#81FA86',
+        pointBorderColor: '#81FA86',
+        borderWidth: 1,
+        tension: 0,
+
+      },
     ],
   },
   options: {
     plugins: {
       title: {
         display: true,
-        text: ["북한에 대한 인식", "북한이 우리에게 어떤 대상이라고 생각하십니까?"],
+        text: ["통일 이유", "귀하는 북한에 살고 계실 때 통일이 되어야 하는 가장","큰 이유가 다음 중 무엇이라고 생각하십니까?"],
         color: "white",
         font:{
           size: 20,

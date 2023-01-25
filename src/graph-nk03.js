@@ -53,7 +53,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["Nk03)", "북한 대화 가능성", "통일을 함께 논의할 대상으로 북한 정권이 대화와", "타협이 가능한 상대라고 생각하십니까?"],
+        text: ["북한 대화 가능성", "통일을 함께 논의할 대상으로 북한 정권이 대화와", "타협이 가능한 상대라고 생각하십니까?"],
         color: "white",
         font:{
           size: 20,
@@ -107,8 +107,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            drawTicks: true,
-            lineWidth: 1,
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
           },
           ticks: {
             beginAtZero: true,
@@ -121,6 +120,9 @@ const myChart = new Chart(ctx, {
         },
       x:
         {
+          grid:{
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+          },
           ticks: {
             autoSkip: false,
             fontSize: 24,

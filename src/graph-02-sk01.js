@@ -16,20 +16,20 @@ const myChart = new Chart(ctx, {
   type: "line",
   plugins: [ChartDataLabels],
   data: {
-    labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+    labels: Array.from({ length: 10 }, (_, i) => i + 2011),
     datasets: [
       {
         label: "지원과 협력의 대상",
         data: [
-          78.5,	79.3,	68.5,	64.3,	63.9,	63,	56.8,	59.3,	54.2,	55.2,	55.7,	71.8,	67.9,	60.6,	60.2,	63,
+          62.9,	69.7,	76.2,	67.4,	70.5,	65,	62.1,	64.7,	58.1,	70.2
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#F08F37",
+        borderColor: "#4162F6",
         borderWidth: 1,
         tension: 0,
         pointStyle: 'rect',
-        backgroundColor: '#F08F37',
-        pointBorderColor: '#F08F37',
+        backgroundColor: '#4162F6',
+        pointBorderColor: '#4162F6',
         hoverBorderColor: function(context) {
           return context.active? context.borderColor : 'gray';
         },
@@ -37,20 +37,21 @@ const myChart = new Chart(ctx, {
       {
         label: "선의의 경쟁 대상",
         data: [
-          3.3,	3.6,	2.2,	3.3,	2.3,	4.9,	5.6,	4.5,	7.6,	8,	6.3,	4.3,	4.9,	4,	6.5,	5.3,
+          2.1,	1.6,	2.3,	2.1,	4.3,	2.2,	4.6,	1.2,	2.9,	4.8,
+        
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#D85627",
+        borderColor: "#F08F37",
         pointStyle: 'rect',
-        backgroundColor: '#D85627',
-        pointBorderColor: '#D85627',
+        backgroundColor: '#F08F37',
+        pointBorderColor: '#F08F37',
         borderWidth: 1,
         tension: 0,
       },
       {
         label: "경계대상 및 안전위협대상",
         data: [
-          18.2,	17.1,	29.3,	32.4,	33.8,	32.1,	37.6,	36.2,	38.1,	36.8,	38,	23.9,	27.2,	35.4,	33.3,	31.7
+          35.1,	28.7,	21.5,	30.5,	25.2,	32.8,	33.3,	34.1,	39,	25
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
         borderColor: "#B72B5B",
@@ -66,7 +67,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["북한에 대한 인식", "북한이 우리에게 어떤 대상이라고 생각하십니까?"],
+        text: ["남한에 대한 인식", "귀하는 북한에 살고 계실 때 남한이 북한에게", "어떤 대상이라고 생각하고 있었습니까?"],
         color: "white",
         font:{
           size: 20,

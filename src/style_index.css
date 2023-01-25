@@ -1,5 +1,11 @@
 body {
-    background-color: #031436;
+    background-color: #2B0607;
+    color: #FFF;
+}
+
+.description {
+    font-size: 0.8rem;
+    padding-left: 20px;
 }
 #code {
     padding-top: 20px;

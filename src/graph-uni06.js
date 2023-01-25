@@ -108,7 +108,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["Unit01)", "통일 이유", "우리나라가 통일이 되어야 하는 가장 큰 이유가 다음 중", "무엇이라고 생각하십니까?"],
+        text: ["통일 이유", "우리나라가 통일이 되어야 하는 가장 큰 이유가 다음 중", "무엇이라고 생각하십니까?"],
         color: "white",
         font:{
           size: 20,
@@ -162,8 +162,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            drawTicks: true,
-            lineWidth: 1,
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
           },
           ticks: {
             beginAtZero: true,
@@ -176,6 +175,9 @@ const myChart = new Chart(ctx, {
         },
       x:
         {
+          grid:{
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+          },
           ticks: {
             autoSkip: false,
             fontSize: 24,

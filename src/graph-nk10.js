@@ -53,7 +53,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["Nk10)", "북핵 위협", "북한의 핵무기 보유에 대해 얼마나 위협을 느끼십니까?"],
+        text: ["북핵 위협", "북한의 핵무기 보유에 대해 얼마나 위협을 느끼십니까?"],
         color: "white",
         font:{
           size: 20,
@@ -107,8 +107,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            drawTicks: true,
-            lineWidth: 1,
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
           },
           ticks: {
             beginAtZero: true,
@@ -121,6 +120,9 @@ const myChart = new Chart(ctx, {
         },
       x:
         {
+          grid:{
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+          },
           ticks: {
             autoSkip: false,
             fontSize: 24,

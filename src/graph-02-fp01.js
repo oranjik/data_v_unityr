@@ -16,41 +16,54 @@ const myChart = new Chart(ctx, {
   type: "line",
   plugins: [ChartDataLabels],
   data: {
-    labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+    labels: Array.from({ length: 9 }, (_, i) => i + 2012),
     datasets: [
       {
-        label: "지원과 협력의 대상",
+        label: "미국",
         data: [
-          78.5,	79.3,	68.5,	64.3,	63.9,	63,	56.8,	59.3,	54.2,	55.2,	55.7,	71.8,	67.9,	60.6,	60.2,	63,
+          1.6,	1.5,	1.4,	2.2,	0,	0,	2.4,	1,	1.9
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#F08F37",
+        borderColor: "#4162F6",
         borderWidth: 1,
         tension: 0,
         pointStyle: 'rect',
-        backgroundColor: '#F08F37',
-        pointBorderColor: '#F08F37',
+        backgroundColor: '#4162F6',
+        pointBorderColor: '#4162F6',
         hoverBorderColor: function(context) {
           return context.active? context.borderColor : 'gray';
         },
         },
       {
-        label: "선의의 경쟁 대상",
+        label: "일본",
         data: [
-          3.3,	3.6,	2.2,	3.3,	2.3,	4.9,	5.6,	4.5,	7.6,	8,	6.3,	4.3,	4.9,	4,	6.5,	5.3,
+          0.8,	0,	0,	0,	0.7,	0,	4.7,	1,	1
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#D85627",
+        borderColor: "#81FA86",
         pointStyle: 'rect',
-        backgroundColor: '#D85627',
-        pointBorderColor: '#D85627',
+        backgroundColor: '#81FA86',
+        pointBorderColor: '#81FA86',
         borderWidth: 1,
         tension: 0,
       },
       {
-        label: "경계대상 및 안전위협대상",
+        label: "남한",
         data: [
-          18.2,	17.1,	29.3,	32.4,	33.8,	32.1,	37.6,	36.2,	38.1,	36.8,	38,	23.9,	27.2,	35.4,	33.3,	31.7
+          22.1,	13.1,	16.3,	21.6,	16.1,	22.7,	12.9,	22.9,	20.2
+        ],
+        backgroundColor: ["rgba(0, 0, 0, 0)"],
+        borderColor: "#F08F37",
+        pointStyle: 'rect',
+        backgroundColor: '#F08F37',
+        pointBorderColor: '#F08F37',
+        borderWidth: 1,
+        tension: 0,
+      },
+      {
+        label: "중국",
+        data: [
+          72.1,	83.1,	79.4,	74.8,	76.6,	71.2,	67.1,	69.5,	65.4
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
         borderColor: "#B72B5B",
@@ -60,13 +73,26 @@ const myChart = new Chart(ctx, {
         borderWidth: 1,
         tension: 0,
       },
+      {
+        label: "러시아",
+        data: [
+          3.3,	2.3,	2.8,	1.4,	6.6,	6.1,	12.9,	5.7,	11.5
+        ],
+        backgroundColor: ["rgba(0, 0, 0, 0)"],
+        borderColor: "#784EA3",
+        pointStyle: 'rect',
+        backgroundColor: '#784EA3',
+        pointBorderColor: '#784EA3',
+        borderWidth: 1,
+        tension: 0,
+      },
     ],
   },
   options: {
     plugins: {
       title: {
         display: true,
-        text: ["북한에 대한 인식", "북한이 우리에게 어떤 대상이라고 생각하십니까?"],
+        text: ["주변국 친밀감","귀하는 북한에 살고 계실 때 다음 국가들 중 어느 나라를 가장 가깝게 느끼셨습니까?"],
         color: "white",
         font:{
           size: 20,

@@ -66,7 +66,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["Nkp07_11)", "핵무장 의견", "한국도 핵무기를 가져야 한다."],
+        text: ["핵무장 의견", "한국도 핵무기를 가져야 한다."],
         color: "white",
         font:{
           size: 20,
@@ -120,8 +120,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            drawTicks: true,
-            lineWidth: 1,
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
           },
           ticks: {
             beginAtZero: true,
@@ -134,6 +133,9 @@ const myChart = new Chart(ctx, {
         },
       x:
         {
+          grid:{
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+          },
           ticks: {
             autoSkip: false,
             fontSize: 24,

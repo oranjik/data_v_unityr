@@ -16,41 +16,29 @@ const myChart = new Chart(ctx, {
   type: "line",
   plugins: [ChartDataLabels],
   data: {
-    labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+    labels: Array.from({ length: 10 }, (_, i) => i + 2011),
     datasets: [
       {
-        label: "지원과 협력의 대상",
+        label: "알고 있다",
         data: [
-          78.5,	79.3,	68.5,	64.3,	63.9,	63,	56.8,	59.3,	54.2,	55.2,	55.7,	71.8,	67.9,	60.6,	60.2,	63,
+          66,	66.4,	65.3,	62.4,	66.9,	63.5,	53.1,	56.5,	44.8,	52.9
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#F08F37",
+        borderColor: "#81FA86",
         borderWidth: 1,
         tension: 0,
         pointStyle: 'rect',
-        backgroundColor: '#F08F37',
-        pointBorderColor: '#F08F37',
+        backgroundColor: '#81FA86',
+        pointBorderColor: '#81FA86',
         hoverBorderColor: function(context) {
           return context.active? context.borderColor : 'gray';
         },
         },
       {
-        label: "선의의 경쟁 대상",
+        label: "알지 못 한다",
         data: [
-          3.3,	3.6,	2.2,	3.3,	2.3,	4.9,	5.6,	4.5,	7.6,	8,	6.3,	4.3,	4.9,	4,	6.5,	5.3,
-        ],
-        backgroundColor: ["rgba(0, 0, 0, 0)"],
-        borderColor: "#D85627",
-        pointStyle: 'rect',
-        backgroundColor: '#D85627',
-        pointBorderColor: '#D85627',
-        borderWidth: 1,
-        tension: 0,
-      },
-      {
-        label: "경계대상 및 안전위협대상",
-        data: [
-          18.2,	17.1,	29.3,	32.4,	33.8,	32.1,	37.6,	36.2,	38.1,	36.8,	38,	23.9,	27.2,	35.4,	33.3,	31.7
+          34,	33.6,	34.7,	37.6,	33.1,	36.5,	46.9,	43.6,	55.2,	47.1
+        
         ],
         backgroundColor: ["rgba(0, 0, 0, 0)"],
         borderColor: "#B72B5B",
@@ -66,7 +54,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["북한에 대한 인식", "북한이 우리에게 어떤 대상이라고 생각하십니까?"],
+        text: ["대북지원 인식", "귀하는 북한주민들이 남한이 쌀, 비료 등을 북한에 지원한 적이", "있다는 것을 얼마나 알고 있다고 생각하십니까?"],
         color: "white",
         font:{
           size: 20,

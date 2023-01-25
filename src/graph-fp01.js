@@ -92,7 +92,7 @@ const myChart = new Chart(ctx, {
     plugins: {
       title: {
         display: true,
-        text: ["fp01)", "주변국 친밀감","다음 국가들 중 어느 나라를 가장 가깝게 느끼십니까?"],
+        text: ["주변국 친밀감","다음 국가들 중 어느 나라를 가장 가깝게 느끼십니까?"],
         color: "white",
         font:{
           size: 20,
@@ -146,8 +146,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            drawTicks: true,
-            lineWidth: 1,
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
           },
           ticks: {
             beginAtZero: true,
@@ -160,6 +159,9 @@ const myChart = new Chart(ctx, {
         },
       x:
         {
+          grid:{
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+          },
           ticks: {
             autoSkip: false,
             fontSize: 24,
