@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./js/includeHTML.js"></script>
-    <script src="./js/routing-sub.js"></script>
+    <script src="./js/route.js"></script>
     <style>
     a {
         text-decoration: none;
@@ -62,6 +62,77 @@
         background: #000;
         opacity: 0.3;
     }
+    ul {
+        padding-top: 3vw;
+        padding-inline-start: 0;
+    }
+    li{
+        font-size: 0.7rem;
+        text-align: left;
+        text-decoration: none;
+        list-style: none;
+        padding-left: 3vw;
+        padding-right: 5vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+        border-bottom: 0.6px solid #FFF;
+    }
+    li.active {
+        font-weight: 700;
+        background-color: rgb(29, 44, 74);
+    }
+
+    .popup-header {
+        display: flex;
+        border-bottom: 1px solid #FFF;
+        padding-left: 5vh;
+        padding-right: 5vh;
+        padding-bottom: 2.5vh;
+        padding-top: 2.5vh;
+    }
+    .popup-header {
+        display: flex;
+    }
+    .popup-content {
+        display: flex;
+    }
+    .popup-title-bar {
+        width: 20vw;
+        align-items: center;
+    }
+    .popup-title{ 
+        display: flex;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    .popup-menu-bar {
+        display: flex;
+        font-size: 0.75rem;
+        align-items: center;
+    }
+    .topnav a.active {
+        font-weight: 700;
+    }
+    .popup-menu {
+        padding-right: 8vw;
+        color: #FFF;
+        text-align: center;
+    }
+    .popup-section {
+        width: 20vw;
+    }
+    .popup-menu.active{
+        font-weight: 700;
+    }
+    .popup-menu.inactive{
+        opacity: 50%;
+    }
+    hr {
+        width: 20px;
+        height: 5px;
+        color: white;
+        background-color: white;
+    }
     
     </style>
 </head>
@@ -70,20 +141,64 @@
         <div class="button">통일 여론 조사와 지표 자료</div>
     </a>
     <div id="popup">
+        
         <div class="popup-layer">
-            <header include-html="popup-header.html"></header>
-            <article id="article" include-html="popup-unity.html"></article>
+            <div class="popup-header">
+                <div class="popup-title-bar">
+                    <div class="popup-title">정보그래픽</div>
+                </div>
+                <div class="popup-menu-bar">
+                    <div class="popup-menu-container">
+                        <div class="popup-menu active"><a data-navigate="/unity">통일의식조사</a></div>
+                        <!-- <hr class="popup-menu-deco"></hr> -->
+                    </div>
+                    <div class="popup-menu inactive"><a data-navigate="/index">남북통일지수</a></div>
+                </div>
+            </div>
+            <div class="popup-content">
+                <header>
+                    <ul>
+                        <li class="active"><a data-navigate="/index">남한 주민 대상<br /> 통일의식조사</a></li>
+                        <li><a data-navigate="/index">북한이탈주민 대상 <br />통일의식조사</a></li>
+                        <li><a data-navigate="/index">북한이탈주민 대상 <br />북한사회변동조사</a></li>
+                    </ul>
+                </header>
+                <article id="content">
+
+                </article>
+            </div>
         </div>
         <div class="popup-dimmed"></div>
     </div>
     <script> 
         function ViewLayer(){
           document.getElementById("popup").style.display='inline'
-       };
-       includeHTML(function () {
+        };
+        includeHTML(function () {
         });
 
+        const createPages = (container) => {
+        const unity = () => {
+            container.innerHTML='<object type="text/html" data="graph-fp01.html"></object>';
+        };
+        const index = () => {
+            container.innerHTML = "list page";
+        };
+        const notFound = () => {
+            container.innerHTML = "not found";
+        };
 
+        return {
+        unity,
+        index,
+        notFound,
+        };
+    };
+
+    const pages = createPages(document.getElementById("content"));
+    const router = createRouter();
+
+    router.addRoute("/unity", pages.unity).addRoute("/index", pages.index).setNotFound(pages.notFound).start();
     </script> 
 </body>
 </html>

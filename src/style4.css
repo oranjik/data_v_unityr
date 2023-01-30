@@ -1,5 +1,7 @@
 body {
-    background-color: #031436;
+    background-color: #001338;
+    font-family:'NanumSquare',san-serif;
+    line-height:1.5;
 }
 #code {
     padding-top: 20px;
@@ -9,10 +11,25 @@ body {
     font-weight: 700;
 }
 canvas {
-    width: 30vw;
-    height: 60vh;
+    width: 60vw;
     padding-left: 20px;
-    background-color: #031436;
+    background-color: #001338;
     background-size: 100%;
+}
 
+.container {
+    display: flex;
+}
+
+.left-container, .right-container {
+    display: flex;
+    color: white;
+    font-size: 2rem;
+    align-items: center;
+    padding-left: 1vw;
+    padding-right: 1vw; 
+}
+
+.nanumsquare {
+    font-family: 'NanumSquare', sans-serif !important;
 }

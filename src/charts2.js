@@ -157,32 +157,3 @@ const myChart = new Chart(ctx, {
     
   },
 });
-
-// function clickHandler(evt) {
-//   const points = myChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
-
-//   console.log(points)
-
-//   if (points.length) {
-//       const firstPoint = points[0];
-//       const label = myChart.data.labels[firstPoint.index];
-//       const value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-//   }
-// }
-
-// ctx.onmouseover = clickHandler
-
-// function hoverHandler(mousemove) {
-//   const points = myChart.getElementsAtEventForMode(mousemove, 'nearest', { intersect: true }, true);
-
-//   if (points.length) {
-//     const dataset = points[0]._datasetIndex;
-//     const datapoint = points[0]._index;
-//     const value = myChart.data.datasets[dataset];
-//     value.data.forEach(function(index, data) {
-//       // console.log(index, data)
-//     })
-//   }
-// }
-
-// ctx.onmousemove = hoverHandler;
