@@ -9,16 +9,21 @@ body {
     color: #FFF;
     font-size: 0.8rem;
     font-weight: 700;
+    text-align: left;
 }
 canvas {
-    width: 60vw;
     padding-left: 20px;
     background-color: #001338;
     background-size: 100%;
+    width: 60vw;
 }
 
 .container {
     display: flex;
+}
+
+.mid-container {
+    justify-content:start;
 }
 
 .left-container, .right-container {

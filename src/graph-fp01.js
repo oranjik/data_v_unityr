@@ -3,7 +3,6 @@ const borderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128
 const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./img/china.png','./img/russia.png']
 
 let curIndex = -1;
-
 const ctx = document.getElementById("myChart");
 
 const plugin = {

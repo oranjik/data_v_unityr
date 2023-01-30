@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
     <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="./js/includeHTML.js"></script>
-    <script src="./js/route.js"></script>
+    <script src="./js/index.js"></script>
     <style>
     a {
         text-decoration: none;
@@ -149,10 +151,10 @@
                 </div>
                 <div class="popup-menu-bar">
                     <div class="popup-menu-container">
-                        <div class="popup-menu active"><a data-navigate="/unity">통일의식조사</a></div>
+                        <div class="popup-menu active"><a href="#unity">통일의식조사</a></div>
                         <!-- <hr class="popup-menu-deco"></hr> -->
                     </div>
-                    <div class="popup-menu inactive"><a data-navigate="/index">남북통일지수</a></div>
+                    <div class="popup-menu inactive"><a href="#index">남북통일지수</a></div>
                 </div>
             </div>
             <div class="popup-content">
@@ -173,32 +175,35 @@
     <script> 
         function ViewLayer(){
           document.getElementById("popup").style.display='inline'
+          locationHandler();
         };
         includeHTML(function () {
         });
+        window.addEventListener("hashchange", locationHandler);
+        // call the urlLocationHandler to load the page
+        locationHandler();
+        // const createPages = (container) => {
+        // const unity = () => {
+        //     container.innerHTML='<object type="text/html" data="graph-fp01.html"></object>';
+        // };
+        // const index = () => {
+        //     container.innerHTML = "list page";
+        // };
+        // const notFound = () => {
+        //     container.innerHTML = "not found";
+        // };
 
-        const createPages = (container) => {
-        const unity = () => {
-            container.innerHTML='<object type="text/html" data="graph-fp01.html"></object>';
-        };
-        const index = () => {
-            container.innerHTML = "list page";
-        };
-        const notFound = () => {
-            container.innerHTML = "not found";
-        };
+        // return {
+        // unity,
+        // index,
+        // notFound,
+        // };
+    // };
 
-        return {
-        unity,
-        index,
-        notFound,
-        };
-    };
+    // const pages = createPages(document.getElementById("content"));
+    // const router = createRouter();
 
-    const pages = createPages(document.getElementById("content"));
-    const router = createRouter();
-
-    router.addRoute("/unity", pages.unity).addRoute("/index", pages.index).setNotFound(pages.notFound).start();
+    // router.addRoute("/unity", pages.unity).addRoute("/index", pages.index).setNotFound(pages.notFound).start();
     </script> 
 </body>
 </html>
