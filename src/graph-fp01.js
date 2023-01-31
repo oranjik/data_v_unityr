@@ -18,7 +18,6 @@ const plugin = {
       const imageHeight = bottom - top;
       ctx.drawImage(image, x, y, imageWidth, imageHeight);
       // image.onload = () => myChart.update();
-      
     }
   },
 }
@@ -35,7 +34,7 @@ const myChart = new Chart(ctx, {
           53.2,	60.7,	68.4,	70.6,	68.9,	65.8,	76.1,	74.4,	77.7,	72.4,	73.2,	70.3,	71.1,	66.9,	76.2,	79.3,
         ],
         borderColor: "#3E5FFF",
-        borderWidth: 2,
+        borderWidth: 3,
         tension: 0,
         pointStyle: 'rect',
         backgroundColor: "#3E5FFF",
@@ -51,7 +50,7 @@ const myChart = new Chart(ctx, {
         pointStyle: 'cross',
         backgroundColor: '#40FF76',
         pointBorderColor: '#40FF76',
-        borderWidth: 2,
+        borderWidth: 3,
         tension: 0,
         pointRadius: 4,
       },
@@ -64,7 +63,7 @@ const myChart = new Chart(ctx, {
         pointStyle: 'circle',
         backgroundColor: '#E94B03',
         pointBorderColor: '#E94B03',
-        borderWidth: 2,
+        borderWidth: 3,
         tension: 0,
         pointRadius: 3,
       },
@@ -78,7 +77,7 @@ const myChart = new Chart(ctx, {
         pointStyle: 'rectRot',
         backgroundColor: '#FF006E',
         pointBorderColor: '#FF006E',
-        borderWidth: 2,
+        borderWidth: 3,
         tension: 0,
         pointRadius: 4,
       },
@@ -91,13 +90,14 @@ const myChart = new Chart(ctx, {
         pointStyle: 'triangle',
         backgroundColor: '#804AA8',
         pointBorderColor: '#804AA8',
-        borderWidth: 2,
+        borderWidth: 3,
         tension: 0,
         pointRadius: 4,
       },
     ],
   },
   options: {
+    // aspectRatio: 1,
     onHover: (e, chartElement) => {
       e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
         const activeDataset = myChart.getActiveElements()
@@ -175,7 +175,7 @@ const myChart = new Chart(ctx, {
       y:
         {
           grid:{
-            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+            color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
           },
           ticks: {
             beginAtZero: true,
