@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style4.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="./js/includeHTML.js"></script>
-    <script src="./js/index.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
     <style>
     a {
         text-decoration: none;
@@ -73,8 +74,8 @@
         text-align: left;
         text-decoration: none;
         list-style: none;
-        padding-left: 3vw;
-        padding-right: 5vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
         border-bottom: 0.6px solid #FFF;
@@ -139,6 +140,8 @@
     </style>
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <a href="javascript:ViewLayer();">
         <div class="button">통일 여론 조사와 지표 자료</div>
     </a>
@@ -166,7 +169,19 @@
                     </ul>
                 </header>
                 <article id="content">
-
+                    <div class="container">
+                        <div class="left-container">
+                          <div class="arrow"><</div>
+                        </div>
+                        <div class="mid-container">
+                          <div id="code">Fp01)</div>
+                          <canvas id="myChart"></canvas>
+                        </div>
+                        <div class="right-container">
+                          <div class="arrow">></div>
+                        </div>
+                      </div>
+                      <script type="text/javascript" src="graph-fp01.js"></script>
                 </article>
             </div>
         </div>
