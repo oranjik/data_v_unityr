@@ -17,7 +17,6 @@ const plugin = {
       const imageWidth = right - left;
       const imageHeight = bottom - top;
       ctx.drawImage(image, x, y, imageWidth, imageHeight);
-      console.log(ctx);
       // image.onload = () => myChart.update();
       
     }
@@ -36,11 +35,12 @@ const myChart = new Chart(ctx, {
           53.2,	60.7,	68.4,	70.6,	68.9,	65.8,	76.1,	74.4,	77.7,	72.4,	73.2,	70.3,	71.1,	66.9,	76.2,	79.3,
         ],
         borderColor: "#3E5FFF",
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0,
         pointStyle: 'rect',
         backgroundColor: "#3E5FFF",
         pointBorderColor: "#3E5FFF",
+        pointRadius: 4,
         },
       {
         label: "일본",
@@ -51,8 +51,9 @@ const myChart = new Chart(ctx, {
         pointStyle: 'cross',
         backgroundColor: '#40FF76',
         pointBorderColor: '#40FF76',
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0,
+        pointRadius: 4,
       },
       {
         label: "북한",
@@ -63,8 +64,9 @@ const myChart = new Chart(ctx, {
         pointStyle: 'circle',
         backgroundColor: '#E94B03',
         pointBorderColor: '#E94B03',
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0,
+        pointRadius: 3,
       },
       {
         label: "중국",
@@ -76,8 +78,9 @@ const myChart = new Chart(ctx, {
         pointStyle: 'rectRot',
         backgroundColor: '#FF006E',
         pointBorderColor: '#FF006E',
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0,
+        pointRadius: 4,
       },
       {
         label: "러시아",
@@ -88,8 +91,9 @@ const myChart = new Chart(ctx, {
         pointStyle: 'triangle',
         backgroundColor: '#804AA8',
         pointBorderColor: '#804AA8',
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0,
+        pointRadius: 4,
       },
     ],
   },

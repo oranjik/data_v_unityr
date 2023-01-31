@@ -16,6 +16,7 @@ canvas {
     background-color: #001338;
     background-size: 100%;
     width: 60vw;
+    height: 60vh;
 }
 
 .container {
@@ -24,6 +25,7 @@ canvas {
 
 .mid-container {
     justify-content:start;
+    width: 60vw;
 }
 
 .left-container, .right-container {
