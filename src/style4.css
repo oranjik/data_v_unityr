@@ -5,25 +5,25 @@ body {
 }
 #code {
     padding-top: 20px;
-    padding-left: 20px;
     color: #FFF;
     font-size: 0.8rem;
     font-weight: 700;
     text-align: left;
 }
 canvas {
-    padding-left: 20px;
     background-color: #001338;
     background-size: 100%;
 }
 
 .container {
     display: flex;
+    justify-items: flex-end;
 }
 
 .mid-container {
     justify-content:start;
-    width: 60vw;
+    width: 50vw;
+    padding-top: 5vh;
 }
 
 .left-container, .right-container {
@@ -31,8 +31,8 @@ canvas {
     color: white;
     font-size: 2rem;
     align-items: center;
-    padding-left: 1vw;
-    padding-right: 1vw; 
+    padding-left: 3vw;
+    padding-right: 3vw; 
 }
 
 .nanumsquare {

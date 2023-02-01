@@ -98,6 +98,7 @@ const myChart = new Chart(ctx, {
   },
   options: {
     // aspectRatio: 1,
+    // responsive: false,
     onHover: (e, chartElement) => {
       e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
         const activeDataset = myChart.getActiveElements()
@@ -176,12 +177,13 @@ const myChart = new Chart(ctx, {
         {
           grid:{
             color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+
           },
           ticks: {
             beginAtZero: true,
             fontSize: 24,
             font: {
-              size: 14
+              size: 14,
             },
             color: 'white',
           },
@@ -190,6 +192,7 @@ const myChart = new Chart(ctx, {
         {
           grid:{
             color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+            display: false,
           },
           ticks: {
             autoSkip: false,
