@@ -97,8 +97,9 @@ const myChart = new Chart(ctx, {
     ],
   },
   options: {
-    // aspectRatio: 1,
-    // responsive: false,
+    aspectRatio: 1,
+    responsive: false,
+    // maintainAspectRatio: false,
     onHover: (e, chartElement) => {
       e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
         const activeDataset = myChart.getActiveElements()

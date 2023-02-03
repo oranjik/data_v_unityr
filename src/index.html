@@ -85,16 +85,13 @@
         padding-top: 1vw;
         padding-bottom: 1vw;
         border-bottom: 0.6px solid #FFF;
-        opacity: 50%;
+        align-items: center;
     }
     li.active {
-        /* text-color: white; */
-        font-weight: 900;
-        background-color: rgba(255, 255, 255,0.4);
-        opacity: 100%;
+        background-color: rgba(255, 255, 255,0.1);
     }
     li:hover {
-        background-color: rgba(255, 255, 255,0.4);
+        background-color: rgba(255, 255, 255,0.1);
     }
 
     .popup-header {
@@ -102,44 +99,42 @@
         border-bottom: 1px solid #FFF;
         padding-left: 2vw;
         padding-right: 2vw;
-        padding-bottom: 2.5vh;
-        padding-top: 2.5vh;
+        /* padding-bottom: 2.5vh; */
+        padding-top: 3vh;
     }
-    .popup-header {
+    .popup-menu-header {
         display: flex;
+        width: 12vh;
     }
     .popup-content {
         display: flex;
     }
     .popup-title-bar {
-        width: 20vw;
+        width: 20vh;
         align-items: center;
+        margin-bottom: 2vh;
+        padding-right: 6vw;
     }
-    .popup-title{ 
-        display: flex;
-        font-weight: 1000;
+    .popup-title{
+        width: 4vw;
     }
     .popup-menu-bar {
         display: flex;
-        font-size: 0.75rem;
-        align-items: center;
+        align-items: flex-end;  
     }
     .popup-menu {
         padding-right: 8vw;
         color: #FFF;
         text-align: center;
+        width: 5vw;
     }
     .popup-section {
         width: 20vw;
-    }
-    .popup-menu.active{
-        font-weight: 1000;
     }
     .popup-menu.inactive{
         opacity: 50%;
     }
     .popup-menu:hover {
-        font-weight: 700;
         color: #FFF;
         opacity: 100%;
     }
@@ -169,19 +164,17 @@
                     <div class="popup-title"><img class="logo" src="./img/logo1.png"/></div>
                 </div>
                 <div class="popup-menu-bar">
-                    <div class="popup-menu-container">
-                        <div class="popup-menu active"><a href="#unity">통일의식조사</a></div>
+                        <div class="popup-menu active"><a href="#unity"><img class="popup-menu-header" src="./img/header_active_통일의식조사.png" /></a></div>
                         <!-- <hr class="popup-menu-deco"></hr> -->
-                    </div>
-                    <div class="popup-menu inactive"><a href="#index">남북통일지수</a></div>
+                    <div class="popup-menu inactive"><a href="#index"><img class="popup-menu-header" src="./img/header_normal_남북통합지수.png" /></a></div>
                 </div>
             </div>
             <div class="popup-content">
                 <header>
                     <ul>
-                        <li class="active"><a data-navigate="/index">남한 주민 대상<br /> 통일의식조사</a></li>
-                        <li><a data-navigate="/index">북한이탈주민 대상 <br />통일의식조사</a></li>
-                        <li><a data-navigate="/index">북한이탈주민 대상 <br />북한사회변동조사</a></li>
+                        <li class="active"><a href="#index"><img style="width:10.6vh" class="popup-side-title" src="./img/active_1.png" /></a></li>
+                        <li><a href="#index"><img class="popup-side-title" style="width:12vh" src="./img/normal_2.png" /></a></li>
+                        <li><a href="#index"><img class="popup-side-title" style="width:12vh" src="./img/normal_3.png" /></a></li>
                     </ul>
                 </header>
                 <article id="content">
@@ -191,7 +184,7 @@
                         </div>
                         <div class="mid-container">
                           <div id="code">Fp01)</div>
-                          <canvas id="myChart" height="60vh" width="90vw"></canvas>
+                          <canvas id="myChart" style="width: 70vh;"></canvas>
                         </div>
                         <div class="right-container">
                           <img src="./img/arrow_r.png" class="arrow"/>
