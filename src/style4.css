@@ -21,9 +21,12 @@ canvas {
 }
 
 .mid-container {
-    justify-content: start;
-    width: 50vw;
+    justify-content: center;
+    width: 40vw;
     padding-top: 5vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+
 }
 
 .left-container, .right-container {
@@ -33,6 +36,7 @@ canvas {
     align-items: center;
     padding-left: 3vw;
     padding-right: 3vw; 
+    justify-content:space-around;
 }
 
 .nanumsquare {

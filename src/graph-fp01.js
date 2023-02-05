@@ -97,7 +97,7 @@ const myChart = new Chart(ctx, {
     ],
   },
   options: {
-    aspectRatio: 1,
+    aspectRatio: 1.2,
     responsive: false,
     // maintainAspectRatio: false,
     onHover: (e, chartElement) => {
