@@ -155,7 +155,7 @@ const myChart = new Chart(ctx, {
         display: true,
         
         position: "right",
-        align: "start",
+        align: "center",
         labels: {
           boxHeight: 0,
           padding: 40,
@@ -171,8 +171,6 @@ const myChart = new Chart(ctx, {
         }
       },
     },
-    // 'backgroundImage': {
-    // },
     scales: {
       y:
         {
