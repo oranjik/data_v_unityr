@@ -21,11 +21,9 @@ canvas {
 }
 
 .mid-container {
-    justify-content: center;
+    justify-content: flex-start;
     width: 40vw;
     padding-top: 7vh;
-    padding-left: 3vw;
-    padding-right: 3vw;
 
 }
 
@@ -34,9 +32,9 @@ canvas {
     color: white;
     font-size: 2rem;
     align-items: center;
-    padding-left: 3vw;
-    padding-right: 3vw; 
-    justify-content:space-around;
+    padding-left: 5vw;
+    padding-right: 5vw; 
+    /* justify-content:space-around; */
 }
 
 .nanumsquare {
