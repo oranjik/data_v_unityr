@@ -157,11 +157,12 @@ const myChart = new Chart(ctx, {
         position: "right",
         align: "center",
         labels: {
-          boxHeight: 0,
+          boxHeight: 2,
           padding: 40,
           color: 'white',
+          pointStyleWidth	: true,
           font: {
-            size: 14
+            size: 15
           },
         }
       },
