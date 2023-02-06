@@ -157,7 +157,7 @@ const myChart = new Chart(ctx, {
         position: "right",
         align: "center",
         labels: {
-          boxHeight: 2,
+          boxHeight: 1,
           padding: 40,
           color: 'white',
           pointStyleWidth	: true,
