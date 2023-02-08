@@ -71,7 +71,7 @@
         opacity: 0.3;
     }
     ul {
-        padding-top: 3vw;
+        padding-top: 5vh;
         padding-inline-start: 0;
         /* display: flex;
         flex-direction: column; */
@@ -121,19 +121,23 @@
     }
     .popup-menu-bar {
         display: flex;
-        align-items: flex-end;  
+        align-items: flex-end; 
+        width: 50vw; 
     }
     .popup-menu {
         padding-right: 10vw;
         color: #FFF;
         text-align: center;
-        width: 5vw;
+        width: 10vw;
     }
     .popup-section {
         width: 20vw;
     }
     .popup-menu.inactive{
         opacity: 50%;
+    }
+    .popup-close {
+        width: 1.5vw;
     }
     .popup-menu:hover {
         color: #FFF;
@@ -170,6 +174,9 @@
                         <div class="popup-menu active"><a href="#unity"><img class="popup-menu-header" src="./img/header_active_통일의식조사.png" /></a></div>
                         <!-- <hr class="popup-menu-deco"></hr> -->
                     <div class="popup-menu inactive"><a href="#index"><img class="popup-menu-header" src="./img/header_normal_남북통합지수.png" /></a></div>
+                </div>
+                <div class="popup-close-bar">
+                    <img class="popup-close" src="./img/close.png"/>
                 </div>
             </div>
             <div class="popup-content">
