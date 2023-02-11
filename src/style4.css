@@ -1,8 +1,22 @@
+@media all and (max-width : 480px) {
+    canvas {
+        width: 240px;
+    }
+}
+
+@media all and (min-width : 481px){
+    canvas {
+        width: 540px;
+    };
+}
+
 body {
     background-color: #001338;
     font-family:'NanumSquare',san-serif;
     line-height:1.5;
 }
+
+
 #code {
     padding-top: 20px;
     color: #FFF;
@@ -22,7 +36,7 @@ canvas {
 
 .mid-container {
     justify-content: flex-start;
-    width: 45vw;
+    width: 55vw;
     padding-top: 3vh;
 
 }

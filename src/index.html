@@ -38,7 +38,7 @@
     .popup-layer {
         position: relative; /*z-index는 반드시 position:relative 속성 필요*/
         display: inline-block; /*속성 변경*/
-        width: 80vw;
+        width: 90vw;
         height: 90vh;
         vertical-align: middle;
         margin: auto;
@@ -122,7 +122,7 @@
     .popup-menu-bar {
         display: flex;
         align-items: flex-end; 
-        width: 50vw; 
+        width: 60vw; 
     }
     .popup-menu {
         padding-right: 10vw;
@@ -176,7 +176,7 @@
                     <div class="popup-menu inactive"><a href="#index"><img class="popup-menu-header" src="./img/header_normal_남북통합지수.png" /></a></div>
                 </div>
                 <div class="popup-close-bar">
-                    <img class="popup-close" src="./img/close.png"/>
+                    <img class="popup-close" src="./img/close.png" onClick="closePage()"/>
                 </div>
             </div>
             <div class="popup-content">
@@ -190,14 +190,14 @@
                 <article id="content">
                     <div class="container">
                         <div class="left-container">
-                            <img src="./img/arrow_l.png" class="arrow"/>
+                            <img src="./img/arrow_l.png" class="arrow" onClick="fnMovePrevChart()"/>
                         </div>
                         <div class="mid-container">
                           <div id="code">Fp01)</div>
-                          <canvas id="myChart" style="width: 540px;"></canvas>
+                          <canvas id="myChart"></canvas>
                         </div>
                         <div class="right-container">
-                          <img src="./img/arrow_r.png" class="arrow"/>
+                          <img src="./img/arrow_r.png" class="arrow" onClick="fnMoveNextChart()"/>
                         </div>
                       </div>
                       <script type="text/javascript" src="graph-fp01.js"></script>
@@ -207,36 +207,95 @@
         <div class="popup-dimmed"></div>
     </div>
     <script> 
+        var curChartNum = 1;
         function ViewLayer(){
           document.getElementById("popup").style.display='inline'
         };
+        function closePage(){
+            document.getElementById("popup").style.display='none'
+        }
         includeHTML(function () {
         });
         window.addEventListener("hashchange", locationHandler);
         // call the urlLocationHandler to load the page
         locationHandler();
-        // const createPages = (container) => {
-        // const unity = () => {
-        //     container.innerHTML='<object type="text/html" data="graph-fp01.html"></object>';
-        // };
-        // const index = () => {
-        //     container.innerHTML = "list page";
-        // };
-        // const notFound = () => {
-        //     container.innerHTML = "not found";
-        // };
 
-        // return {
-        // unity,
-        // index,
-        // notFound,
-        // };
-    // };
+        function fnMoveNextChart() {
+            curChartNum += 1;
+            if(curChartNum > 10) {
+                curChartNum = 1;
+            }
 
-    // const pages = createPages(document.getElementById("content"));
-    // const router = createRouter();
+            if (curChartNum == 1) {
+                fnChart1();
+            }
+            if (curChartNum == 2) {
+                fnChart2();
+            }
+            if (curChartNum == 3) {
+                fnChart3();
+            }
+            if (curChartNum == 4) {
+                fnChart4();
+            }
+            if (curChartNum == 5) {
+                fnChart5();
+            }
+            if (curChartNum == 6) {
+                fnChart6();
+            }
+            if (curChartNum == 7) {
+                fnChart7();
+            }
+            if (curChartNum == 8) {
+                fnChart8();
+            }
+            if (curChartNum == 9) {
+                fnChart9();
+            }
+            if (curChartNum == 10) {
+                fnChart10();
+            }
 
-    // router.addRoute("/unity", pages.unity).addRoute("/index", pages.index).setNotFound(pages.notFound).start();
+        }
+        function fnMovePrevChart() {
+            curChartNum -= 1;
+            if(curChartNum < 1) {
+                curChartNum = 10;
+            }
+
+            if (curChartNum == 1) {
+                fnChart1();
+            }
+            if (curChartNum == 2) {
+                fnChart2();
+            }
+            if (curChartNum == 3) {
+                fnChart3();
+            }
+            if (curChartNum == 4) {
+                fnChart4();
+            }
+            if (curChartNum == 5) {
+                fnChart5();
+            }
+            if (curChartNum == 6) {
+                fnChart6();
+            }
+            if (curChartNum == 7) {
+                fnChart7();
+            }
+            if (curChartNum == 8) {
+                fnChart8();
+            }
+            if (curChartNum == 9) {
+                fnChart9();
+            }
+            if (curChartNum == 10) {
+                fnChart10();
+            }
+
+        }
     </script> 
 </body>
 </html>
