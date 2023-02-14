@@ -1,13 +1,21 @@
 @media all and (max-width : 480px) {
-    canvas {
+    .canvas-container {
         width: 240px;
+    };
+    .logo {
+        width: 10px;
+        height: 2px;
     }
 }
 
 @media all and (min-width : 481px){
-    canvas {
+    .canvas-container {
         width: 540px;
     };
+    .logo {
+        width: 160px;
+        height: 32px;
+    }
 }
 
 body {
@@ -36,8 +44,8 @@ canvas {
 
 .mid-container {
     justify-content: flex-start;
-    width: 55vw;
     padding-top: 3vh;
+    width: 40vw;
 
 }
 
@@ -49,6 +57,9 @@ canvas {
     padding-left: 5vw;
     padding-right: 5vw; 
     /* justify-content:space-around; */
+}
+.right-container {
+    margin-left: 15vw;
 }
 
 .nanumsquare {

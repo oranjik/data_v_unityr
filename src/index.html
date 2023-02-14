@@ -15,10 +15,6 @@
         text-decoration: none;
         color: #FFF;
     }
-    .logo {
-        width: 10vw;
-        height: 2vw;
-    }
     #popup {
         position: fixed;
         top: 0;
@@ -27,6 +23,10 @@
         left: 0;
         display:none;
         text-align: center;
+    }
+    .logo {
+        width: 100px;
+        height: 20px;
     }
     #popup:after {
         display: inline-block;
@@ -44,11 +44,14 @@
         margin: auto;
         min-height: 150px; /*min-height로 되어있어서 텍스트가 길어짐에 따라 높이가 커짐*/
         padding-bottom: 50px; /*텍스트를 온전히 보이게 하기 위해 버튼 부분을 padding으로 밀어줌*/
-        background-color: #031436;
         z-index: 10; /*dimmed보다 z-index 높힘*/
         color: #FFF;
+    }
+    #popup-layer-background{
+        background-color: #001338;
         border-radius: 10px;
     }
+
     .button {
         display: flex;
         color: #834500;
@@ -89,9 +92,6 @@
         border-bottom: 0.6px solid #FFF;
         display: flex;
         align-items: center;
-    }
-    li.active {
-        background-color: rgba(255, 255, 255,0.1);
     }
     li:hover {
         background-color: rgba(255, 255, 255,0.1);
@@ -152,66 +152,92 @@
     .arrow {
         width: 1vw;
     }
+    .download-bar {
+        display: flex;
+        padding-left: 22px;
+    }
+    .icon {
+        width: 16px;
+        padding-right: 10px;
+    }
+    .copyright {
+        font-size: 0.75rem;
+        opacity: 60%;
+        text-align: left;
+        padding-top: 16px;
+    }
     
     </style>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <a href="javascript:ViewLayer();">
+    <a href="javascript:viewLayer();">
         <div class="button">통일 여론 조사와 지표 자료</div>
     </a>
     <div id="popup">
         
         <div class="popup-layer">
-            <div class="popup-header">
-                <div class="popup-title-bar">
-                    <div class="popup-title"><img class="logo" src="./img/logo1.png"/></div>
+            <div id="popup-layer-background">
+                <div class="popup-header">
+                    <div class="popup-title-bar">
+                        <div class="popup-title"><img class="logo" src="./img/logo1.png"/></div>
+                    </div>
+                    <div class="popup-arrow-bar">
+                    </div>
+                    <div class="popup-menu-bar">
+                            <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_통일의식조사.png" onClick="changeSection(1)"/></a></div>
+                            <!-- <hr class="popup-menu-deco"></hr> -->
+                        <div class="popup-menu inactive"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_남북통합지수.png" onClick="changeSection(2)"/></a></div>
+                    </div>
+                    <div class="popup-close-bar">
+                        <img class="popup-close" src="./img/close.png" onClick="closeLayer()"/>
+                    </div>
                 </div>
-                <div class="popup-arrow-bar">
-                </div>
-                <div class="popup-menu-bar">
-                        <div class="popup-menu active"><a href="#unity"><img class="popup-menu-header" src="./img/header_active_통일의식조사.png" /></a></div>
-                        <!-- <hr class="popup-menu-deco"></hr> -->
-                    <div class="popup-menu inactive"><a href="#index"><img class="popup-menu-header" src="./img/header_normal_남북통합지수.png" /></a></div>
-                </div>
-                <div class="popup-close-bar">
-                    <img class="popup-close" src="./img/close.png" onClick="closePage()"/>
-                </div>
-            </div>
-            <div class="popup-content">
-                <header>
-                    <ul>
-                        <li class="active"><img style="width:7vw" class="popup-side-title" src="./img/active_1.png" /></li>
-                        <li><img class="popup-side-title" style="width:8vw" src="./img/normal_2.png" /></li>
-                        <li><img class="popup-side-title" style="width:8vw" src="./img/normal_3.png" /></li>
-                    </ul>
-                </header>
-                <article id="content">
-                    <div class="container">
-                        <div class="left-container">
-                            <img src="./img/arrow_l.png" class="arrow" onClick="fnMovePrevChart()"/>
+                <div class="popup-content">
+                    <header>
+                        <ul>
+                            <li id="menu1-container"><img style="width:7vw" id="menu1" class="popup-side-title" src="./img/active_1.png" onClick="changeMenuNum(1)"/></li>
+                            <li id="menu2-container"><img id="menu2"class="popup-side-title" style="width:8vw" src="./img/normal_2.png" onClick="changeMenuNum(2)"/></li>
+                            <li id="menu3-container"><img id="menu3"class="popup-side-title" style="width:8vw" src="./img/normal_3.png" onClick="changeMenuNum(3)"/></li>
+                        </ul>
+                    </header>
+                    <article id="content">
+                        <div class="container">
+                            <div class="left-container">
+                                <img src="./img/arrow_l.png" class="arrow" onClick="fnMovePrevChart(menuNum)"/>
+                            </div>
+                            <div class="mid-container">
+                                <div id="code">Fp01)</div>
+                                <div class="canvas-container">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                                <div class="download-bar">
+                                        <img src="./img/download1_1.png" class="icon" />
+                                        <img src="./img/download1_2.png" class="icon"/>
+                                </div>
+                                <div class="copyright">
+                                    Copyright © 2023 IPUS 서울대학교 통일평화연구원 all rights reserved
+                                </div>
+                            </div>
+                            <div class="right-container">
+                            <img src="./img/arrow_r.png" class="arrow" onClick="fnMoveNextChart(menuNum)"/>
+                            </div>
                         </div>
-                        <div class="mid-container">
-                          <div id="code">Fp01)</div>
-                          <canvas id="myChart"></canvas>
-                        </div>
-                        <div class="right-container">
-                          <img src="./img/arrow_r.png" class="arrow" onClick="fnMoveNextChart()"/>
-                        </div>
-                      </div>
-                      <script type="text/javascript" src="graph-fp01.js"></script>
-                </article>
+                        <script type="text/javascript" src="graph.js"></script>
+                    </article>
+                </div>
             </div>
         </div>
         <div class="popup-dimmed"></div>
     </div>
     <script> 
         var curChartNum = 1;
-        function ViewLayer(){
+        var menuNum = 1;
+        function viewLayer(){
           document.getElementById("popup").style.display='inline'
         };
-        function closePage(){
+        function closeLayer(){
             document.getElementById("popup").style.display='none'
         }
         includeHTML(function () {
@@ -220,79 +246,272 @@
         // call the urlLocationHandler to load the page
         locationHandler();
 
-        function fnMoveNextChart() {
-            curChartNum += 1;
-            if(curChartNum > 10) {
-                curChartNum = 1;
+        function changeSection(num){
+            if(num == 1){
+                // document.getElementsByClassName("popup-layer").style;
+                document.getElementById("myChart").style = "background-color: #001338; background-size: 100%;";
+                document.getElementById("popup-layer-background").style="background-color: #001338; background-size: 100%;"
             }
+            if(num == 2){
+                // document.getElementsByClassName("popup-layer").style;
+                document.getElementById("myChart").style = "background-color: #260A0B; background-size: 100%;";
+                document.getElementById("popup-layer-background").style="background-color: #260A0B; background-size: 100%;";
+            }
+        }
 
-            if (curChartNum == 1) {
-                fnChart1();
+        function changeMenuNum(num) {
+            menuNum = num;
+            curChartNum = 1;
+            if(num == 1) {
+                fnChart1Uni01();
+                document.getElementById("menu1").src = './img/active_1.png';
+                document.getElementById("menu1-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu2").src = './img/normal_2.png';
+                document.getElementById("menu2-container").style = 'background-color: none;';
+                document.getElementById("menu3").src = './img/normal_3.png';
+                document.getElementById("menu3-container").style = 'background-color: none;';
             }
-            if (curChartNum == 2) {
-                fnChart2();
+            if(num == 2) {
+                fnChart2Uni01();
+                document.getElementById("menu1").src = './img/normal_1.png';
+                document.getElementById("menu1-container").style = 'background-color: none;';
+                document.getElementById("menu2").src = './img/active_2.png';
+                document.getElementById("menu2-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu3").src = './img/normal_3.png';
+                document.getElementById("menu3-container").style = 'background-color: none;';
             }
-            if (curChartNum == 3) {
-                fnChart3();
+            if(num == 3) {
+                fnChart3q1_1();
+                document.getElementById("menu1").src = './img/normal_1.png';
+                document.getElementById("menu1-container").style = 'background-color: none;';
+                document.getElementById("menu2").src = './img/normal_2.png';
+                document.getElementById("menu2-container").style = 'background-color: none;';
+                document.getElementById("menu3").src = './img/active_3.png';
+                document.getElementById("menu3-container").style = 'background-color: rgba(255, 255, 255,0.1);';
             }
-            if (curChartNum == 4) {
-                fnChart4();
+        }
+
+        function fnMoveNextChart(num) {
+            if(num == 1) {
+                curChartNum += 1;
+                if(curChartNum > 10) {
+                    curChartNum = 1;
+                }
+
+                if (curChartNum == 1) {
+                    fnChart1Uni01();
+                }
+                if (curChartNum == 2) {
+                    fnChart1Uni06();
+                }
+                if (curChartNum == 3) {
+                    fnChart1Nk01();
+                }
+                if (curChartNum == 4) {
+                    fnChart1Nk03();
+                }
+                if (curChartNum == 5) {
+                    fnChart1Nk10()
+                }
+                if (curChartNum == 6) {
+                    fnChart1Nkp03();
+                }
+                if (curChartNum == 7) {
+                    fnChart1Nkp07_11();
+                }
+                if (curChartNum == 8) {
+                    fnChart1Nkd01_11();
+                }
+                if (curChartNum == 9) {
+                    fnChart1Fp01();
+                }
+                if (curChartNum == 10) {
+                    fnChart1Fp02();
+                }
             }
-            if (curChartNum == 5) {
-                fnChart5();
+            if(num == 2){
+                curChartNum += 1;
+                if(curChartNum > 10) {
+                    curChartNum = 1;
+                }
+                if(curChartNum == 1) {
+                    fnChart2Uni01();
+                }
+                if(curChartNum == 2) {
+                    fnChart2Uni03();
+                }
+                if(curChartNum == 3) {
+                    fnChart2Sk01();
+                }
+                if(curChartNum == 4) {
+                    fnChart2Sk03();
+                }
+                if(curChartNum == 5) {
+                    fnChart2Sk06();
+                }
+                if(curChartNum == 6) {
+                    fnChart2Sk07();
+                }
+                if(curChartNum == 7) {
+                    fnChart2Nk02();
+                }
+                if(curChartNum == 8) {
+                    fnChart2Nk07();
+                }
+                if(curChartNum == 9) {
+                    fnChart2Fp01();
+                }
+                if(curChartNum == 10) {
+                    fnChart2Skd01();
+                }
             }
-            if (curChartNum == 6) {
-                fnChart6();
-            }
-            if (curChartNum == 7) {
-                fnChart7();
-            }
-            if (curChartNum == 8) {
-                fnChart8();
-            }
-            if (curChartNum == 9) {
-                fnChart9();
-            }
-            if (curChartNum == 10) {
-                fnChart10();
+            if(num == 3){
+                curChartNum += 1;
+                if(curChartNum > 10) {
+                    curChartNum = 1;
+                }
+                if(curChartNum == 1) {
+                    fnChart3q1_1();
+                }
+                if(curChartNum == 2) {
+                    fnChart3q1_11();
+                }
+                if(curChartNum == 3) {
+                    fnChart3q1_11_1();
+                }
+                if(curChartNum == 4) {
+                    fnChart3q1_12();
+                }
+                if(curChartNum == 5) {
+                    fnChart3q1_13();
+                }
+                if(curChartNum == 6) {
+                    fnChart3q4_1_1();
+                }
+                if(curChartNum == 7) {
+                    fnChart3q8_1();
+                }
+                if(curChartNum == 8) {
+                    fnChart3q12();
+                }
+                if(curChartNum == 9) {
+                    fnChart3q15();
+                }
+                if(curChartNum == 10) {
+                    fnChart3q17();
+                }
             }
 
         }
-        function fnMovePrevChart() {
-            curChartNum -= 1;
-            if(curChartNum < 1) {
-                curChartNum = 10;
-            }
+        function fnMovePrevChart(num) {
+            if(num == 1) {
+                curChartNum -= 1;
+                if(curChartNum < 1) {
+                    curChartNum = 10;
+                }
 
-            if (curChartNum == 1) {
-                fnChart1();
+                if (curChartNum == 1) {
+                    fnChart1Uni01();
+                }
+                if (curChartNum == 2) {
+                    fnChart1Uni06();
+                }
+                if (curChartNum == 3) {
+                    fnChart1Nk01();
+                }
+                if (curChartNum == 4) {
+                    fnChart1Nk03();
+                }
+                if (curChartNum == 5) {
+                    fnChart1Nk10();
+                }
+                if (curChartNum == 6) {
+                    fnChart1Nkp03();
+                }
+                if (curChartNum == 7) {
+                    fnChart1Nkp07_11();
+                }
+                if (curChartNum == 8) {
+                    fnChart1Nkd01_11();
+                }
+                if (curChartNum == 9) {
+                    fnChart1Fp01();
+                }
+                if (curChartNum == 10) {
+                    fnChart1Fp02();
+                }
             }
-            if (curChartNum == 2) {
-                fnChart2();
+            if(num == 2){
+                curChartNum -= 1;
+                if(curChartNum < 1) {
+                    curChartNum = 10;
+                }
+                if(curChartNum == 1) {
+                    fnChart2Uni01();
+                }
+                if(curChartNum == 2) {
+                    fnChart2Uni03();
+                }
+                if(curChartNum == 3) {
+                    fnChart2Sk01();
+                }
+                if(curChartNum == 4) {
+                    fnChart2Sk03();
+                }
+                if(curChartNum == 5) {
+                    fnChart2Sk06();
+                }
+                if(curChartNum == 6) {
+                    fnChart2Sk07();
+                }
+                if(curChartNum == 7) {
+                    fnChart2Nk02();
+                }
+                if(curChartNum == 8) {
+                    fnChart2Nk07();
+                }
+                if(curChartNum == 9) {
+                    fnChart2Fp01();
+                }
+                if(curChartNum == 10) {
+                    fnChart2Skd01();
+                }
             }
-            if (curChartNum == 3) {
-                fnChart3();
-            }
-            if (curChartNum == 4) {
-                fnChart4();
-            }
-            if (curChartNum == 5) {
-                fnChart5();
-            }
-            if (curChartNum == 6) {
-                fnChart6();
-            }
-            if (curChartNum == 7) {
-                fnChart7();
-            }
-            if (curChartNum == 8) {
-                fnChart8();
-            }
-            if (curChartNum == 9) {
-                fnChart9();
-            }
-            if (curChartNum == 10) {
-                fnChart10();
+            if(num == 3){
+                curChartNum -= 1;
+                if(curChartNum < 1) {
+                    curChartNum = 10;
+                }
+                if(curChartNum == 1) {
+                    fnChart3q1_1();
+                }
+                if(curChartNum == 2) {
+                    fnChart3q1_11();
+                }
+                if(curChartNum == 3) {
+                    fnChart3q1_11_1();
+                }
+                if(curChartNum == 4) {
+                    fnChart3q1_12();
+                }
+                if(curChartNum == 5) {
+                    fnChart3q1_13();
+                }
+                if(curChartNum == 6) {
+                    fnChart3q4_1_1();
+                }
+                if(curChartNum == 7) {
+                    fnChart3q8_1();
+                }
+                if(curChartNum == 8) {
+                    fnChart3q12();
+                }
+                if(curChartNum == 9) {
+                    fnChart3q15();
+                }
+                if(curChartNum == 10) {
+                    fnChart3q17();
+                }
             }
 
         }
