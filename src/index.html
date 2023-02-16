@@ -24,10 +24,10 @@
         display:none;
         text-align: center;
     }
-    .logo {
+    /* .logo {
         width: 100px;
         height: 20px;
-    }
+    } */
     #popup:after {
         display: inline-block;
         width: 0;
@@ -39,7 +39,7 @@
         position: relative; /*z-index는 반드시 position:relative 속성 필요*/
         display: inline-block; /*속성 변경*/
         width: 90vw;
-        height: 90vh;
+        height: 100vh;
         vertical-align: middle;
         margin: auto;
         min-height: 150px; /*min-height로 되어있어서 텍스트가 길어짐에 따라 높이가 커짐*/
@@ -50,6 +50,7 @@
     #popup-layer-background{
         background-color: #001338;
         border-radius: 10px;
+        height: 100vh;
     }
 
     .button {
@@ -73,62 +74,13 @@
         background: #000;
         opacity: 0.3;
     }
-    ul {
-        padding-top: 5vh;
-        padding-inline-start: 0;
-        /* display: flex;
-        flex-direction: column; */
-    }
-    li{
-        font-size: 0.7rem;
-        text-align: left;
-        text-decoration: none;
-        list-style: none;
-        font-weight: 300;
-        padding-left: 3vw;
-        padding-right: 3vw;
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        border-bottom: 0.6px solid #FFF;
-        display: flex;
-        align-items: center;
-    }
-    li:hover {
-        background-color: rgba(255, 255, 255,0.1);
-    }
-
-    .popup-header {
-        display: flex;
-        border-bottom: 1px solid #FFF;
-        padding-top: 3vh;
-    }
-    .popup-menu-header {
-        display: flex;
-        width: 12vh;
-    }
     .popup-content {
         display: flex;
-    }
-    .popup-title-bar {
-        width: 14vw;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2vh;
-        /* padding-right: 9vw; */
-    }
-    .popup-arrow-bar {
-        padding-left: 11vw;
     }
     .popup-menu-bar {
         display: flex;
         align-items: flex-end; 
         width: 60vw; 
-    }
-    .popup-menu {
-        padding-right: 10vw;
-        color: #FFF;
-        text-align: center;
-        width: 10vw;
     }
     .popup-section {
         width: 20vw;

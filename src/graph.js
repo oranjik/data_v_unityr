@@ -37,7 +37,7 @@ const deleteChart = () => {
 function fnChart1Uni01() {
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Uni01";
+  subject.innerHTML = "Uni01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2]];
@@ -91,7 +91,7 @@ function fnChart1Uni01() {
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: 1.3,
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -124,11 +124,17 @@ function fnChart1Uni01() {
           text: ["통일 필요성", "남북한 통일이 얼마나 필요하다고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return 14;
+              else return 20;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return 10;
+              else return 60;
+            },
           }
         },
         tooltip: {
@@ -142,20 +148,29 @@ function fnChart1Uni01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            return context.datasetIndex === curIndex;
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
-          position: "right",
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return 10;
+              else return 40;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return 10;
+                else return 14;
+              },
             },
           }
         },
@@ -176,7 +191,10 @@ function fnChart1Uni01() {
               beginAtZero: true,
               fontSize: 24,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return 9;
+                  else return 14;
+                },
               },
               color: 'white',
             },
@@ -192,7 +210,10 @@ function fnChart1Uni01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return 9;
+                  else return 14;
+                },
               },
               color: 'white',
             },
@@ -206,9 +227,9 @@ function fnChart1Uni01() {
 function fnChart1Uni06() {  
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Uni06";
+  subject.innerHTML = "Uni06)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]]
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4], totalPointStyle[1]];
 
   const myChart = new Chart(ctx, {
@@ -222,7 +243,6 @@ function fnChart1Uni06() {
           data: [
             50.7,	58.5,	44.3,	43.3,	41.9,	46,	40.4,	42.6,	42,	38.9,	40.4,	45.1,	35.2,	37.3,	45.7,	42.3,
           ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           tension: 0,
           pointStyle: pointStyle[0],
@@ -237,7 +257,6 @@ function fnChart1Uni06() {
             8.9,	6.6,	8.6,	7,	7.1,	9.1,	8.4,	8.9,	11.4,	12.2,	10.3,	6.9,	10,	7.4,	11.3,	10.7,
           
           ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[1],
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
@@ -251,7 +270,6 @@ function fnChart1Uni06() {
           data: [
             19.2,	14.6,	23.4,	24.2,	27.4,	25.2,	30.8,	26.8,	25.7,	29.2,	32.4,	31.4,	32.5,	37.9,	28.2,	31.6,
           ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[2],
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
@@ -265,7 +283,6 @@ function fnChart1Uni06() {
           data: [
             1.8,	2.9,	4.2,	4,	4.8,	4.4,	5.5,	3.8,	6.2,	4.8,	4,	3.4,	3.1,	2,	3.5, 4.6,
           ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[3],
           pointStyle: pointStyle[3],
           backgroundColor: borderColors[3],
@@ -279,7 +296,6 @@ function fnChart1Uni06() {
           data: [
             18.7,	17.3,	18.6,	20.8,	17.8,	14.5,	14.2,	17.5,	14.1,	14.2,	13,	12.9,	18.8,	15.3,	11.4,	10.7,
             ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[4],
           pointStyle: pointStyle[4],
           backgroundColor: borderColors[4],
@@ -423,7 +439,7 @@ function fnChart1Nk01() {
 
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nk01";  
+  subject.innerHTML = "Nk01)";  
   const borderColors = [totalBorderColors[5], totalBorderColors[2],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[5], totalPointStyle[2], totalPointStyle[3]];
@@ -596,7 +612,7 @@ function fnChart1Nk03() {
 
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nk03";
+  subject.innerHTML = "Nk03)";
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -756,7 +772,7 @@ function fnChart1Nk10() {
 
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nk10";
+  subject.innerHTML = "Nk10)";
   const borderColors = [totalBorderColors[3], totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[1]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[1]];
@@ -914,7 +930,7 @@ function fnChart1Nkp03() {
 
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nkp03";
+  subject.innerHTML = "Nkp03)";
   const borderColors = [totalBorderColors[1], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[1], totalPointStyle[3]];
@@ -1073,7 +1089,7 @@ function fnChart1Nkp03() {
 function fnChart1Nkp07_11() {
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nkp07_11";
+  subject.innerHTML = "Nkp07_11)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
@@ -1247,7 +1263,7 @@ function fnChart1Nkp07_11() {
 function fnChart1Nkd01_11() {
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Nkd01_11";
+  subject.innerHTML = "Nkd01_11)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5]];
@@ -1402,9 +1418,9 @@ function fnChart1Nkd01_11() {
 function fnChart1Fp01() {
   deleteChart();
   const subject = document.getElementById("code");
-  subject.innerHTML = "Fp01";
+  subject.innerHTML = "Fp01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColors[3],totalBorderColors[4]]
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
 
 
@@ -1606,7 +1622,7 @@ function fnChart1Fp02() {
   const subject = document.getElementById("code");
   subject.innerHTML = "Fp02)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColors[3],totalBorderColors[4]]
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
 
   const myChart = new Chart(ctx, {

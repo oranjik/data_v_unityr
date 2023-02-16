@@ -1,20 +1,161 @@
 @media all and (max-width : 480px) {
     .canvas-container {
-        width: 240px;
-    };
+        width: 280px;
+    }
     .logo {
-        width: 10px;
-        height: 2px;
+        width: 70px;
+        height: 14px;
+    }
+    .popup-title-bar {
+        width: 24vw;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2vh;
+    }
+    .popup-arrow-bar {
+        padding-left: 5vw;
+    }
+    .popup-title{
+        display: flex;
+        justify-content: center;
+    }
+    .popup-menu {
+        padding-right: 2vw;
+        color: #FFF;
+        text-align: center;
+        width: 20vw;
+    }
+    .popup-header {
+        display: flex;
+        border-bottom: 1px solid #FFF;
+        padding-top: 2vh;
+    }
+    .popup-menu-header {
+        display: flex;
+        width: 8vh;
+    }
+    .popup-menu-bar {
+        display: flex;
+        align-items: flex-end; 
+        width: 55vw; 
+    }
+
+    ul {
+        padding-inline-start: 0;
+    }
+    li{
+        font-size: 0.7rem;
+        list-style: none;
+        font-weight: 300;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        border-bottom: 0.6px solid #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    li:hover {
+        background-color: rgba(255, 255, 255,0.1);
+    }
+
+    .popup-content {
+        flex-direction: column;
+    } 
+    .mid-container {
+        justify-content: flex-start;
+        width: 80vw;
+    }
+    .left-container, .right-container {
+        display: flex;
+        color: white;
+        font-size: 2rem;
+        align-items: center;
+        padding-left: 3vw;
+        padding-right: 3vw; 
+        /* justify-content:space-around; */
     }
 }
 
 @media all and (min-width : 481px){
     .canvas-container {
         width: 540px;
-    };
+    }
     .logo {
-        width: 160px;
-        height: 32px;
+        width: 120px;
+        height: 24px;
+    }
+    
+    .popup-title-bar {
+        width: 14vw;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2vh;
+        /* padding-right: 9vw; */
+    }
+    .popup-menu {
+        padding-right: 5vw;
+        color: #FFF;
+        text-align: center;
+        width: 10vw;
+    }
+    .popup-header {
+        display: flex;
+        border-bottom: 1px solid #FFF;
+        padding-top: 3vh;
+    }
+    .popup-menu-header {
+        display: flex;
+        width: 12vh;
+    }
+    .popup-menu-bar {
+        display: flex;
+        align-items: flex-end; 
+        width: 60vw; 
+    }
+    .popup-arrow-bar {
+        padding-left: 11vw;
+    }
+    ul {
+        padding-top: 5vh;
+        padding-inline-start: 0;
+        /* display: flex;
+        flex-direction: column; */
+    }
+    li{
+        font-size: 0.7rem;
+        text-align: left;
+        text-decoration: none;
+        list-style: none;
+        font-weight: 300;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        border-bottom: 0.6px solid #FFF;
+        display: flex;
+        align-items: center;
+    }
+    li:hover {
+        background-color: rgba(255, 255, 255,0.1);
+    }
+    .right-container {
+        margin-left: 15vw;
+    }
+    .mid-container {
+        justify-content: flex-start;
+        padding-top: 3vh;
+        width: 40vw;
+    }
+    .left-container, .right-container {
+        display: flex;
+        color: white;
+        font-size: 2rem;
+        align-items: center;
+        padding-left: 5vw;
+        padding-right: 5vw; 
+        /* justify-content:space-around; */
     }
 }
 
@@ -42,25 +183,7 @@ canvas {
     justify-items: flex-end;
 }
 
-.mid-container {
-    justify-content: flex-start;
-    padding-top: 3vh;
-    width: 40vw;
 
-}
-
-.left-container, .right-container {
-    display: flex;
-    color: white;
-    font-size: 2rem;
-    align-items: center;
-    padding-left: 5vw;
-    padding-right: 5vw; 
-    /* justify-content:space-around; */
-}
-.right-container {
-    margin-left: 15vw;
-}
 
 .nanumsquare {
     font-family: 'NanumSquare', sans-serif !important;
