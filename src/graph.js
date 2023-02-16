@@ -38,9 +38,9 @@ function fnChart1Uni01() {
   deleteChart();
   const subject = document.getElementById("code");
   subject.innerHTML = "Uni01)";
-  const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2]];
-  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2]];
+  const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -62,7 +62,7 @@ function fnChart1Uni01() {
           pointRadius: pointRadius,
           },
         {
-          label: "반반/보통",
+          label: "반반/보통이다",
           data: [
             20.9,	23.2,	23.5,	20.4,	25.1,	21.6,	21.5,	22.6,	24.6,	22.5,	24.5,	24.2,	26.4,	22.4,	26,	27.9,
           
@@ -76,7 +76,7 @@ function fnChart1Uni01() {
           tension: 0,
         },
         {
-          label: "필요하지 않다",
+          label: "필요없다",
           data: [
             15,	25.2,	20.1,	20.4,	21.1,	21.4,	23.6,	21.6,	23.4,	23.8,	21.5,	16.1,	20,	24.7,	29.4,	26.1,
           ],
@@ -126,7 +126,7 @@ function fnChart1Uni01() {
           font:{
             size: function(context) {
               if(context.chart.width < 500) return 14;
-              else return 20;
+              else return 24;
             },
           },
           align: 'start',
@@ -185,7 +185,7 @@ function fnChart1Uni01() {
         y:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
               beginAtZero: true,
@@ -203,6 +203,7 @@ function fnChart1Uni01() {
           {
             grid:{
               color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              display: false,
             },
             ticks: {
               autoSkip: false,
@@ -1579,7 +1580,6 @@ const myChart = new Chart(ctx, {
         {
           grid:{
             color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
-
           },
           ticks: {
             beginAtZero: true,

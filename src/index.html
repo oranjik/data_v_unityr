@@ -51,8 +51,9 @@
         background-color: #001338;
         border-radius: 10px;
         height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
-
     .button {
         display: flex;
         color: #834500;
@@ -77,19 +78,11 @@
     .popup-content {
         display: flex;
     }
-    .popup-menu-bar {
-        display: flex;
-        align-items: flex-end; 
-        width: 60vw; 
-    }
     .popup-section {
         width: 20vw;
     }
     .popup-menu.inactive{
         opacity: 50%;
-    }
-    .popup-close {
-        width: 1.5vw;
     }
     .popup-menu:hover {
         color: #FFF;
@@ -100,9 +93,6 @@
         height: 5px;
         color: white;
         background-color: white;
-    }
-    .arrow {
-        width: 1vw;
     }
     .download-bar {
         display: flex;
@@ -117,6 +107,7 @@
         opacity: 60%;
         text-align: left;
         padding-top: 16px;
+        padding-bottom: 32px;
     }
     
     </style>
@@ -149,7 +140,7 @@
                 <div class="popup-content">
                     <header>
                         <ul>
-                            <li id="menu1-container"><img style="width:7vw" id="menu1" class="popup-side-title" src="./img/active_1.png" onClick="changeMenuNum(1)"/></li>
+                            <li id="menu1-container" style="background-color: rgba(255, 255, 255,0.1);"><img style="width:7vw;" id="menu1" class="popup-side-title" src="./img/active_1.png" onClick="changeMenuNum(1)"/></li>
                             <li id="menu2-container"><img id="menu2"class="popup-side-title" style="width:8vw" src="./img/normal_2.png" onClick="changeMenuNum(2)"/></li>
                             <li id="menu3-container"><img id="menu3"class="popup-side-title" style="width:8vw" src="./img/normal_3.png" onClick="changeMenuNum(3)"/></li>
                         </ul>
