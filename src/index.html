@@ -97,9 +97,14 @@
     .download-bar {
         display: flex;
         padding-left: 22px;
+        padding-top: 24px;
     }
-    .icon {
-        width: 16px;
+    .icon-data {
+        width: 64px;
+        padding-right: 10px;
+    }
+    .icon-image {
+        width: 80px;
         padding-right: 10px;
     }
     .copyright {
@@ -107,7 +112,7 @@
         opacity: 60%;
         text-align: left;
         padding-top: 16px;
-        padding-bottom: 32px;
+        padding-bottom: 4px;
     }
     
     </style>
@@ -140,9 +145,9 @@
                 <div class="popup-content">
                     <header>
                         <ul>
-                            <li id="menu1-container" style="background-color: rgba(255, 255, 255,0.1);"><img style="width:7vw;" id="menu1" class="popup-side-title" src="./img/active_1.png" onClick="changeMenuNum(1)"/></li>
-                            <li id="menu2-container"><img id="menu2"class="popup-side-title" style="width:8vw" src="./img/normal_2.png" onClick="changeMenuNum(2)"/></li>
-                            <li id="menu3-container"><img id="menu3"class="popup-side-title" style="width:8vw" src="./img/normal_3.png" onClick="changeMenuNum(3)"/></li>
+                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img style="width:7vw;" id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile">남한 주민 대상 통일의식조사</div></li>
+                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" style="width:8vw" src="./img/normal_2.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
+                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" style="width:8vw" src="./img/normal_3.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
                         </ul>
                     </header>
                     <article id="content">
@@ -156,8 +161,8 @@
                                     <canvas id="myChart"></canvas>
                                 </div>
                                 <div class="download-bar">
-                                        <img src="./img/download1_1.png" class="icon" />
-                                        <img src="./img/download1_2.png" class="icon"/>
+                                        <img src="./img/download1_1.png" class="icon-data" />
+                                        <img src="./img/download1_2.png" class="icon-image"/>
                                 </div>
                                 <div class="copyright">
                                     Copyright © 2023 IPUS 서울대학교 통일평화연구원 all rights reserved

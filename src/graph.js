@@ -1,3 +1,5 @@
+Chart.defaults.font.family = 'NanumSquare';
+
 const totalBorderColors = ["#3E5FFF", "#40FF76", "#E94B03", "#FF006E", "#804AA8", "#FF8A0A"]
 const totalBorderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128,74,168],[255,138,10]]
 const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'square']
@@ -5,8 +7,19 @@ const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./i
 
 let curIndex = -1;
 const ctx = document.getElementById("myChart");
+const borderWidthMobile = 1;
 const borderWidth = 3;
 const pointRadius = 4;
+
+const titleSizeMobile = 14;
+const titleSizeWeb = 24;
+const titleBottomMobile = 10;
+const titleBottomWeb = 60;
+
+const legendFontSizeMobile = 10;
+const legendFontSizeWeb = 14;
+const legendLabelPaddingMobile = 10;
+const legendLabelPaddingWeb = 40;
 
 
 const plugin = {
@@ -58,7 +71,10 @@ function fnChart1Uni01() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           },
         {
@@ -71,7 +87,10 @@ function fnChart1Uni01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -84,14 +103,17 @@ function fnChart1Uni01() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.3,
+      aspectRatio: 1.2,
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -135,7 +157,7 @@ function fnChart1Uni01() {
               if(context.chart.width < 500) return 10;
               else return 60;
             },
-          }
+          },
         },
         tooltip: {
           enabled: false,
@@ -162,17 +184,17 @@ function fnChart1Uni01() {
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return 10;
-              else return 40;
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return 10;
-                else return 14;
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
               },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -184,17 +206,16 @@ function fnChart1Uni01() {
       scales: {
         y:
           {
+            suggestedMin: 10,
+            suggestedMax: 80,
             grid:{
               color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
-                size: function(context) {
-                  if(context.chart.width < 500) return 9;
-                  else return 14;
-                },
+                size: 14
               },
               color: 'white',
             },
@@ -202,8 +223,7 @@ function fnChart1Uni01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
-              display: false,
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -211,10 +231,7 @@ function fnChart1Uni01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: function(context) {
-                  if(context.chart.width < 500) return 9;
-                  else return 14;
-                },
+                size: 14
               },
               color: 'white',
             },
@@ -223,7 +240,7 @@ function fnChart1Uni01() {
       
     },
   });
-}
+};
 
 function fnChart1Uni06() {  
   deleteChart();
@@ -249,11 +266,14 @@ function fnChart1Uni06() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           },
         {
-          label: ["이산가족의 고통을", "해결해 주기 위해"],
+          label: "이산가족의 고통을 해결해 주기 위해",
           data: [
             8.9,	6.6,	8.6,	7,	7.1,	9.1,	8.4,	8.9,	11.4,	12.2,	10.3,	6.9,	10,	7.4,	11.3,	10.7,
           
@@ -262,12 +282,15 @@ function fnChart1Uni06() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
         {
-          label: ["남북 간에 전쟁위협을", "없애기 위해"],
+          label: "남북 간에 전쟁위협을 없애기 위해",
           data: [
             19.2,	14.6,	23.4,	24.2,	27.4,	25.2,	30.8,	26.8,	25.7,	29.2,	32.4,	31.4,	32.5,	37.9,	28.2,	31.6,
           ],
@@ -275,12 +298,15 @@ function fnChart1Uni06() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
         {
-          label: ["북한주민도 잘 살 수", "있도록"],
+          label: "북한주민도 잘 살 수 있도록",
           data: [
             1.8,	2.9,	4.2,	4,	4.8,	4.4,	5.5,	3.8,	6.2,	4.8,	4,	3.4,	3.1,	2,	3.5, 4.6,
           ],
@@ -288,12 +314,15 @@ function fnChart1Uni06() {
           pointStyle: pointStyle[3],
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
         {
-          label: ["한국이 보다 선진국이", "되기 위해서"],
+          label: "한국이 보다 선진국이 되기 위해서",
           data: [
             18.7,	17.3,	18.6,	20.8,	17.8,	14.5,	14.2,	17.5,	14.1,	14.2,	13,	12.9,	18.8,	15.3,	11.4,	10.7,
             ],
@@ -301,7 +330,10 @@ function fnChart1Uni06() {
           pointStyle: pointStyle[4],
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
   
@@ -311,12 +343,14 @@ function fnChart1Uni06() {
           data: [
             0.7,	0.1,	0.8,	5.9,	1.1,	0.8,	0.8, 0.4,	0.5,	0.7,	0.1,	0.2,	0.4,	0.3,	0,	0.1,
             ],
-          backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[5],
           pointStyle: pointStyle[5],
           backgroundColor: borderColors[5],
           pointBorderColor: borderColors[5],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
   
@@ -357,11 +391,17 @@ function fnChart1Uni06() {
           text: ["통일 이유", "우리나라가 통일이 되어야 하는 가장 큰 이유가 다음 중", "무엇이라고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return 14;
+              else return 24;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return 10;
+              else return 60;
+            },
           }
         },
         tooltip: {
@@ -380,34 +420,41 @@ function fnChart1Uni06() {
         },
         legend: {
           display: true,
-          maxWidth: 200,
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
-        scales:{
-          ticks:{
-            display: true,
-          }
-        }
         
       },
       scales: {
+        
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -417,7 +464,7 @@ function fnChart1Uni06() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -459,7 +506,10 @@ function fnChart1Nk01() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -476,12 +526,15 @@ function fnChart1Nk01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
         {
-          label: ["경계대상 및", "안전위협대상"],
+          label: "경계대상 및 안전위협대상",
           data: [
             18.2,	17.1,	29.3,	32.4,	33.8,	32.1,	37.6,	36.2,	38.1,	36.8,	38,	23.9,	27.2,	35.4,	33.3,	31.7
           ],
@@ -490,7 +543,10 @@ function fnChart1Nk01() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -530,11 +586,17 @@ function fnChart1Nk01() {
           text: ["북한에 대한 인식", "북한이 우리에게 어떤 대상이라고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
-          },
+              size: function(context) {
+                if(context.chart.width < 500) return titleSizeMobile;
+                else return titleSizeWeb;
+              },
+            },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -554,16 +616,25 @@ function fnChart1Nk01() {
         legend: {
           display: true,
           maxWidth: 300,
-          position: "right",
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -576,11 +647,11 @@ function fnChart1Nk01() {
         y:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -590,7 +661,7 @@ function fnChart1Nk01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -604,7 +675,6 @@ function fnChart1Nk01() {
             },
           },
       },
-      
     },
   });
 }
@@ -636,7 +706,10 @@ function fnChart1Nk03() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           },
         {
@@ -649,7 +722,10 @@ function fnChart1Nk03() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -689,11 +765,17 @@ function fnChart1Nk03() {
           text: ["북한 대화 가능성", "통일을 함께 논의할 대상으로 북한 정권이 대화와", "타협이 가능한 상대라고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -713,16 +795,25 @@ function fnChart1Nk03() {
         legend: {
           display: true,
           maxWidth: 300,
-          position: "right",
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -734,12 +825,14 @@ function fnChart1Nk03() {
       scales: {
         y:
           {
+            suggestedMin: 20,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -749,7 +842,7 @@ function fnChart1Nk03() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -774,9 +867,9 @@ function fnChart1Nk10() {
   deleteChart();
   const subject = document.getElementById("code");
   subject.innerHTML = "Nk10)";
-  const borderColors = [totalBorderColors[3], totalBorderColors[1]];
-  const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[1]];
-  const pointStyle = [totalPointStyle[3], totalPointStyle[1]];
+  const borderColors = [totalBorderColors[3], totalBorderColors[0]];
+  const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[0]];
+  const pointStyle = [totalPointStyle[3], totalPointStyle[0]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -791,7 +884,10 @@ function fnChart1Nk10() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -808,7 +904,10 @@ function fnChart1Nk10() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -848,11 +947,17 @@ function fnChart1Nk10() {
           text: ["북핵 위협", "북한의 핵무기 보유에 대해 얼마나 위협을 느끼십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align:"start",
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -871,17 +976,26 @@ function fnChart1Nk10() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -893,12 +1007,15 @@ function fnChart1Nk10() {
       scales: {
         y:
           {
+
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -908,7 +1025,7 @@ function fnChart1Nk10() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -932,9 +1049,9 @@ function fnChart1Nkp03() {
   deleteChart();
   const subject = document.getElementById("code");
   subject.innerHTML = "Nkp03)";
-  const borderColors = [totalBorderColors[1], totalBorderColors[3]];
-  const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3]];
-  const pointStyle = [totalPointStyle[1], totalPointStyle[3]];
+  const borderColors = [totalBorderColors[0], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -949,7 +1066,10 @@ function fnChart1Nkp03() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -966,7 +1086,10 @@ function fnChart1Nkp03() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1006,12 +1129,18 @@ function fnChart1Nkp03() {
           text: ["대북정책 만족도", "현 정부의 대북정책에 대해 얼마나 만족하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
-          }
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+          },
         },
         tooltip: {
           enabled: false,
@@ -1029,17 +1158,26 @@ function fnChart1Nkp03() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -1051,12 +1189,14 @@ function fnChart1Nkp03() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -1066,7 +1206,7 @@ function fnChart1Nkp03() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -1109,7 +1249,10 @@ function fnChart1Nkp07_11() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1126,7 +1269,10 @@ function fnChart1Nkp07_11() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1140,7 +1286,10 @@ function fnChart1Nkp07_11() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1181,12 +1330,18 @@ function fnChart1Nkp07_11() {
           text: ["핵무장 의견", "한국도 핵무기를 가져야 한다."],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
-          }
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+          },
         },
         tooltip: {
           enabled: false,
@@ -1204,17 +1359,26 @@ function fnChart1Nkp07_11() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -1226,12 +1390,14 @@ function fnChart1Nkp07_11() {
       scales: {
         y:
           {
+            suggestedMin: 10,
+            suggestedMax: 60,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -1241,7 +1407,7 @@ function fnChart1Nkp07_11() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -1265,9 +1431,9 @@ function fnChart1Nkd01_11() {
   deleteChart();
   const subject = document.getElementById("code");
   subject.innerHTML = "Nkd01_11)";
-  const borderColors = [totalBorderColors[0], totalBorderColors[5]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5]];
-  const pointStyle = [totalPointStyle[0], totalPointStyle[5]];
+  const borderColors = [totalBorderColors[0], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -1281,7 +1447,10 @@ function fnChart1Nkd01_11() {
             52.3,	54.2,	55.1,	52.4,	49.8,	40,	38.1,	45.6,	44.2,	55.8,
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1297,7 +1466,10 @@ function fnChart1Nkd01_11() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1332,15 +1504,21 @@ function fnChart1Nkd01_11() {
       plugins: {
         title: {
           display: true,
-          text: ["탈북민 친근감","한국에 거주하는 탈북자(새터민)가 얼마나 친근하게 느껴지십니까?"],
+          text: ["탈북민 친근감","한국에 거주하는 탈북자(새터민)가 얼마나 친근하게", "느껴지십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
-          }
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+          },
         },
         tooltip: {
           enabled: false,
@@ -1358,18 +1536,26 @@ function fnChart1Nkd01_11() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
-            color: 'white',
-            pointStyleWidth	: true,
-            font: {
-              size: 14
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
             },
-          }
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
         },
         scales:{
           ticks:{
@@ -1381,12 +1567,14 @@ function fnChart1Nkd01_11() {
       scales: {
         y:
           {
+            suggestedMin: 30,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -1441,7 +1629,10 @@ const myChart = new Chart(ctx, {
         pointStyle: pointStyle[0],
         backgroundColor: borderColors[0],
         pointBorderColor: borderColors[0],
-        borderWidth: borderWidth,
+        borderWidth: function(context) {
+          if(context.chart.width < 500) return borderWidthMobile;
+          else return borderWidth;
+        },
         pointRadius: pointRadius,
         },
       {
@@ -1453,7 +1644,10 @@ const myChart = new Chart(ctx, {
         pointStyle: pointStyle[1],
         backgroundColor: borderColors[1],
         pointBorderColor: borderColors[1],
-        borderWidth: borderWidth,
+        borderWidth: function(context) {
+          if(context.chart.width < 500) return borderWidthMobile;
+          else return borderWidth;
+        },
         pointRadius: pointRadius,
         tension: 0,
       },
@@ -1466,7 +1660,10 @@ const myChart = new Chart(ctx, {
         pointStyle: pointStyle[2],
         backgroundColor: borderColors[2],
         pointBorderColor: borderColors[2],
-        borderWidth: borderWidth,
+        borderWidth: function(context) {
+          if(context.chart.width < 500) return borderWidthMobile;
+          else return borderWidth;
+        },
         pointRadius: pointRadius,
         tension: 0,
       },
@@ -1480,7 +1677,10 @@ const myChart = new Chart(ctx, {
         pointStyle: pointStyle[3],
         backgroundColor: borderColors[3],
         pointBorderColor: borderColors[3],
-        borderWidth: borderWidth,
+        borderWidth: function(context) {
+          if(context.chart.width < 500) return borderWidthMobile;
+          else return borderWidth;
+        },
         pointRadius: pointRadius,
         tension: 0,
       },
@@ -1493,7 +1693,10 @@ const myChart = new Chart(ctx, {
         pointStyle: pointStyle[4],
         backgroundColor: borderColors[4],
         pointBorderColor: borderColors[4],
-        borderWidth: borderWidth,
+        borderWidth: function(context) {
+          if(context.chart.width < 500) return borderWidthMobile;
+          else return borderWidth;
+        },
         pointRadius: pointRadius,
         tension: 0,
       },
@@ -1534,11 +1737,17 @@ const myChart = new Chart(ctx, {
         text: ["주변국 친밀감","다음 국가들 중 어느 나라를 가장 가깝게 느끼십니까?"],
         color: "white",
         font:{
-          size: `20rem`,
+          size: function(context) {
+            if(context.chart.width < 500) return titleSizeMobile;
+            else return titleSizeWeb;
+          },
         },
         align: "start",
         padding:{
-          bottom: 60,
+          bottom: function(context) {
+            if(context.chart.width < 500) return titleBottomMobile;
+            else return titleBottomWeb;
+          },
         }
       },
       tooltip: {
@@ -1556,18 +1765,26 @@ const myChart = new Chart(ctx, {
       },
       legend: {
         display: true,
-        
-        position: "right",
+        maxWidth: 300,
+        position: function(context) {
+          if(context.chart.width < 500) return "top";
+          else return "right";
+        },
         align: "center",
         labels: {
           boxHeight: 0,
-          padding: 40,
-          color: 'white',
-          pointStyleWidth	: true,
-          font: {
-            size: 16
+          padding: function(context) {
+            if(context.chart.width < 500) return legendLabelPaddingMobile;
+            else return legendLabelPaddingWeb;
           },
-        }
+          color: 'white',
+          font: {
+            size:function(context) {
+              if(context.chart.width < 500) return legendFontSizeMobile;
+              else return legendFontSizeWeb;
+            },
+          },
+        },
       },
       scales:{
         ticks:{
@@ -1578,14 +1795,17 @@ const myChart = new Chart(ctx, {
     scales: {
       y:
         {
+          suggestedMin: 0,
+          suggestedMax: 80,
           grid:{
             color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
           },
           ticks: {
             beginAtZero: true,
+            stepSize: 10,
             fontSize: 24,
             font: {
-              size: 14,
+              size: 14
             },
             color: 'white',
           },
@@ -1594,7 +1814,6 @@ const myChart = new Chart(ctx, {
         {
           grid:{
             color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
-            display: false,
           },
           ticks: {
             autoSkip: false,
@@ -1638,7 +1857,10 @@ function fnChart1Fp02() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -1655,7 +1877,10 @@ function fnChart1Fp02() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1669,7 +1894,10 @@ function fnChart1Fp02() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1683,7 +1911,10 @@ function fnChart1Fp02() {
           pointStyle: pointStyle[3],
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1697,7 +1928,10 @@ function fnChart1Fp02() {
           pointStyle: pointStyle[4],
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1732,15 +1966,21 @@ function fnChart1Fp02() {
       plugins: {
         title: {
           display: true,
-          text: ["평화위협국가","다음 국가들 중에서 어느 나라가 한반도의 평화에 가장 위협적인 나라라고 생각하십니까?"],
+          text: ["평화위협국가","다음 국가들 중에서 어느 나라가 한반도의 평화에", "가장 위협적인 나라라고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
-          }
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+          },
         },
         tooltip: {
           enabled: false,
@@ -1758,17 +1998,26 @@ function fnChart1Fp02() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -1780,11 +2029,14 @@ function fnChart1Fp02() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
               beginAtZero: true,
+              stepSize: 20,
               fontSize: 24,
               font: {
                 size: 14
@@ -1835,7 +2087,10 @@ function fnChart2Uni01() {
             94.8,	93.4,	93.1,	100,	97.8,	94.9,	97.7,	95.3,	93.3,	93.3
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1852,7 +2107,10 @@ function fnChart2Uni01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1865,7 +2123,10 @@ function fnChart2Uni01() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -1902,14 +2163,20 @@ function fnChart2Uni01() {
       plugins: {
         title: {
           display: true,
-          text: ["통일 필요성", "귀하는 북한에 살고 계실 때 통일이 얼마나 필요하다고 생각하셨습니까?"],
+          text: ["통일 필요성", "귀하는 북한에 살고 계실 때 통일이 얼마나 필요하다고", "생각하셨습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -1928,17 +2195,26 @@ function fnChart2Uni01() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -1950,12 +2226,14 @@ function fnChart2Uni01() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -1965,7 +2243,7 @@ function fnChart2Uni01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -1989,9 +2267,9 @@ function fnChart2Uni03() {
 
   const subject = document.getElementById("code");
   subject.innerHTML = "Uni03)";
-  const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
-  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2],totalPointStyle[3],totalPointStyle[4],totalPointStyle[1]];
+  const borderColors = [totalBorderColors[0], totalBorderColors[3],totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[1]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3], totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[1]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2005,7 +2283,10 @@ function fnChart2Uni03() {
             23.4,	28.8,	30.7,	37.1,	42.4, 28.6,	47.1
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2022,7 +2303,10 @@ function fnChart2Uni03() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2035,7 +2319,10 @@ function fnChart2Uni03() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2048,7 +2335,10 @@ function fnChart2Uni03() {
           pointStyle: pointStyle[3],
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2061,7 +2351,10 @@ function fnChart2Uni03() {
           pointStyle: pointStyle[4],
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
   
@@ -2075,7 +2368,10 @@ function fnChart2Uni03() {
           pointStyle: pointStyle[5],
           backgroundColor: borderColors[5],
           pointBorderColor: borderColors[5],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
   
@@ -2116,11 +2412,18 @@ function fnChart2Uni03() {
           text: ["통일 이유", "귀하는 북한에 살고 계실 때 통일이 되어야 하는 가장","큰 이유가 다음 중 무엇이라고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: "start",
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+
           }
         },
         tooltip: {
@@ -2139,17 +2442,26 @@ function fnChart2Uni03() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2161,12 +2473,14 @@ function fnChart2Uni03() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 50,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -2176,7 +2490,7 @@ function fnChart2Uni03() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -2219,7 +2533,10 @@ function fnChart2Sk01() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2237,7 +2554,10 @@ function fnChart2Sk01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2251,7 +2571,10 @@ function fnChart2Sk01() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2288,14 +2611,22 @@ function fnChart2Sk01() {
       plugins: {
         title: {
           display: true,
-          text: ["남한에 대한 인식", "귀하는 북한에 살고 계실 때 남한이 북한에게", "어떤 대상이라고 생각하고 있었습니까?"],
+          text: ["남한에 대한 인식", "귀하는 북한에 살고 계실 때 남한이 북한에게 어떤", "대상이라고 생각하고 있었습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
+
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
+
           }
         },
         tooltip: {
@@ -2314,17 +2645,26 @@ function fnChart2Sk01() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2336,12 +2676,14 @@ function fnChart2Sk01() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -2351,7 +2693,7 @@ function fnChart2Sk01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -2374,7 +2716,7 @@ function fnChart2Sk03() {
   deleteChart();
 
   const subject = document.getElementById("code");
-  subject.innerHTML = "Skd03)";  
+  subject.innerHTML = "Sk03)";  
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
@@ -2391,7 +2733,10 @@ function fnChart2Sk03() {
             43.3,	42.6,	43.1,	41.1,	59,	51.8,	43.2,	41.2,	47.6,	43.3,
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: 'rect',
@@ -2408,7 +2753,10 @@ function fnChart2Sk03() {
           pointStyle: 'rect',
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2421,7 +2769,10 @@ function fnChart2Sk03() {
           pointStyle: 'rect',
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2461,11 +2812,18 @@ function fnChart2Sk03() {
           text: ["남한 문화경험", "귀하는 북한에 살고 계실 때 남한 방송, 영화, ", "드라마, 노래 등을 접해본 경험이 있습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
+
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -2484,17 +2842,26 @@ function fnChart2Sk03() {
         },
         legend: {
           display: true,
-          
-          position: "right",
-          align: "start",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
+          align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2506,12 +2873,14 @@ function fnChart2Sk03() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 60,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -2521,7 +2890,7 @@ function fnChart2Sk03() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -2544,7 +2913,7 @@ function fnChart2Sk06() {
   deleteChart();
 
   const subject = document.getElementById("code");
-  subject.innerHTML = "Skd06)";  
+  subject.innerHTML = "Sk06)";  
   const borderColors = [totalBorderColors[3],totalBorderColors[5]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[5]]
   const pointStyle = [totalPointStyle[3], totalPointStyle[5]];
@@ -2562,7 +2931,10 @@ function fnChart2Sk06() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2580,7 +2952,10 @@ function fnChart2Sk06() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2620,11 +2995,17 @@ function fnChart2Sk06() {
           text: ["핵무기 위협", "귀하는 북한에 살고 계실 때 북한의 핵무기가 남한에", "얼마나 위협적일 것이라고 생각하셨습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -2643,17 +3024,26 @@ function fnChart2Sk06() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2665,12 +3055,14 @@ function fnChart2Sk06() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -2680,7 +3072,7 @@ function fnChart2Sk06() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -2704,10 +3096,10 @@ function fnChart2Sk07() {
   deleteChart();
 
   const subject = document.getElementById("code");
-  subject.innerHTML = "Skd07)";
-  const borderColors = [totalBorderColors[1],totalBorderColors[3]];
-  const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3]]
-  const pointStyle = [totalPointStyle[1], totalPointStyle[3]];
+  subject.innerHTML = "Sk07)";
+  const borderColors = [totalBorderColors[0],totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2721,7 +3113,10 @@ function fnChart2Sk07() {
             66,	66.4,	65.3,	62.4,	66.9,	63.5,	53.1,	56.5,	44.8,	52.9
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2738,7 +3133,10 @@ function fnChart2Sk07() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2775,14 +3173,20 @@ function fnChart2Sk07() {
       plugins: {
         title: {
           display: true,
-          text: ["대북지원 인식", "귀하는 북한주민들이 남한이 쌀, 비료 등을 북한에 지원한 적이", "있다는 것을 얼마나 알고 있다고 생각하십니까?"],
+          text: ["대북지원 인식", "귀하는 북한주민들이 남한이 쌀, 비료 등을 북한에", "지원한 적이 있다는 것을 얼마나 알고 있다고 생각하십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -2801,17 +3205,26 @@ function fnChart2Sk07() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2823,12 +3236,14 @@ function fnChart2Sk07() {
       scales: {
         y:
           {
+            suggestedMin: 30,
+            suggestedMax: 80,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -2838,7 +3253,7 @@ function fnChart2Sk07() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -2880,7 +3295,10 @@ function fnChart2Nk02() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2898,7 +3316,10 @@ function fnChart2Nk02() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2912,7 +3333,10 @@ function fnChart2Nk02() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -2952,11 +3376,17 @@ function fnChart2Nk02() {
           text: ["김정은 지지도", "귀하는 북한에 살고 계실 때 김정은 위원장에 대한", "북한 주민들의 지지도가 어느 정도라고 생각하셨습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -2975,17 +3405,26 @@ function fnChart2Nk02() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -2997,12 +3436,14 @@ function fnChart2Nk02() {
       scales: {
         y:
           {
+            suggestedMin: 20,
+            suggestedMax: 60,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -3012,7 +3453,7 @@ function fnChart2Nk02() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -3054,7 +3495,10 @@ function fnChart2Nk07() {
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3072,7 +3516,10 @@ function fnChart2Nk07() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3086,7 +3533,10 @@ function fnChart2Nk07() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3123,14 +3573,20 @@ function fnChart2Nk07() {
       plugins: {
         title: {
           display: true,
-          text: ["핵무기 보유견해", "귀하는 북한에 살고 계실 때, ", "'북한은 핵무기를 가져야 한다'라는 견해에 어떻게 생각하셨습니까?"],
+          text: ["핵무기 보유견해", "귀하는 북한에 살고 계실 때, '북한은 핵무기를 가져야", "한다'라는 견해에 어떻게 생각하셨습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -3149,17 +3605,26 @@ function fnChart2Nk07() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -3171,12 +3636,14 @@ function fnChart2Nk07() {
       scales: {
         y:
           {
+            suggestedMin: 10,
+            suggestedMax: 60,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 10,
               font: {
                 size: 14
               },
@@ -3186,7 +3653,7 @@ function fnChart2Nk07() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -3211,9 +3678,9 @@ function fnChart2Fp01() {
 
   const subject = document.getElementById("code");
   subject.innerHTML = "Fp01)";
-  const borderColors = [totalBorderColors[0],totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
-  const pointStyle = [totalPointStyle[0], totalPointStyle[1],totalPointStyle[2],totalPointStyle[3],totalPointStyle[4]];
+  const borderColors = [totalBorderColors[0],totalBorderColors[1],totalBorderColors[5],totalBorderColors[3],totalBorderColors[4]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[5],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[1],totalPointStyle[5],totalPointStyle[3],totalPointStyle[4]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3227,7 +3694,10 @@ function fnChart2Fp01() {
             1.6,	1.5,	1.4,	2.2,	0,	0,	2.4,	1,	1.9
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3243,7 +3713,10 @@ function fnChart2Fp01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3256,7 +3729,10 @@ function fnChart2Fp01() {
           pointStyle: pointStyle[2],
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3269,7 +3745,10 @@ function fnChart2Fp01() {
           pointStyle: pointStyle[3],
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3282,7 +3761,10 @@ function fnChart2Fp01() {
           pointStyle: pointStyle[4],
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3319,14 +3801,20 @@ function fnChart2Fp01() {
       plugins: {
         title: {
           display: true,
-          text: ["주변국 친밀감","귀하는 북한에 살고 계실 때 다음 국가들 중 어느 나라를 가장 가깝게 느끼셨습니까?"],
+          text: ["주변국 친밀감","귀하는 북한에 살고 계실 때 다음 국가들 중 어느 나라를","가장 가깝게 느끼셨습니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -3345,17 +3833,26 @@ function fnChart2Fp01() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -3367,12 +3864,14 @@ function fnChart2Fp01() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -3382,7 +3881,7 @@ function fnChart2Fp01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
@@ -3407,9 +3906,9 @@ function fnChart2Skd01() {
 
   const subject = document.getElementById("code");
   subject.innerHTML = "Skd01)";
-  const borderColors = [totalBorderColors[1],totalBorderColors[3]];
-  const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3]]
-  const pointStyle = [totalPointStyle[1], totalPointStyle[3]];
+  const borderColors = [totalBorderColors[0],totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
 
 
   const myChart = new Chart(ctx, {
@@ -3424,7 +3923,10 @@ function fnChart2Skd01() {
             90.8,	89.3,	87.7, 90.7,	92.5,	90.5,	92.4,	90.5,	88.5,	87.5
           ],
           borderColor: borderColors[0],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3440,7 +3942,10 @@ function fnChart2Skd01() {
           pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
-          borderWidth: borderWidth,
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
           pointRadius: pointRadius,
           tension: 0,
         },
@@ -3477,14 +3982,20 @@ function fnChart2Skd01() {
       plugins: {
         title: {
           display: true,
-          text: ["남한 주민 친근감", "귀하는 남한에 살면서 남한 주민들이 얼마나 친근하게 느껴지십니까?"],
+          text: ["남한 주민 친근감", "귀하는 남한에 살면서 남한 주민들이 얼마나 친근하게","느껴지십니까?"],
           color: "white",
           font:{
-            size: 20,
+            size: function(context) {
+              if(context.chart.width < 500) return titleSizeMobile;
+              else return titleSizeWeb;
+            },
           },
           align: 'start',
           padding:{
-            bottom: 60,
+            bottom: function(context) {
+              if(context.chart.width < 500) return titleBottomMobile;
+              else return titleBottomWeb;
+            },
           }
         },
         tooltip: {
@@ -3503,17 +4014,26 @@ function fnChart2Skd01() {
         },
         legend: {
           display: true,
-          
-          position: "right",
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "top";
+            else return "right";
+          },
           align: "center",
           labels: {
             boxHeight: 0,
-            padding: 40,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
             color: 'white',
             font: {
-              size: 14
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
             },
-          }
+          },
         },
         scales:{
           ticks:{
@@ -3525,12 +4045,14 @@ function fnChart2Skd01() {
       scales: {
         y:
           {
+            suggestedMin: 0,
+            suggestedMax: 100,
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
-              beginAtZero: true,
               fontSize: 24,
+              stepSize: 20,
               font: {
                 size: 14
               },
@@ -3540,7 +4062,7 @@ function fnChart2Skd01() {
         x:
           {
             grid:{
-              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436')),
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
               autoSkip: false,
