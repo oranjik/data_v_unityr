@@ -21,6 +21,9 @@ const legendFontSizeWeb = 14;
 const legendLabelPaddingMobile = 10;
 const legendLabelPaddingWeb = 40;
 
+const labelFontSizeMobile = 10;
+const labelFontSizeWeb = 14;
+
 
 const plugin = {
   beforeDraw: (chart, args, options) => {
@@ -215,7 +218,10 @@ function fnChart1Uni01() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -231,7 +237,10 @@ function fnChart1Uni01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -456,7 +465,10 @@ function fnChart1Uni06() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -472,7 +484,10 @@ function fnChart1Uni06() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -653,7 +668,10 @@ function fnChart1Nk01() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -669,7 +687,10 @@ function fnChart1Nk01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -834,7 +855,10 @@ function fnChart1Nk03() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -850,7 +874,10 @@ function fnChart1Nk03() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1017,7 +1044,10 @@ function fnChart1Nk10() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1033,7 +1063,10 @@ function fnChart1Nk10() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1198,7 +1231,10 @@ function fnChart1Nkp03() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1214,7 +1250,10 @@ function fnChart1Nkp03() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1399,7 +1438,10 @@ function fnChart1Nkp07_11() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1415,7 +1457,10 @@ function fnChart1Nkp07_11() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1576,7 +1621,10 @@ function fnChart1Nkd01_11() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1592,7 +1640,10 @@ function fnChart1Nkd01_11() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -1805,7 +1856,10 @@ const myChart = new Chart(ctx, {
             stepSize: 10,
             fontSize: 24,
             font: {
-              size: 14
+              size: function(context) {
+                if(context.chart.width < 500) return labelFontSizeMobile;
+                else return labelFontSizeWeb;
+              },
             },
             color: 'white',
           },
@@ -1821,7 +1875,10 @@ const myChart = new Chart(ctx, {
             maxRotation: 90,
             minRotation: 90,
             font: {
-              size: 14
+              size: function(context) {
+                if(context.chart.width < 500) return labelFontSizeMobile;
+                else return labelFontSizeWeb;
+              },
             },
             color: 'white',
           },
@@ -2039,7 +2096,10 @@ function fnChart1Fp02() {
               stepSize: 20,
               fontSize: 24,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2055,7 +2115,10 @@ function fnChart1Fp02() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2235,7 +2298,10 @@ function fnChart2Uni01() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2251,7 +2317,10 @@ function fnChart2Uni01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2482,7 +2551,10 @@ function fnChart2Uni03() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2498,7 +2570,10 @@ function fnChart2Uni03() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2685,7 +2760,10 @@ function fnChart2Sk01() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2701,7 +2779,10 @@ function fnChart2Sk01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2882,7 +2963,10 @@ function fnChart2Sk03() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -2898,7 +2982,10 @@ function fnChart2Sk03() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3064,7 +3151,10 @@ function fnChart2Sk06() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3080,7 +3170,10 @@ function fnChart2Sk06() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3245,7 +3338,10 @@ function fnChart2Sk07() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3261,7 +3357,10 @@ function fnChart2Sk07() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3445,7 +3544,10 @@ function fnChart2Nk02() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3461,7 +3563,10 @@ function fnChart2Nk02() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3645,7 +3750,10 @@ function fnChart2Nk07() {
               fontSize: 24,
               stepSize: 10,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3661,7 +3769,10 @@ function fnChart2Nk07() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3873,7 +3984,10 @@ function fnChart2Fp01() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -3889,7 +4003,10 @@ function fnChart2Fp01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -4054,7 +4171,10 @@ function fnChart2Skd01() {
               fontSize: 24,
               stepSize: 20,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },
@@ -4070,7 +4190,10 @@ function fnChart2Skd01() {
               maxRotation: 90,
               minRotation: 90,
               font: {
-                size: 14
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
               },
               color: 'white',
             },

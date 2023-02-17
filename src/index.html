@@ -77,6 +77,7 @@
     }
     .popup-content {
         display: flex;
+        position: relative;
     }
     .popup-section {
         width: 20vw;
@@ -98,14 +99,6 @@
         display: flex;
         padding-left: 22px;
         padding-top: 24px;
-    }
-    .icon-data {
-        width: 64px;
-        padding-right: 10px;
-    }
-    .icon-image {
-        width: 80px;
-        padding-right: 10px;
     }
     .copyright {
         font-size: 0.75rem;
@@ -145,15 +138,15 @@
                 <div class="popup-content">
                     <header>
                         <ul>
-                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img style="width:7vw;" id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile">남한 주민 대상 통일의식조사</div></li>
-                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" style="width:8vw" src="./img/normal_2.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
-                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" style="width:8vw" src="./img/normal_3.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
+                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile">남한 주민 대상 통일의식조사</div></li>
+                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
+                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
                         </ul>
                     </header>
                     <article id="content">
                         <div class="container">
                             <div class="left-container">
-                                <img src="./img/arrow_l.png" class="arrow" onClick="fnMovePrevChart(menuNum)"/>
+                                <img src="./img/arrow_l.png" class="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
                             </div>
                             <div class="mid-container">
                                 <div id="code">Fp01)</div>
@@ -169,7 +162,7 @@
                                 </div>
                             </div>
                             <div class="right-container">
-                            <img src="./img/arrow_r.png" class="arrow" onClick="fnMoveNextChart(menuNum)"/>
+                            <img src="./img/arrow_r.png" class="arrow-right" onClick="fnMoveNextChart(menuNum)"/>
                             </div>
                         </div>
                         <script type="text/javascript" src="graph.js"></script>
