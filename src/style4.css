@@ -1,6 +1,7 @@
 @media all and (max-width : 720px) {
     .canvas-container {
         width: 280px;
+        height: 280px;
     }
     .logo {
         width: 70px;

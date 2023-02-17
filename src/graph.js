@@ -7,8 +7,12 @@ const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./i
 
 let curIndex = -1;
 const ctx = document.getElementById("myChart");
+
+const aspectRatioMobile = 1;
+const aspectRatioWeb = 1.2;
 const borderWidthMobile = 1;
 const borderWidth = 3;
+const pointRadiusMobile = 2;
 const pointRadius = 4;
 
 const titleSizeMobile = 14;
@@ -78,7 +82,10 @@ function fnChart1Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           },
         {
           label: "반반/보통이다",
@@ -94,7 +101,10 @@ function fnChart1Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -110,13 +120,19 @@ function fnChart1Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -279,7 +295,10 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           },
         {
           label: "이산가족의 고통을 해결해 주기 위해",
@@ -295,7 +314,10 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -311,7 +333,10 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -327,7 +352,10 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -343,7 +371,10 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
   
         },
@@ -360,16 +391,22 @@ function fnChart1Uni06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
   
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return 1;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
-      // maintainAspectRatio: false,
+      // maintainAspectRatio: true,
       onHover: (e, chartElement) => {
         e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
           const activeDataset = myChart.getActiveElements()
@@ -525,7 +562,10 @@ function fnChart1Nk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -545,7 +585,10 @@ function fnChart1Nk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -562,13 +605,19 @@ function fnChart1Nk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -731,7 +780,10 @@ function fnChart1Nk03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           },
         {
           label: "불가능하다",
@@ -747,13 +799,19 @@ function fnChart1Nk03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -915,7 +973,10 @@ function fnChart1Nk10() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -935,13 +996,19 @@ function fnChart1Nk10() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -1103,7 +1170,10 @@ function fnChart1Nkp03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -1123,13 +1193,19 @@ function fnChart1Nkp03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -1292,7 +1368,10 @@ function fnChart1Nkp07_11() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -1312,7 +1391,10 @@ function fnChart1Nkp07_11() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -1329,13 +1411,19 @@ function fnChart1Nkp07_11() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -1496,7 +1584,10 @@ function fnChart1Nkd01_11() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -1515,13 +1606,19 @@ function fnChart1Nkd01_11() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       onHover: (e, chartElement) => {
         e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
           const activeDataset = myChart.getActiveElements()
@@ -1684,7 +1781,10 @@ const myChart = new Chart(ctx, {
           if(context.chart.width < 500) return borderWidthMobile;
           else return borderWidth;
         },
-        pointRadius: pointRadius,
+        pointRadius: function(context) {
+          if(context.chart.width < 500) return pointRadiusMobile;
+          else return pointRadius;
+        },
         },
       {
         label: "일본",
@@ -1699,7 +1799,10 @@ const myChart = new Chart(ctx, {
           if(context.chart.width < 500) return borderWidthMobile;
           else return borderWidth;
         },
-        pointRadius: pointRadius,
+        pointRadius: function(context) {
+          if(context.chart.width < 500) return pointRadiusMobile;
+          else return pointRadius;
+        },
         tension: 0,
       },
       {
@@ -1715,7 +1818,10 @@ const myChart = new Chart(ctx, {
           if(context.chart.width < 500) return borderWidthMobile;
           else return borderWidth;
         },
-        pointRadius: pointRadius,
+        pointRadius: function(context) {
+          if(context.chart.width < 500) return pointRadiusMobile;
+          else return pointRadius;
+        },
         tension: 0,
       },
       {
@@ -1732,7 +1838,10 @@ const myChart = new Chart(ctx, {
           if(context.chart.width < 500) return borderWidthMobile;
           else return borderWidth;
         },
-        pointRadius: pointRadius,
+        pointRadius: function(context) {
+          if(context.chart.width < 500) return pointRadiusMobile;
+          else return pointRadius;
+        },
         tension: 0,
       },
       {
@@ -1748,13 +1857,19 @@ const myChart = new Chart(ctx, {
           if(context.chart.width < 500) return borderWidthMobile;
           else return borderWidth;
         },
-        pointRadius: pointRadius,
+        pointRadius: function(context) {
+          if(context.chart.width < 500) return pointRadiusMobile;
+          else return pointRadius;
+        },
         tension: 0,
       },
     ],
   },
   options: {
-    aspectRatio: 1.2,
+    aspectRatio: function(context) {
+      if(context.chart.width < 500) return aspectRatioMobile;
+      else return aspectRatioWeb;
+    },
     // responsive: false,
     // maintainAspectRatio: false,
     onHover: (e, chartElement) => {
@@ -1922,7 +2037,10 @@ function fnChart1Fp02() {
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           },
         {
           label: "일본",
@@ -1938,7 +2056,10 @@ function fnChart1Fp02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -1955,7 +2076,10 @@ function fnChart1Fp02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -1972,7 +2096,10 @@ function fnChart1Fp02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -1989,13 +2116,19 @@ function fnChart1Fp02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       onHover: (e, chartElement) => {
         e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
           const activeDataset = myChart.getActiveElements()
@@ -2154,7 +2287,10 @@ function fnChart2Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -2174,7 +2310,10 @@ function fnChart2Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2190,13 +2329,19 @@ function fnChart2Uni01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -2356,7 +2501,10 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -2376,7 +2524,10 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2392,7 +2543,10 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2408,7 +2562,10 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2424,7 +2581,10 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
   
         },
@@ -2441,14 +2601,20 @@ function fnChart2Uni03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
   
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -2612,7 +2778,10 @@ function fnChart2Sk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -2633,7 +2802,10 @@ function fnChart2Sk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2650,13 +2822,19 @@ function fnChart2Sk01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -2818,7 +2996,10 @@ function fnChart2Sk03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: 'rect',
           backgroundColor: borderColors[0],
@@ -2838,7 +3019,10 @@ function fnChart2Sk03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -2854,13 +3038,19 @@ function fnChart2Sk03() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -3022,7 +3212,10 @@ function fnChart2Sk06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -3043,13 +3236,19 @@ function fnChart2Sk06() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -3210,7 +3409,10 @@ function fnChart2Sk07() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -3230,13 +3432,19 @@ function fnChart2Sk07() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -3398,7 +3606,10 @@ function fnChart2Nk02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -3419,7 +3630,10 @@ function fnChart2Nk02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -3436,13 +3650,19 @@ function fnChart2Nk02() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -3604,7 +3824,10 @@ function fnChart2Nk07() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -3625,7 +3848,10 @@ function fnChart2Nk07() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -3642,13 +3868,19 @@ function fnChart2Nk07() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -3809,7 +4041,10 @@ function fnChart2Fp01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -3828,7 +4063,10 @@ function fnChart2Fp01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -3844,7 +4082,10 @@ function fnChart2Fp01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -3860,7 +4101,10 @@ function fnChart2Fp01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
         {
@@ -3876,13 +4120,19 @@ function fnChart2Fp01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
@@ -4044,7 +4294,10 @@ function fnChart2Skd01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
           pointStyle: pointStyle[0],
           backgroundColor: borderColors[0],
@@ -4063,13 +4316,19 @@ function fnChart2Skd01() {
             if(context.chart.width < 500) return borderWidthMobile;
             else return borderWidth;
           },
-          pointRadius: pointRadius,
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
           tension: 0,
         },
       ],
     },
     options: {
-      aspectRatio: 1.2,
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
       // responsive: false,
       // maintainAspectRatio: false,
       onHover: (e, chartElement) => {
