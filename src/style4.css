@@ -4,12 +4,12 @@
         height: 260px;
     }
     .logo {
-        width: 70px;
-        height: 14px;
+        width: 90px;
+        height: 18px;
     }
     .popup-title-bar {
         width: 30vw;
-        padding-left: 2vw;
+        padding-left: 3vw;
         display: flex;
         justify-content: start;
         margin-bottom: 2vh;
@@ -28,7 +28,7 @@
     .popup-menu-header {
         display: flex;
         justify-content: center;
-        width: 50px;
+        width: 60px;
     }
     .popup-menu-bar {
         display: flex;
@@ -37,7 +37,7 @@
     .popup-menu {
         color: #FFF;
         padding-left: 2vw;
-        width: 24vw;
+        width: 23vw;
     }
 
     ul {
@@ -62,7 +62,9 @@
     #menu1-mobile, #menu2-mobile, #menu3-mobile {
         display: flex;
     }
-
+    .popup-side-title-mobile {
+        font-size: 9px;
+    }
 
     li:hover {
         background-color: rgba(255, 255, 255,0.1);
@@ -74,6 +76,13 @@
     .mid-container {
         justify-content: flex-start;
         width: 75vw;
+    }
+    #code {
+        padding-top: 20px;
+        color: #FFF;
+        font-size: 0.4rem;
+        font-weight: 700;
+        text-align: left;
     }
     .left-container, .right-container {
         display: flex;
@@ -189,6 +198,13 @@
         padding-top: 3vh;
         width: 58vw;
     }
+    #code {
+        padding-top: 20px;
+        color: #FFF;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-align: left;
+    }
     .left-container, .right-container {
         display: flex;
         color: white;
@@ -233,14 +249,6 @@ body {
     line-height:1.5;
 }
 
-
-#code {
-    padding-top: 20px;
-    color: #FFF;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-align: left;
-}
 canvas {
     background-color: #001338;
     background-size: 100%;

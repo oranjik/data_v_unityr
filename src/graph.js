@@ -15,7 +15,7 @@ const borderWidth = 3;
 const pointRadiusMobile = 2;
 const pointRadius = 4;
 
-const titleSizeMobile = 14;
+const titleSizeMobile = 13;
 const titleSizeWeb = 24;
 const titleBottomMobile = 10;
 const titleBottomWeb = 60;

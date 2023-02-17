@@ -138,9 +138,9 @@
                 <div class="popup-content">
                     <header>
                         <ul>
-                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile">남한 주민 대상 통일의식조사</div></li>
-                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
-                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu1-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
+                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile" style="font-weight: 800;">남한 주민 대상 통일의식조사</div></li>
+                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div id="menu2-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
+                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu3-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
                         </ul>
                     </header>
                     <article id="content">
@@ -207,28 +207,37 @@
                 fnChart1Uni01();
                 document.getElementById("menu1").src = './img/active_1.png';
                 document.getElementById("menu1-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu1-mobile").style = 'font-weight: 800';
                 document.getElementById("menu2").src = './img/normal_2.png';
                 document.getElementById("menu2-container").style = 'background-color: none;';
+                document.getElementById("menu2-mobile").style = 'font-weight: 300';
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
+                document.getElementById("menu3-mobile").style = 'font-weight: 300';
             }
             if(num == 2) {
                 fnChart2Uni01();
                 document.getElementById("menu1").src = './img/normal_1.png';
                 document.getElementById("menu1-container").style = 'background-color: none;';
+                document.getElementById("menu1-mobile").style = 'font-weight: 300';
                 document.getElementById("menu2").src = './img/active_2.png';
                 document.getElementById("menu2-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu2-mobile").style = 'font-weight: 800';
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
+                document.getElementById("menu3-mobile").style = 'font-weight: 300';
             }
             if(num == 3) {
                 fnChart3q1_1();
                 document.getElementById("menu1").src = './img/normal_1.png';
                 document.getElementById("menu1-container").style = 'background-color: none;';
+                document.getElementById("menu1-mobile").style = 'font-weight: 300';
                 document.getElementById("menu2").src = './img/normal_2.png';
                 document.getElementById("menu2-container").style = 'background-color: none;';
+                document.getElementById("menu2-mobile").style = 'font-weight: 300';
                 document.getElementById("menu3").src = './img/active_3.png';
                 document.getElementById("menu3-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu3-mobile").style = 'font-weight: 800';
             }
         }
 
