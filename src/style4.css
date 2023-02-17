@@ -1,4 +1,4 @@
-@media all and (max-width : 720px) {
+@media all and (max-width : 420px) {
     .canvas-container {
         width: 280px;
         height: 280px;
@@ -99,11 +99,19 @@
         padding-right: 10px;
     }
 }
-
-@media all and (min-width : 721px){
+@media all and (min-width : 420px) and (max-height: 420px){
+    .canvas-container {
+        width: 280px;
+        height: 280px;
+    }
+}
+@media all and (min-width : 420px) and (min-height: 421px){
     .canvas-container {
         width: 700px;
     }
+}
+
+@media all and (min-width : 420px){
     .logo {
         width: 150.28px;
         height: 31.85px;
