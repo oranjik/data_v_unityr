@@ -1,4 +1,4 @@
-@media all and (max-width : 920px) {
+@media all and (max-width : 720px) {
     .canvas-container {
         width: 280px;
     }
@@ -99,7 +99,7 @@
     }
 }
 
-@media all and (min-width : 921px){
+@media all and (min-width : 721px){
     .canvas-container {
         width: 700px;
     }
