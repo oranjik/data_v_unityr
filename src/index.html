@@ -11,6 +11,9 @@
     <script src="./js/includeHTML.js"></script>
     <!-- <script src="./js/index.js"></script> -->
     <style>
+    body {
+        background-color: #001338;
+    }
     a {
         text-decoration: none;
         color: #FFF;
@@ -45,14 +48,15 @@
         min-height: 150px; /*min-height로 되어있어서 텍스트가 길어짐에 따라 높이가 커짐*/
         padding-bottom: 50px; /*텍스트를 온전히 보이게 하기 위해 버튼 부분을 padding으로 밀어줌*/
         z-index: 10; /*dimmed보다 z-index 높힘*/
-        color: #FFF;
     }
     #popup-layer-background{
         background-color: #001338;
-        border-radius: 10px;
+        /* border-radius: 10px; */
         height: 100vh;
+        width: 100vw;
         overflow-y: auto;
         overflow-x: hidden;
+        color: #FFF;
     }
     .button {
         display: flex;
@@ -101,11 +105,13 @@
         padding-top: 24px;
     }
     .copyright {
-        font-size: 0.75rem;
+        position:relative;
+        font-size: 0.5rem;
         opacity: 60%;
         text-align: left;
         padding-top: 16px;
         padding-bottom: 4px;
+        bottom: -10px;
     }
     
     </style>
@@ -114,64 +120,90 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <a href="javascript:viewLayer();">
-        <div class="button">통일 여론 조사와 지표 자료</div>
+        <!-- <div class="button">통일 여론 조사와 지표 자료</div> -->
     </a>
-    <div id="popup">
+    <!-- <div id="popup"> -->
         
-        <div class="popup-layer">
-            <div id="popup-layer-background">
-                <div class="popup-header">
-                    <div class="popup-title-bar">
-                        <div class="popup-title"><img class="logo" src="./img/logo1.png"/></div>
-                    </div>
-                    <div class="popup-arrow-bar">
-                    </div>
-                    <div class="popup-menu-bar">
-                            <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_통일의식조사.png" onClick="changeSection(1)"/></a></div>
-                            <!-- <hr class="popup-menu-deco"></hr> -->
-                        <div class="popup-menu inactive"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_남북통합지수.png" onClick="changeSection(2)"/></a></div>
-                    </div>
-                    <div class="popup-close-bar">
-                        <img class="popup-close" src="./img/close.png" onClick="closeLayer()"/>
-                    </div>
+        <!-- <div class="popup-layer"> -->
+        <div id="popup-layer-background">
+            <div class="popup-header">
+                <div class="popup-left-bar">
+                    <div class="popup-title-web"><img class="logo" src="./img/logo1.png"/></div>
+                    <img class="icon-back" src="./img/icon-back.png" />
                 </div>
-                <div class="popup-content">
-                    <header>
-                        <ul>
-                            <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile" style="font-weight: 800;">남한 주민 대상 통일의식조사</div></li>
-                            <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div id="menu2-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
-                            <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu3-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
-                        </ul>
-                    </header>
-                    <article id="content">
-                        <div class="container">
-                            <div class="left-container">
-                                <img src="./img/arrow_l.png" class="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
-                            </div>
-                            <div class="mid-container">
-                                <div id="code">Fp01)</div>
-                                <div class="canvas-container">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                                <div class="download-bar">
-                                        <img src="./img/download1_1.png" class="icon-data" />
-                                        <img src="./img/download1_2.png" class="icon-image"/>
-                                </div>
-                                <div class="copyright">
-                                    Copyright © 2023 IPUS 서울대학교 통일평화연구원 all rights reserved
-                                </div>
-                            </div>
-                            <div class="right-container">
-                            <img src="./img/arrow_r.png" class="arrow-right" onClick="fnMoveNextChart(menuNum)"/>
-                            </div>
-                        </div>
-                        <script type="text/javascript" src="graph.js"></script>
-                    </article>
+                <div class="popup-arrow-bar">
+                </div>
+                <div class="popup-menu-bar">
+                        <div class="popup-title-mobile"><img class="logo" src="./img/logo1.png"/></div>
+                        <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_통일의식조사.png" onClick="changeSection(1)"/></a></div>
+                        <!-- <hr class="popup-menu-deco"></hr> -->
+                    <div class="popup-menu inactive"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_남북통합지수.png" onClick="changeSection(2)"/></a></div>
+                </div>
+                <!-- <div class="popup-close-bar">
+                    <img class="popup-close" src="./img/close.png" onClick="closeLayer()"/>
+                </div> -->
+                <div class="popup-list-menu">
+                    <button type="button" class="mobile-menu">
+                        <!-- <i class="fas fa-bars"></i> -->
+                        <img class="icon-hamburger" src="./img/icon-hamburger.png" />
+                    </button>
+                </div>
+                <div class="menu-wrap">
+                    <nav id="menu">
+                        <!-- "메뉴목록 표시" -->
+                        <div class="main-menu">
+                            <span>통일</span>
+                            <ul class="category_list">
+                                <li class=""><a class="link_sub_item" id="menu1-mobile">남한 주민 대상<br>통일의식조사</b></a></li>
+                                <li class=""><a class="link_sub_item" id="menu2-mobile">북한이탈주민 대상<br>통일의식조사</a></li>
+                                <li class=""><a class="link_sub_item" id="menu3-mobile">북한이탈주민 대상<br>북한사회변동조사</a></li>
+                            </ul> 
+                        </div>           
+                    </nav>
                 </div>
             </div>
+            <div class="popup-content">
+                <header>
+                    <ul>
+                        <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile" style="font-weight: 800;">남한 주민 대상 통일의식조사</div></li>
+                        <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div  id="menu2-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
+                        <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu3-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
+                    </ul>
+                </header>
+                <article id="content">
+                    <div class="container">
+                        <div class="left-container">
+                            <img src="./img/arrow_l.png" class="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
+                        </div>
+                        <div class="mid-container">
+                            <div id="code">Fp01)</div>
+                            <div class="canvas-container">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="arrow-bar">
+                                <img src="./img/arrow_l.png" class="arrow-left-mobile" onClick="fnMovePrevChart(menuNum)"/>
+                                <div id="chart-status"> 1/10 </div>
+                                <img src="./img/arrow_r.png" class="arrow-right-mobile" onClick="fnMoveNextChart(menuNum)"/>
+                            </div>
+                            <div class="download-bar">
+                                    <img src="./img/download1_1.png" class="icon-data" />
+                                    <img src="./img/download1_3.png" class="icon-image"/>
+                            </div>
+                            <div class="copyright">
+                                Copyright © 2023 IPUS 서울대학교 통일평화연구원 all rights reserved
+                            </div>
+                        </div>
+                        <div class="right-container">
+                        <img src="./img/arrow_r.png" class="arrow-right" onClick="fnMoveNextChart(menuNum)"/>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="graph.js"></script>
+                </article>
+            </div>
         </div>
-        <div class="popup-dimmed"></div>
-    </div>
+        <!-- </div> -->
+        <!-- <div class="popup-dimmed"></div> -->
+    <!-- </div> -->
     <script> 
         var curChartNum = 1;
         var menuNum = 1;
@@ -181,11 +213,59 @@
         function closeLayer(){
             document.getElementById("popup").style.display='none'
         }
-        includeHTML(function () {
+
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector(".mobile-menu").addEventListener("click", function(e){
+                if ( document.querySelector('.menu-wrap').classList.contains('on') ){
+                    //메뉴닫힘
+                    document.querySelector('.menu-wrap').classList.remove('on');
+                    document.querySelector('.mobile-menu i').classList.remove('fa-times')
+                    document.querySelector('.mobile-menu i').classList.add('fa-bars');
+
+                    //페이지 스크롤 락 해제
+                    document.querySelector('#dimmed').remove();
+                } else {
+                    //메뉴펼침
+                    document.querySelector('.menu-wrap').classList.add('on');
+                    document.querySelector('.mobile-menu i').classList.remove('fa-bars');
+                    document.querySelector('.mobile-menu i').classList.add('fa-times');
+
+                    //페이지 스크롤 락 레이어 추가
+                    let div = document.createElement('div');
+                    div.id = 'dimmed';
+                    document.body.append(div);
+
+                    //페이지 스크롤 락 모바일 이벤트 차단
+                    document.querySelector('#dimmed').addEventListener('scroll touchmove touchend mousewheel', function(e){
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    });             
+                }
+            });
         });
-        window.addEventListener("hashchange", locationHandler);
-        // call the urlLocationHandler to load the page
-        locationHandler();
+        //페이지 스크롤 락 레이어 클릭 메뉴 닫기
+        document.querySelector('#dimmed').addEventListener('click', function(e){
+            document.querySelector(".mobile-menu").click();
+        });
+
+        const menu=document.querySelector(".main-menu");
+        const subBar=document.querySelector(".main-menu>.category_list");
+
+        let subToggle=true;
+        function show_sub(){
+            console.log(subToggle)
+        if(subToggle){
+            subBar.style.height="120px";
+            subToggle=!subToggle;
+        }else{
+            subBar.style.height="0px";
+            subToggle=!subToggle;
+        }
+        
+        }
+
+        menu.addEventListener("click", show_sub);
 
         function changeSection(num){
             if(num == 1){
@@ -214,6 +294,7 @@
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
                 document.getElementById("menu3-mobile").style = 'font-weight: 300';
+                document.getElementById("chart-status").innerHTML = "1/10";
             }
             if(num == 2) {
                 fnChart2Uni01();
@@ -226,6 +307,7 @@
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
                 document.getElementById("menu3-mobile").style = 'font-weight: 300';
+                document.getElementById("chart-status").innerHTML = "1/10";
             }
             if(num == 3) {
                 fnChart3q1_1();
@@ -238,6 +320,7 @@
                 document.getElementById("menu3").src = './img/active_3.png';
                 document.getElementById("menu3-container").style = 'background-color: rgba(255, 255, 255,0.1);';
                 document.getElementById("menu3-mobile").style = 'font-weight: 800';
+                document.getElementById("chart-status").innerHTML = "1/10";
             }
         }
 
@@ -250,33 +333,43 @@
 
                 if (curChartNum == 1) {
                     fnChart1Uni01();
+                    document.getElementById("chart-status").innerHTML = "1/10";
                 }
                 if (curChartNum == 2) {
                     fnChart1Uni06();
+                    document.getElementById("chart-status").innerHTML = "2/10";
                 }
                 if (curChartNum == 3) {
-                    fnChart1Nk01();
+                    fnChart1Uni06_2();
+                    document.getElementById("chart-status").innerHTML = "3/10";
                 }
                 if (curChartNum == 4) {
                     fnChart1Nk03();
+                    document.getElementById("chart-status").innerHTML = "4/10";
                 }
                 if (curChartNum == 5) {
                     fnChart1Nk10()
+                    document.getElementById("chart-status").innerHTML = "5/10";
                 }
                 if (curChartNum == 6) {
                     fnChart1Nkp03();
+                    document.getElementById("chart-status").innerHTML = "6/10";
                 }
                 if (curChartNum == 7) {
                     fnChart1Nkp07_11();
+                    document.getElementById("chart-status").innerHTML = "7/10";
                 }
                 if (curChartNum == 8) {
                     fnChart1Nkd01_11();
+                    document.getElementById("chart-status").innerHTML = "8/10";
                 }
                 if (curChartNum == 9) {
                     fnChart1Fp01();
+                    document.getElementById("chart-status").innerHTML = "9/10";
                 }
                 if (curChartNum == 10) {
                     fnChart1Fp02();
+                    document.getElementById("chart-status").innerHTML = "10/10";
                 }
             }
             if(num == 2){
@@ -286,33 +379,43 @@
                 }
                 if(curChartNum == 1) {
                     fnChart2Uni01();
+                    document.getElementById("chart-status").innerHTML = "1/10";
                 }
                 if(curChartNum == 2) {
                     fnChart2Uni03();
+                    document.getElementById("chart-status").innerHTML = "2/10";
                 }
                 if(curChartNum == 3) {
                     fnChart2Sk01();
+                    document.getElementById("chart-status").innerHTML = "3/10";
                 }
                 if(curChartNum == 4) {
                     fnChart2Sk03();
+                    document.getElementById("chart-status").innerHTML = "4/10";
                 }
                 if(curChartNum == 5) {
                     fnChart2Sk06();
+                    document.getElementById("chart-status").innerHTML = "5/10";
                 }
                 if(curChartNum == 6) {
                     fnChart2Sk07();
+                    document.getElementById("chart-status").innerHTML = "6/10";
                 }
                 if(curChartNum == 7) {
                     fnChart2Nk02();
+                    document.getElementById("chart-status").innerHTML = "7/10";
                 }
                 if(curChartNum == 8) {
                     fnChart2Nk07();
+                    document.getElementById("chart-status").innerHTML = "8/10";
                 }
                 if(curChartNum == 9) {
                     fnChart2Fp01();
+                    document.getElementById("chart-status").innerHTML = "9/10";
                 }
                 if(curChartNum == 10) {
                     fnChart2Skd01();
+                    document.getElementById("chart-status").innerHTML = "10/10";
                 }
             }
             if(num == 3){
@@ -322,33 +425,43 @@
                 }
                 if(curChartNum == 1) {
                     fnChart3q1_1();
+                    document.getElementById("chart-status").innerHTML = "1/10";
                 }
                 if(curChartNum == 2) {
                     fnChart3q1_11();
+                    document.getElementById("chart-status").innerHTML = "2/10";
                 }
                 if(curChartNum == 3) {
                     fnChart3q1_11_1();
+                    document.getElementById("chart-status").innerHTML = "3/10";
                 }
                 if(curChartNum == 4) {
                     fnChart3q1_12();
+                    document.getElementById("chart-status").innerHTML = "4/10";
                 }
                 if(curChartNum == 5) {
                     fnChart3q1_13();
+                    document.getElementById("chart-status").innerHTML = "5/10";
                 }
                 if(curChartNum == 6) {
                     fnChart3q4_1_1();
+                    document.getElementById("chart-status").innerHTML = "6/10";
                 }
                 if(curChartNum == 7) {
                     fnChart3q8_1();
+                    document.getElementById("chart-status").innerHTML = "7/10";
                 }
                 if(curChartNum == 8) {
                     fnChart3q12();
+                    document.getElementById("chart-status").innerHTML = "8/10";
                 }
                 if(curChartNum == 9) {
                     fnChart3q15();
+                    document.getElementById("chart-status").innerHTML = "9/10";
                 }
                 if(curChartNum == 10) {
                     fnChart3q17();
+                    document.getElementById("chart-status").innerHTML = "10/10";
                 }
             }
 
@@ -362,33 +475,43 @@
 
                 if (curChartNum == 1) {
                     fnChart1Uni01();
+                    document.getElementById("chart-status").innerHTML = "1/10"
                 }
                 if (curChartNum == 2) {
                     fnChart1Uni06();
+                    document.getElementById("chart-status").innerHTML = "2/10"
                 }
                 if (curChartNum == 3) {
                     fnChart1Nk01();
+                    document.getElementById("chart-status").innerHTML = "3/10"
                 }
                 if (curChartNum == 4) {
                     fnChart1Nk03();
+                    document.getElementById("chart-status").innerHTML = "4/10"
                 }
                 if (curChartNum == 5) {
                     fnChart1Nk10();
+                    document.getElementById("chart-status").innerHTML = "5/10"
                 }
                 if (curChartNum == 6) {
                     fnChart1Nkp03();
+                    document.getElementById("chart-status").innerHTML = "6/10"
                 }
                 if (curChartNum == 7) {
                     fnChart1Nkp07_11();
+                    document.getElementById("chart-status").innerHTML = "7/10"
                 }
                 if (curChartNum == 8) {
                     fnChart1Nkd01_11();
+                    document.getElementById("chart-status").innerHTML = "8/10"
                 }
                 if (curChartNum == 9) {
                     fnChart1Fp01();
+                    document.getElementById("chart-status").innerHTML = "9/10"
                 }
                 if (curChartNum == 10) {
                     fnChart1Fp02();
+                    document.getElementById("chart-status").innerHTML = "10/10"
                 }
             }
             if(num == 2){
@@ -398,33 +521,43 @@
                 }
                 if(curChartNum == 1) {
                     fnChart2Uni01();
+                    document.getElementById("chart-status").innerHTML = "1/10"
                 }
                 if(curChartNum == 2) {
                     fnChart2Uni03();
+                    document.getElementById("chart-status").innerHTML = "2/10"
                 }
                 if(curChartNum == 3) {
                     fnChart2Sk01();
+                    document.getElementById("chart-status").innerHTML = "3/10"
                 }
                 if(curChartNum == 4) {
                     fnChart2Sk03();
+                    document.getElementById("chart-status").innerHTML = "4/10"
                 }
                 if(curChartNum == 5) {
                     fnChart2Sk06();
+                    document.getElementById("chart-status").innerHTML = "5/10"
                 }
                 if(curChartNum == 6) {
                     fnChart2Sk07();
+                    document.getElementById("chart-status").innerHTML = "6/10"
                 }
                 if(curChartNum == 7) {
                     fnChart2Nk02();
+                    document.getElementById("chart-status").innerHTML = "7/10"
                 }
                 if(curChartNum == 8) {
                     fnChart2Nk07();
+                    document.getElementById("chart-status").innerHTML = "8/10"
                 }
                 if(curChartNum == 9) {
                     fnChart2Fp01();
+                    document.getElementById("chart-status").innerHTML = "9/10"
                 }
                 if(curChartNum == 10) {
                     fnChart2Skd01();
+                    document.getElementById("chart-status").innerHTML = "10/10"
                 }
             }
             if(num == 3){
@@ -434,33 +567,43 @@
                 }
                 if(curChartNum == 1) {
                     fnChart3q1_1();
+                    document.getElementById("chart-status").innerHTML = "1/10"
                 }
                 if(curChartNum == 2) {
                     fnChart3q1_11();
+                    document.getElementById("chart-status").innerHTML = "2/10"
                 }
                 if(curChartNum == 3) {
                     fnChart3q1_11_1();
+                    document.getElementById("chart-status").innerHTML = "3/10"
                 }
                 if(curChartNum == 4) {
                     fnChart3q1_12();
+                    document.getElementById("chart-status").innerHTML = "4/10"
                 }
                 if(curChartNum == 5) {
                     fnChart3q1_13();
+                    document.getElementById("chart-status").innerHTML = "5/10"
                 }
                 if(curChartNum == 6) {
                     fnChart3q4_1_1();
+                    document.getElementById("chart-status").innerHTML = "6/10"
                 }
                 if(curChartNum == 7) {
                     fnChart3q8_1();
+                    document.getElementById("chart-status").innerHTML = "7/10"
                 }
                 if(curChartNum == 8) {
                     fnChart3q12();
+                    document.getElementById("chart-status").innerHTML = "8/10"
                 }
                 if(curChartNum == 9) {
                     fnChart3q15();
+                    document.getElementById("chart-status").innerHTML = "9/10"
                 }
                 if(curChartNum == 10) {
                     fnChart3q17();
+                    document.getElementById("chart-status").innerHTML = "10/10"
                 }
             }
 

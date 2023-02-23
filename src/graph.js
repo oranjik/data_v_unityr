@@ -9,7 +9,7 @@ let curIndex = -1;
 const ctx = document.getElementById("myChart");
 
 const aspectRatioMobile = 1;
-const aspectRatioWeb = 1.2;
+const aspectRatioWeb = 1;
 const borderWidthMobile = 1;
 const borderWidth = 3;
 const pointRadiusMobile = 2;
@@ -84,7 +84,7 @@ function fnChart1Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           },
         {
@@ -122,7 +122,7 @@ function fnChart1Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -189,14 +189,19 @@ function fnChart1Uni01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex;
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -297,7 +302,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           },
         {
@@ -354,7 +359,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -393,7 +398,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
   
@@ -461,14 +466,19 @@ function fnChart1Uni06() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -491,6 +501,284 @@ function fnChart1Uni06() {
       },
       scales: {
         
+        y:
+          {
+            suggestedMin: 0,
+            suggestedMax: 80,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 90,
+              minRotation: 90,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+}
+
+function fnChart1Uni06_2() {  
+  deleteChart();
+  const subject = document.getElementById("code");
+  subject.innerHTML = "Uni06)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4], totalPointStyle[1]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels, {
+      beforeInit: function(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 100;
+        };
+      }
+    }],
+    data: {
+      labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+      datasets: [
+        {
+          label: "같은 민족이니까",
+          data: [
+            50.7,	58.5,	44.3,	43.3,	41.9,	46,	40.4,	42.6,	42,	38.9,	40.4,	45.1,	35.2,	37.3,	45.7,	42.3,
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "이산가족의 고통을 해결해 주기 위해",
+          data: [
+            8.9,	6.6,	8.6,	7,	7.1,	9.1,	8.4,	8.9,	11.4,	12.2,	10.3,	6.9,	10,	7.4,	11.3,	10.7,
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "남북 간에 전쟁위협을 없애기 위해",
+          data: [
+            19.2,	14.6,	23.4,	24.2,	27.4,	25.2,	30.8,	26.8,	25.7,	29.2,	32.4,	31.4,	32.5,	37.9,	28.2,	31.6,
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "북한주민도 잘 살 수 있도록",
+          data: [
+            1.8,	2.9,	4.2,	4,	4.8,	4.4,	5.5,	3.8,	6.2,	4.8,	4,	3.4,	3.1,	2,	3.5, 4.6,
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return 5;
+          },
+          tension: 0,
+        },
+        {
+          label: "한국이 보다 선진국이 되기 위해서",
+          data: [
+            18.7,	17.3,	18.6,	20.8,	17.8,	14.5,	14.2,	17.5,	14.1,	14.2,	13,	12.9,	18.8,	15.3,	11.4,	10.7,
+            ],
+          borderColor: borderColors[4],
+          pointStyle: pointStyle[4],
+          backgroundColor: borderColors[4],
+          pointBorderColor: borderColors[4],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+  
+        },
+        {
+          label: "기타",
+          data: [
+            0.7,	0.1,	0.8,	5.9,	1.1,	0.8,	0.8, 0.4,	0.5,	0.7,	0.1,	0.2,	0.4,	0.3,	0,	0.1,
+            ],
+          borderColor: borderColors[5],
+          pointStyle: pointStyle[5],
+          backgroundColor: borderColors[5],
+          pointBorderColor: borderColors[5],
+          borderWidth: function(context) {
+            if(context.chart.width < 500) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < 500) return pointRadiusMobile;
+            else return 5;
+          },
+          tension: 0,
+  
+        },
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < 500) return 1;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: true,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["통일 이유", "우리나라가 통일이 되어야 하는 가장 큰 이유가 다음 중", "무엇이라고 생각하십니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < 500) return 14;
+              else return 24;
+            },
+          },
+          align: "start",
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < 500) return 10;
+              else return 60;
+            },
+          }
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: false,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < 500) return "bottom";
+            else return "bottom";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              else return 10;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < 500) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        
+      },
+      scales: {
         y:
           {
             suggestedMin: 0,
@@ -607,7 +895,7 @@ function fnChart1Nk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -674,14 +962,19 @@ function fnChart1Nk01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -782,7 +1075,7 @@ function fnChart1Nk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           },
         {
@@ -801,7 +1094,7 @@ function fnChart1Nk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -868,14 +1161,19 @@ function fnChart1Nk03() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -975,7 +1273,7 @@ function fnChart1Nk10() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -998,7 +1296,7 @@ function fnChart1Nk10() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -1065,14 +1363,19 @@ function fnChart1Nk10() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -1172,7 +1475,7 @@ function fnChart1Nkp03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1195,7 +1498,7 @@ function fnChart1Nkp03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -1262,14 +1565,19 @@ function fnChart1Nkp03() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -1370,7 +1678,7 @@ function fnChart1Nkp07_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1413,7 +1721,7 @@ function fnChart1Nkp07_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -1481,14 +1789,19 @@ function fnChart1Nkp07_11() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -1586,7 +1899,7 @@ function fnChart1Nkd01_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1599,7 +1912,7 @@ function fnChart1Nkd01_11() {
             27.9,	28.1,	27.2,	31.8,	31.1,	35,	34.4,	32.1,	34,	28.3
           ],
           borderColor: borderColors[1],
-          pointStyle: pointStyle[0],
+          pointStyle: pointStyle[1],
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
@@ -1608,7 +1921,7 @@ function fnChart1Nkd01_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -1673,14 +1986,19 @@ function fnChart1Nkd01_11() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -1757,8 +2075,8 @@ function fnChart1Fp01() {
   const subject = document.getElementById("code");
   subject.innerHTML = "Fp01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
-  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
 
 
 const myChart = new Chart(ctx, {
@@ -1783,7 +2101,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < 500) return pointRadiusMobile;
-          else return pointRadius;
+          else return 5;
         },
         },
       {
@@ -1840,7 +2158,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < 500) return pointRadiusMobile;
-          else return pointRadius;
+          else return 5;
         },
         tension: 0,
       },
@@ -1926,14 +2244,19 @@ const myChart = new Chart(ctx, {
         },
         textAlign: 'center',
         display: function(context) {
-          return context.datasetIndex === curIndex
+          if(context.chart.width < 500){
+            return false;
+          }
+          else {
+            return context.datasetIndex === curIndex;
+          }
         },
       },
       legend: {
         display: true,
         maxWidth: 300,
         position: function(context) {
-          if(context.chart.width < 500) return "top";
+          if(context.chart.width < 500) return "bottom";
           else return "right";
         },
         align: "center",
@@ -2013,8 +2336,8 @@ function fnChart1Fp02() {
   const subject = document.getElementById("code");
   subject.innerHTML = "Fp02)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
-  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
-  const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
+  const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2039,7 +2362,7 @@ function fnChart1Fp02() {
           pointBorderColor: borderColors[0],
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           },
         {
@@ -2098,7 +2421,7 @@ function fnChart1Fp02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < 500) return pointRadiusMobile;
-            else return pointRadius;
+            else return 5;
           },
           tension: 0,
         },
@@ -2183,14 +2506,19 @@ function fnChart1Fp02() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -2398,14 +2726,19 @@ function fnChart2Uni01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -2672,14 +3005,19 @@ function fnChart2Uni03() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -2893,14 +3231,19 @@ function fnChart2Sk01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -3108,14 +3451,19 @@ function fnChart2Sk03() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -3305,14 +3653,19 @@ function fnChart2Sk06() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -3501,14 +3854,19 @@ function fnChart2Sk07() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -3719,14 +4077,19 @@ function fnChart2Nk02() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -3937,14 +4300,19 @@ function fnChart2Nk07() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -4189,14 +4557,19 @@ function fnChart2Fp01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",
@@ -4385,14 +4758,19 @@ function fnChart2Skd01() {
           },
           textAlign: 'center',
           display: function(context) {
-            return context.datasetIndex === curIndex
+            if(context.chart.width < 500){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
           },
         },
         legend: {
           display: true,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "top";
+            if(context.chart.width < 500) return "bottom";
             else return "right";
           },
           align: "center",

@@ -1,13 +1,81 @@
 @media all and (max-width : 420px) {
     .canvas-container {
-        width: 260px;
-        height: 260px;
+        width: 280px;
+        height: 280px;
+    }
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 15px;
+        z-index: 500;
+        width: 36px;
+        height: 36px;
+        background-color: #001338;
+        border: 0;
+    }
+    .mobile-menu i {
+        font-size: 2em;
+    }
+    .menu-wrap {
+        position: fixed;
+        top: 0;
+        right: -200px; /* 너비 300px 인 사이드바를 왼쪽으로 300px 이동시켜 화면에 보이지 않게 함 */
+        z-index: 400;
+        overflow: auto;
+        width: 200px; /* 너비 */
+        height: 100%;
+        padding: 50px 20px;
+        box-sizing: border-box;
+        transition: right .3s ease-in-out; /* 0.3초 동안 이동 애니메이션 */
+        background-color: #f0f0f0;
+    }
+    .menu-wrap.on {
+        right: 0;
+    }
+    .main-menu {
+        color: black;
+        width: 300px;
+    }
+    .category_list {
+        color: black;
+    }
+    .main-menu > .category_list {
+        height:0;
+        list-style:none;
+        overflow:hidden;
+        transition: height ease-out 1s 0s;
+    }
+
+    .main-menu >.category_list li{
+        border-top:1px white solid;
+    }
+
+    .main-menu >.category_list li>a{
+        text-decoration:none;
+        color:black;
+    }
+    button {
+        background-color: #001338;
+    }
+    header {
+        display: none;
+    }
+    #dimmed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 300;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
     }
     .logo {
-        width: 90px;
-        height: 18px;
+        width: 150.28px;
+        height: 31.85px;
+
     }
-    .popup-title-bar {
+    .popup-left-bar {
         width: 30vw;
         padding-left: 3vw;
         display: flex;
@@ -17,22 +85,20 @@
     .popup-arrow-bar {
         padding-left: 0vw;
     }
-    .popup-title{
-        display: flex;
+    .popup-title-mobile{
+        display: block;
+    }
+    .popup-title-web{
+        display: none;
     }
     .popup-header {
         display: flex;
         border-bottom: 1px solid #FFF;
         padding-top: 2vh;
+        align-items: center;
     }
     .popup-menu-header {
-        display: flex;
-        justify-content: center;
-        width: 60px;
-    }
-    .popup-menu-bar {
-        display: flex;
-        align-items: flex-end; 
+        display: none;
     }
     .popup-menu {
         color: #FFF;
@@ -87,17 +153,22 @@
     .left-container, .right-container {
         display: flex;
         color: white;
-        font-size: 2rem;
-        align-items: center;
-        padding-left: 3vw;
-        padding-right: 3vw; 
+        padding-left: 4vw;
+        padding-right: 4vw; 
         /* justify-content:space-around; */
+    }
+    .arrow-left, .arrow-right {
+        display: none;
     }
     .popup-close {
         width: 12px;
+        display: none;
     }
-    .arrow-left, .arrow-right {
+    .arrow-left-mobile, .arrow-right-mobile {
         width: 12px;
+    }
+    .arrow-bar {
+        display: flex;
     }
     .icon-data {
         width: 40px;
@@ -106,6 +177,13 @@
     .icon-image {
         width: 48px;
         padding-right: 10px;
+    }
+    .icon-hamburger {
+        width: 24px;
+    }
+    .icon-back {
+        width: 10px;
+        padding-left: 10px;
     }
 }
 @media all and (min-width : 420px) and (max-height: 420px){
@@ -126,7 +204,7 @@
         height: 31.85px;
     }
     
-    .popup-title-bar {
+    .popup-left-bar {
         width: 160px;
         display: flex;
         justify-content: start;
@@ -144,6 +222,12 @@
         border-bottom: 1px solid #FFF;
         padding-top: 3vh;
         position: relative;
+    }
+    .popup-list-menu, .menu-wrap {
+        display: none;
+    }
+    .popup-title-mobile {
+        display: none;
     }
     .popup-menu-header {
         display: flex;
@@ -224,6 +308,7 @@
         top: 50%;
     }
     .popup-close {
+        display: none;
         padding-top: 1vw;
         position: absolute;
         width: 18px;
@@ -232,14 +317,20 @@
     .arrow-left, .arrow-right {
         width: 12px;
     }
-
+    .arrow-bar {
+        display: none;
+    }
     .icon-data {
-        width: 54px;
+        width: 44px;
         padding-right: 10px;
     }
     .icon-image {
-        width: 72px;
+        /* width: 50px; */
+        width: 60px;
         padding-right: 10px;
+    }
+    .icon-back {
+        display: none;
     }
 }
 
