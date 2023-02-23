@@ -1,7 +1,13 @@
-@media all and (max-width : 420px) {
+@media all and (max-width : 900px) {
     .canvas-container {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        
     }
     .mobile-menu {
         display: block;
@@ -76,7 +82,7 @@
 
     }
     .popup-left-bar {
-        width: 30vw;
+        width: 20vw;
         padding-left: 3vw;
         display: flex;
         justify-content: start;
@@ -101,9 +107,12 @@
         display: none;
     }
     .popup-menu {
-        color: #FFF;
-        padding-left: 2vw;
-        width: 23vw;
+        display: none;
+    }
+    .popup-menu-bar {
+        display: flex;
+        width: 50vw;
+        justify-content: center;
     }
 
     ul {
@@ -141,14 +150,27 @@
     } 
     .mid-container {
         justify-content: flex-start;
-        width: 75vw;
+        width: stretch;
     }
-    #code {
+    /* #code {
         padding-top: 20px;
         color: #FFF;
         font-size: 0.4rem;
         font-weight: 700;
         text-align: left;
+    } */
+    #sub-title {
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 0.2rem;
+        font-weight: 500;
+        text-align: left;
+        justify-content: space-between;
+    }
+    #code {
+        display: none;
+        
     }
     .left-container, .right-container {
         display: flex;
@@ -165,10 +187,27 @@
         display: none;
     }
     .arrow-left-mobile, .arrow-right-mobile {
-        width: 12px;
+        width: 8px;
+        height: 12px;
+        padding: 5px;
+    }
+    .chart-status-container {
+        display: flex;
+        background-color : #35435E;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        border-radius: 10px;
+    }
+    #chart-status {
+        font-size: 12px;
+        font-weight: 700;
     }
     .arrow-bar {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
     }
     .icon-data {
         width: 40px;
@@ -188,8 +227,8 @@
 }
 @media all and (min-width : 420px) and (max-height: 420px){
     .canvas-container {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
     }
 }
 @media all and (min-width : 420px) and (min-height: 421px){
@@ -198,10 +237,16 @@
     }
 }
 
-@media all and (min-width : 420px){
+@media all and (min-width : 901px){
     .logo {
         width: 150.28px;
         height: 31.85px;
+    }
+    .container {
+        display: flex;
+        justify-items: flex-end;
+        width: 100%;
+        
     }
     
     .popup-left-bar {
@@ -240,6 +285,9 @@
     }
     .popup-arrow-bar {
         padding-left: 96px;
+    }
+    #sub-title {
+        display: none;
     }
     ul {
         width: 180px;
@@ -348,6 +396,8 @@ canvas {
 .container {
     display: flex;
     justify-items: flex-end;
+    width: 100%;
+
 }
 
 .nanumsquare {
