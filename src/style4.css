@@ -292,6 +292,12 @@
     #sub-title {
         display: none;
     }
+    .sub-title-1 {
+        display: none;
+    }
+    .sub-title-2 {
+        display: none;
+    }
     ul {
         width: 180px;
         padding-top: 5vh;
