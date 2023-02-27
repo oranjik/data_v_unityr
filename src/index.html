@@ -104,15 +104,6 @@
         padding-left: 22px;
         padding-top: 24px;
     }
-    .copyright {
-        position:relative;
-        font-size: 0.5rem;
-        opacity: 60%;
-        text-align: left;
-        padding-top: 16px;
-        padding-bottom: 4px;
-        bottom: -10px;
-    }
     
     </style>
 </head>
@@ -176,19 +167,30 @@
                             <img src="./img/arrow_l.png" class="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
                         </div>
                         <div class="mid-container">
-                            <div id="code">Fp01)</div>
+                            <!-- <div id="code">Fp01)</div> -->
                             <div id="sub-title">
-                                <div class="sub-title-1">북한사회변동소자/통일 이유/Q1)</div>
-                                <div class="sub-title-2">북한이탈주민대상</div>
+                                <div id="sub-title-1">북한사회변동조사/통일 필요성</div>
+                                <div id="sub-title-2">남한주민대상</div>
                             </div>
-                            <div class="canvas-container">
-                                <canvas id="myChart"></canvas>
+                            <div id="chart-container">
+                                <div class="canvas-container">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                                <div class="chart-legend-container" style="padding:20px">
+                                    <picture>
+                                        <source id="chart-legend-mobile" media="(max-width: 420px)" srcset="./img/legend/chart1_1_mobile.png">
+                                        <img id="chart-legend" src="./img/legend/chart1_1_web.png">
+                                    </picture>
+                                </div>
                             </div>
-                            <div class="arrow-bar">
-                                <img src="./img/arrow_l.png" class="arrow-left-mobile" onClick="fnMovePrevChart(menuNum)"/>
-                                <div class="chart-status-container"><div id="chart-status"> 1/10 </div></div>
-                                <img src="./img/arrow_r.png" class="arrow-right-mobile" onClick="fnMoveNextChart(menuNum)"/>
+                            <div class="arrow-bar-container">
+                                <div class="arrow-bar">
+                                    <img src="./img/arrow_l.png" class="arrow-left-mobile" onClick="fnMovePrevChart(menuNum)"/>
+                                    <div class="chart-status-container"><div id="chart-status"> 1/10 </div></div>
+                                    <img src="./img/arrow_r.png" class="arrow-right-mobile" onClick="fnMoveNextChart(menuNum)"/>
+                                </div>
                             </div>
+                            <!-- <img id="top-button" src="./img/arrow_l.png" onClick="changeMenuNum(2)"/> -->
                             <div class="download-bar">
                                     <img src="./img/download1_1.png" class="icon-data" />
                                     <img src="./img/download1_3.png" class="icon-image"/>
@@ -211,12 +213,21 @@
     <script> 
         var curChartNum = 1;
         var menuNum = 1;
-        function viewLayer(){
-          document.getElementById("popup").style.display='inline'
-        };
-        function closeLayer(){
-            document.getElementById("popup").style.display='none'
-        }
+
+        let Top = document.querySelector("#top-button");
+        window.addEventListener('scroll', function() {
+            if (this.scrollY > 200) {
+                Top.classList.add('on');
+            }
+            else {
+                Top.classList.remove('on');
+            }
+        })
+        Top.addEventListener('click', function(e) {
+            console.log('HI');
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth'});
+        })
 
         document.addEventListener('DOMContentLoaded', function(){
             document.querySelector(".mobile-menu").addEventListener("click", function(e){
@@ -299,6 +310,12 @@
                 document.getElementById("menu3-container").style = 'background-color: none;';
                 document.getElementById("menu3-mobile").style = 'font-weight: 300';
                 document.getElementById("chart-status").innerHTML = "1/10";
+                if (screen.width > 901) {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart1_1_web.png");
+                }
+                else {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart1_1_mobile.png");
+                }
             }
             if(num == 2) {
                 fnChart2Uni01();
@@ -312,6 +329,12 @@
                 document.getElementById("menu3-container").style = 'background-color: none;';
                 document.getElementById("menu3-mobile").style = 'font-weight: 300';
                 document.getElementById("chart-status").innerHTML = "1/10";
+                if (screen.width > 901) {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart2_1_web.png");
+                }
+                else {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart2_1_mobile.png");
+                }
             }
             if(num == 3) {
                 fnChart3q1_1();
@@ -325,6 +348,12 @@
                 document.getElementById("menu3-container").style = 'background-color: rgba(255, 255, 255,0.1);';
                 document.getElementById("menu3-mobile").style = 'font-weight: 800';
                 document.getElementById("chart-status").innerHTML = "1/10";
+                if (screen.width > 901) {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart3_1_web.png");
+                }
+                else {
+                    document.getElementById("chart-legend").style.content = url("./img/legend/chart3_1_mobile.png");
+                }
             }
         }
 
@@ -338,42 +367,153 @@
                 if (curChartNum == 1) {
                     fnChart1Uni01();
                     document.getElementById("chart-status").innerHTML = "1/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 필요성";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
+                    
                 }
                 if (curChartNum == 2) {
                     fnChart1Uni06();
                     document.getElementById("chart-status").innerHTML = "2/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 이유";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_2_web.png";
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;";
+                        document.getElementById("chart-container").style = "flex-direction: column;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_2_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 3) {
-                    fnChart1Uni06_2();
+                    fnChart1Nk01();
                     document.getElementById("chart-status").innerHTML = "3/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북한에 대한 인식";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_3_web.png"
+                        document.getElementById("chart-legend").style ="width: 250px; height: auto; padding-top: 100px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_3_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 4) {
                     fnChart1Nk03();
                     document.getElementById("chart-status").innerHTML = "4/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북한 대화 가능성";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_4_web.png"
+                        document.getElementById("chart-legend").style ="width: 167px; height: auto; padding-top: 120px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_4_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 5) {
                     fnChart1Nk10()
                     document.getElementById("chart-status").innerHTML = "5/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북핵 위협";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_5_web.png"
+                        document.getElementById("chart-legend").style ="width: 210px; height: auto; padding-top: 100px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_5_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 6) {
                     fnChart1Nkp03();
                     document.getElementById("chart-status").innerHTML = "6/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/대북정책 만족도";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_6_web.png"
+                        document.getElementById("chart-legend").style ="width: 129px; height: auto; padding-top: 100px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_6_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 7) {
                     fnChart1Nkp07_11();
                     document.getElementById("chart-status").innerHTML = "7/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무장 의견";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_7_web.png"
+                        document.getElementById("chart-legend").style.width = "152px";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_7_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 8) {
                     fnChart1Nkd01_11();
                     document.getElementById("chart-status").innerHTML = "8/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/탈북민 친근감";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_8_web.png"
+                        document.getElementById("chart-legend").style ="width: 173px; height: auto; padding-top: 120px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_8_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 9) {
                     fnChart1Fp01();
                     document.getElementById("chart-status").innerHTML = "9/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/주변국 친밀감";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_9_web.png"
+                        document.getElementById("chart-legend").style = "width: 148px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_9_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 10) {
                     fnChart1Fp02();
                     document.getElementById("chart-status").innerHTML = "10/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/평화위협국가";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_10_web.png"
+                        document.getElementById("chart-legend").style = "width: 138px; height: auto; padding-top: 120px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_10_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
             }
             if(num == 2){
@@ -384,42 +524,152 @@
                 if(curChartNum == 1) {
                     fnChart2Uni01();
                     document.getElementById("chart-status").innerHTML = "1/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 필요성";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_1_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_1_mobile.png"
+                        document.getElementById("chart-legend").style = "300px";
+                    }
                 }
                 if(curChartNum == 2) {
                     fnChart2Uni03();
                     document.getElementById("chart-status").innerHTML = "2/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 이유";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_2_web.png"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
+                        document.getElementById("chart-container").style = "flex-direction: column;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_2_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 3) {
                     fnChart2Sk01();
                     document.getElementById("chart-status").innerHTML = "3/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한에 대한 인식";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_3_web.png"
+                        document.getElementById("chart-legend").style = "width: 238px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_3_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 4) {
                     fnChart2Sk03();
                     document.getElementById("chart-status").innerHTML = "4/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한 문화경험";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_4_web.png"
+                        document.getElementById("chart-legend").style = "width: 210px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_4_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 5) {
                     fnChart2Sk06();
                     document.getElementById("chart-status").innerHTML = "5/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무기 위협";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_5_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_5_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 6) {
                     fnChart2Sk07();
                     document.getElementById("chart-status").innerHTML = "6/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/평화위협국가";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_6_web.png"
+                        document.getElementById("chart-legend").style = "width: 164px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_6_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 7) {
                     fnChart2Nk02();
                     document.getElementById("chart-status").innerHTML = "7/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/김정은 지지도";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_7_web.png"
+                        document.getElementById("chart-legend").style = "width: 118px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_7_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 8) {
                     fnChart2Nk07();
                     document.getElementById("chart-status").innerHTML = "8/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무기 보유견해";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_8_web.png"
+                        document.getElementById("chart-legend").style = "width: 149px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_8_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 9) {
                     fnChart2Fp01();
                     document.getElementById("chart-status").innerHTML = "9/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/주변국 친밀감";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_9_web.png"
+                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_9_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 10) {
                     fnChart2Skd01();
                     document.getElementById("chart-status").innerHTML = "10/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한 주민 친근감";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_10_web.png"
+                        document.getElementById("chart-legend").style = "width: 168px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_10_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
             }
             if(num == 3){
@@ -480,42 +730,152 @@
                 if (curChartNum == 1) {
                     fnChart1Uni01();
                     document.getElementById("chart-status").innerHTML = "1/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 필요성";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 2) {
                     fnChart1Uni06();
                     document.getElementById("chart-status").innerHTML = "2/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 이유";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_2_web.png"
+                        document.getElementById("chart-legend").style = "width: 600px; height: auto; padding-top: 20px;"
+                        document.getElementById("chart-container").style = "flex-direction: column;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_2_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 3) {
                     fnChart1Nk01();
                     document.getElementById("chart-status").innerHTML = "3/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북한에 대한 인식";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_3_web.png"
+                        document.getElementById("chart-legend").style = "width: 250px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_3_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 4) {
                     fnChart1Nk03();
                     document.getElementById("chart-status").innerHTML = "4/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북한 대화 가능성";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_4_web.png"
+                        document.getElementById("chart-legend").style = "width: 167px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_4_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 5) {
                     fnChart1Nk10();
                     document.getElementById("chart-status").innerHTML = "5/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/북핵 위협";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_5_web.png"
+                        document.getElementById("chart-legend").style ="width: 210px; height: auto; padding-top: 100px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_5_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 6) {
                     fnChart1Nkp03();
                     document.getElementById("chart-status").innerHTML = "6/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/대북정책 만족도";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_6_web.png"
+                        document.getElementById("chart-legend").style = "width: 129px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_6_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 7) {
                     fnChart1Nkp07_11();
                     document.getElementById("chart-status").innerHTML = "7/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무장 의견";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_7_web.png"
+                        document.getElementById("chart-legend").style = "width: 152px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_7_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 8) {
                     fnChart1Nkd01_11();
                     document.getElementById("chart-status").innerHTML = "8/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/탈북민 친근감";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_8_web.png"
+                        document.getElementById("chart-legend").style ="width: 173px; height: auto; padding-top: 120px;";
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_8_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 9) {
                     fnChart1Fp01();
                     document.getElementById("chart-status").innerHTML = "9/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/주변국 친밀감";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_9_web.png"
+                        document.getElementById("chart-legend").style = "width: 148px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_9_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if (curChartNum == 10) {
                     fnChart1Fp02();
                     document.getElementById("chart-status").innerHTML = "10/10"
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/평화위협국가";
+                    document.getElementById("sub-title-2").innerHTML = "남한주민대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_10_web.png"
+                        document.getElementById("chart-legend").style = "width: 138px; height: auto; padding-top: 120px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_10_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
             }
             if(num == 2){
@@ -525,43 +885,153 @@
                 }
                 if(curChartNum == 1) {
                     fnChart2Uni01();
-                    document.getElementById("chart-status").innerHTML = "1/10"
+                    document.getElementById("chart-status").innerHTML = "1/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 필요성";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_1_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_1_mobile.png"
+                        document.getElementById("chart-legend").style = "300px";
+                    }
                 }
                 if(curChartNum == 2) {
                     fnChart2Uni03();
-                    document.getElementById("chart-status").innerHTML = "2/10"
+                    document.getElementById("chart-status").innerHTML = "2/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/통일 이유";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_2_web.png"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
+                        document.getElementById("chart-container").style = "flex-direction: column;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_2_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 3) {
                     fnChart2Sk01();
-                    document.getElementById("chart-status").innerHTML = "3/10"
+                    document.getElementById("chart-status").innerHTML = "3/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한에 대한 인식";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_3_web.png"
+                        document.getElementById("chart-legend").style = "width: 238px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_3_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 4) {
                     fnChart2Sk03();
-                    document.getElementById("chart-status").innerHTML = "4/10"
+                    document.getElementById("chart-status").innerHTML = "4/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한 문화경험";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_4_web.png"
+                        document.getElementById("chart-legend").style = "width: 210px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_4_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 5) {
                     fnChart2Sk06();
-                    document.getElementById("chart-status").innerHTML = "5/10"
+                    document.getElementById("chart-status").innerHTML = "5/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무기 위협";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_5_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_5_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 6) {
                     fnChart2Sk07();
-                    document.getElementById("chart-status").innerHTML = "6/10"
+                    document.getElementById("chart-status").innerHTML = "6/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/평화위협국가";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_6_web.png"
+                        document.getElementById("chart-legend").style = "width: 164px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_6_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 7) {
                     fnChart2Nk02();
-                    document.getElementById("chart-status").innerHTML = "7/10"
+                    document.getElementById("chart-status").innerHTML = "7/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/김정은 지지도";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_7_web.png"
+                        document.getElementById("chart-legend").style = "width: 118px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_7_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 8) {
                     fnChart2Nk07();
-                    document.getElementById("chart-status").innerHTML = "8/10"
+                    document.getElementById("chart-status").innerHTML = "8/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/핵무기 보유견해";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_8_web.png"
+                        document.getElementById("chart-legend").style = "width: 149px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_8_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 9) {
                     fnChart2Fp01();
-                    document.getElementById("chart-status").innerHTML = "9/10"
+                    document.getElementById("chart-status").innerHTML = "9/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/주변국 친밀감";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_9_web.png"
+                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_9_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
                 if(curChartNum == 10) {
                     fnChart2Skd01();
-                    document.getElementById("chart-status").innerHTML = "10/10"
+                    document.getElementById("chart-status").innerHTML = "10/10";
+                    document.getElementById("sub-title-1").innerHTML = "통일의식조사/남한 주민 친근감";
+                    document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+                    if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart2_10_web.png"
+                        document.getElementById("chart-legend").style = "width: 168px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_10_mobile.png"
+                        document.getElementById("chart-legend").style.width = "300px";
+                    }
                 }
             }
             if(num == 3){

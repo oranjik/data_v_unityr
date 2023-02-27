@@ -8,6 +8,8 @@ const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./i
 let curIndex = -1;
 const ctx = document.getElementById("myChart");
 
+const mobileScreenSize = 390;
+
 const aspectRatioMobile = 1;
 const aspectRatioWeb = 1;
 const borderWidthMobile = 1;
@@ -56,8 +58,8 @@ const deleteChart = () => {
 
 function fnChart1Uni01() {
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Uni01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
@@ -71,7 +73,7 @@ function fnChart1Uni01() {
         {
           label: "필요하다",
           data: [
-            64.1,	51.6,	56.4,	59.3,	23.8,	24,	54.9,	55.9,	52,	53.7,	54,	59.7,	53.6,	52.9,	44.6,	46,
+            64.1,	51.6,	56.4,	59.3,	53.8,	54,	54.9,	55.9,	52,	53.7,	54,	59.7,	53.6,	52.9,	44.6,	46,
           ],
           borderColor: borderColors[0],
           tension: 0,
@@ -79,11 +81,11 @@ function fnChart1Uni01() {
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           },
@@ -98,11 +100,11 @@ function fnChart1Uni01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -117,11 +119,11 @@ function fnChart1Uni01() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -130,7 +132,7 @@ function fnChart1Uni01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -166,14 +168,14 @@ function fnChart1Uni01() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return 14;
+              if(context.chart.width < mobileScreenSize) return 14;
               else return 24;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return 10;
+              if(context.chart.width < mobileScreenSize) return 10;
               else return 60;
             },
           },
@@ -189,7 +191,7 @@ function fnChart1Uni01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -198,23 +200,23 @@ function fnChart1Uni01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -240,7 +242,7 @@ function fnChart1Uni01() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -259,7 +261,7 @@ function fnChart1Uni01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -272,10 +274,10 @@ function fnChart1Uni01() {
   });
 };
 
-function fnChart1Uni06() {  
+function fnChart1Uni06_2() {  
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Uni06)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni06)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4], totalPointStyle[1]];
@@ -297,11 +299,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           },
@@ -316,11 +318,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -335,11 +337,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -354,11 +356,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -373,11 +375,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -393,11 +395,11 @@ function fnChart1Uni06() {
           backgroundColor: borderColors[5],
           pointBorderColor: borderColors[5],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -407,7 +409,7 @@ function fnChart1Uni06() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return 1;
+        if(context.chart.width < mobileScreenSize) return 1;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -443,14 +445,14 @@ function fnChart1Uni06() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return 14;
+              if(context.chart.width < mobileScreenSize) return 14;
               else return 24;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return 10;
+              if(context.chart.width < mobileScreenSize) return 10;
               else return 60;
             },
           }
@@ -466,7 +468,7 @@ function fnChart1Uni06() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -475,23 +477,23 @@ function fnChart1Uni06() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -513,7 +515,7 @@ function fnChart1Uni06() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -532,7 +534,7 @@ function fnChart1Uni06() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -545,10 +547,10 @@ function fnChart1Uni06() {
   });
 }
 
-function fnChart1Uni06_2() {  
+function fnChart1Uni06() {  
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Uni06)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni06)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4], totalPointStyle[1]];
@@ -576,11 +578,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           },
@@ -595,11 +597,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -614,11 +616,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -633,11 +635,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -652,11 +654,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -672,11 +674,11 @@ function fnChart1Uni06_2() {
           backgroundColor: borderColors[5],
           pointBorderColor: borderColors[5],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -686,7 +688,7 @@ function fnChart1Uni06_2() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return 1;
+        if(context.chart.width < mobileScreenSize) return 1;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -722,14 +724,14 @@ function fnChart1Uni06_2() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return 14;
+              if(context.chart.width < mobileScreenSize) return 14;
               else return 24;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return 10;
+              if(context.chart.width < mobileScreenSize) return 10;
               else return 60;
             },
           }
@@ -745,7 +747,7 @@ function fnChart1Uni06_2() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -757,20 +759,20 @@ function fnChart1Uni06_2() {
           display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "bottom";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return 10;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -791,7 +793,7 @@ function fnChart1Uni06_2() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -810,7 +812,7 @@ function fnChart1Uni06_2() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -826,8 +828,8 @@ function fnChart1Uni06_2() {
 function fnChart1Nk01() {
 
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nk01)";  
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nk01)";  
   const borderColors = [totalBorderColors[5], totalBorderColors[2],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[5], totalPointStyle[2], totalPointStyle[3]];
@@ -847,11 +849,11 @@ function fnChart1Nk01() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -870,11 +872,11 @@ function fnChart1Nk01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -890,11 +892,11 @@ function fnChart1Nk01() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -903,7 +905,7 @@ function fnChart1Nk01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -939,14 +941,14 @@ function fnChart1Nk01() {
           color: "white",
           font:{
               size: function(context) {
-                if(context.chart.width < 500) return titleSizeMobile;
+                if(context.chart.width < mobileScreenSize) return titleSizeMobile;
                 else return titleSizeWeb;
               },
             },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -962,7 +964,7 @@ function fnChart1Nk01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -971,23 +973,23 @@ function fnChart1Nk01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -1011,7 +1013,7 @@ function fnChart1Nk01() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1030,7 +1032,7 @@ function fnChart1Nk01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1045,8 +1047,8 @@ function fnChart1Nk01() {
 function fnChart1Nk03() {
 
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nk03)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nk03)";
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -1070,11 +1072,11 @@ function fnChart1Nk03() {
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           },
@@ -1089,11 +1091,11 @@ function fnChart1Nk03() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1102,7 +1104,7 @@ function fnChart1Nk03() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -1138,14 +1140,14 @@ function fnChart1Nk03() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -1161,7 +1163,7 @@ function fnChart1Nk03() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -1170,23 +1172,23 @@ function fnChart1Nk03() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -1212,7 +1214,7 @@ function fnChart1Nk03() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1231,7 +1233,7 @@ function fnChart1Nk03() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1248,8 +1250,8 @@ function fnChart1Nk03() {
 function fnChart1Nk10() {
 
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nk10)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nk10)";
   const borderColors = [totalBorderColors[3], totalBorderColors[0]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[0]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[0]];
@@ -1268,11 +1270,11 @@ function fnChart1Nk10() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1291,11 +1293,11 @@ function fnChart1Nk10() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1304,7 +1306,7 @@ function fnChart1Nk10() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -1340,14 +1342,14 @@ function fnChart1Nk10() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align:"start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -1363,7 +1365,7 @@ function fnChart1Nk10() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -1372,23 +1374,23 @@ function fnChart1Nk10() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -1415,7 +1417,7 @@ function fnChart1Nk10() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1434,7 +1436,7 @@ function fnChart1Nk10() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1450,8 +1452,8 @@ function fnChart1Nk10() {
 function fnChart1Nkp03() {
 
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nkp03)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nkp03)";
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -1470,11 +1472,11 @@ function fnChart1Nkp03() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1493,11 +1495,11 @@ function fnChart1Nkp03() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1506,7 +1508,7 @@ function fnChart1Nkp03() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -1542,14 +1544,14 @@ function fnChart1Nkp03() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           },
@@ -1565,7 +1567,7 @@ function fnChart1Nkp03() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -1574,23 +1576,23 @@ function fnChart1Nkp03() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -1616,7 +1618,7 @@ function fnChart1Nkp03() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1635,7 +1637,7 @@ function fnChart1Nkp03() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1652,8 +1654,8 @@ function fnChart1Nkp03() {
 
 function fnChart1Nkp07_11() {
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nkp07_11)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nkp07_11)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
@@ -1673,11 +1675,11 @@ function fnChart1Nkp07_11() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1696,11 +1698,11 @@ function fnChart1Nkp07_11() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -1716,11 +1718,11 @@ function fnChart1Nkp07_11() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1729,7 +1731,7 @@ function fnChart1Nkp07_11() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -1766,14 +1768,14 @@ function fnChart1Nkp07_11() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           },
@@ -1789,7 +1791,7 @@ function fnChart1Nkp07_11() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -1798,23 +1800,23 @@ function fnChart1Nkp07_11() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -1840,7 +1842,7 @@ function fnChart1Nkp07_11() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1859,7 +1861,7 @@ function fnChart1Nkp07_11() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -1875,8 +1877,8 @@ function fnChart1Nkp07_11() {
 
 function fnChart1Nkd01_11() {
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nkd01_11)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nkd01_11)";
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -1894,11 +1896,11 @@ function fnChart1Nkd01_11() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1916,11 +1918,11 @@ function fnChart1Nkd01_11() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -1929,7 +1931,7 @@ function fnChart1Nkd01_11() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       onHover: (e, chartElement) => {
@@ -1963,14 +1965,14 @@ function fnChart1Nkd01_11() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           },
@@ -1986,7 +1988,7 @@ function fnChart1Nkd01_11() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -1995,23 +1997,23 @@ function fnChart1Nkd01_11() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -2037,7 +2039,7 @@ function fnChart1Nkd01_11() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2056,7 +2058,7 @@ function fnChart1Nkd01_11() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2072,8 +2074,8 @@ function fnChart1Nkd01_11() {
 
 function fnChart1Fp01() {
   deleteChart();
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Fp01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Fp01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
@@ -2096,11 +2098,11 @@ const myChart = new Chart(ctx, {
         backgroundColor: borderColors[0],
         pointBorderColor: borderColors[0],
         borderWidth: function(context) {
-          if(context.chart.width < 500) return borderWidthMobile;
+          if(context.chart.width < mobileScreenSize) return borderWidthMobile;
           else return borderWidth;
         },
         pointRadius: function(context) {
-          if(context.chart.width < 500) return pointRadiusMobile;
+          if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
           else return 5;
         },
         },
@@ -2114,11 +2116,11 @@ const myChart = new Chart(ctx, {
         backgroundColor: borderColors[1],
         pointBorderColor: borderColors[1],
         borderWidth: function(context) {
-          if(context.chart.width < 500) return borderWidthMobile;
+          if(context.chart.width < mobileScreenSize) return borderWidthMobile;
           else return borderWidth;
         },
         pointRadius: function(context) {
-          if(context.chart.width < 500) return pointRadiusMobile;
+          if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
           else return pointRadius;
         },
         tension: 0,
@@ -2133,11 +2135,11 @@ const myChart = new Chart(ctx, {
         backgroundColor: borderColors[2],
         pointBorderColor: borderColors[2],
         borderWidth: function(context) {
-          if(context.chart.width < 500) return borderWidthMobile;
+          if(context.chart.width < mobileScreenSize) return borderWidthMobile;
           else return borderWidth;
         },
         pointRadius: function(context) {
-          if(context.chart.width < 500) return pointRadiusMobile;
+          if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
           else return pointRadius;
         },
         tension: 0,
@@ -2153,11 +2155,11 @@ const myChart = new Chart(ctx, {
         backgroundColor: borderColors[3],
         pointBorderColor: borderColors[3],
         borderWidth: function(context) {
-          if(context.chart.width < 500) return borderWidthMobile;
+          if(context.chart.width < mobileScreenSize) return borderWidthMobile;
           else return borderWidth;
         },
         pointRadius: function(context) {
-          if(context.chart.width < 500) return pointRadiusMobile;
+          if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
           else return 5;
         },
         tension: 0,
@@ -2172,11 +2174,11 @@ const myChart = new Chart(ctx, {
         backgroundColor: borderColors[4],
         pointBorderColor: borderColors[4],
         borderWidth: function(context) {
-          if(context.chart.width < 500) return borderWidthMobile;
+          if(context.chart.width < mobileScreenSize) return borderWidthMobile;
           else return borderWidth;
         },
         pointRadius: function(context) {
-          if(context.chart.width < 500) return pointRadiusMobile;
+          if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
           else return pointRadius;
         },
         tension: 0,
@@ -2185,7 +2187,7 @@ const myChart = new Chart(ctx, {
   },
   options: {
     aspectRatio: function(context) {
-      if(context.chart.width < 500) return aspectRatioMobile;
+      if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
       else return aspectRatioWeb;
     },
     // responsive: false,
@@ -2222,14 +2224,14 @@ const myChart = new Chart(ctx, {
         color: "white",
         font:{
           size: function(context) {
-            if(context.chart.width < 500) return titleSizeMobile;
+            if(context.chart.width < mobileScreenSize) return titleSizeMobile;
             else return titleSizeWeb;
           },
         },
         align: "start",
         padding:{
           bottom: function(context) {
-            if(context.chart.width < 500) return titleBottomMobile;
+            if(context.chart.width < mobileScreenSize) return titleBottomMobile;
             else return titleBottomWeb;
           },
         }
@@ -2244,7 +2246,7 @@ const myChart = new Chart(ctx, {
         },
         textAlign: 'center',
         display: function(context) {
-          if(context.chart.width < 500){
+          if(context.chart.width < mobileScreenSize){
             return false;
           }
           else {
@@ -2253,23 +2255,23 @@ const myChart = new Chart(ctx, {
         },
       },
       legend: {
-        display: true,
+        display: false,
         maxWidth: 300,
         position: function(context) {
-          if(context.chart.width < 500) return "bottom";
+          if(context.chart.width < mobileScreenSize) return "bottom";
           else return "right";
         },
         align: "center",
         labels: {
           boxHeight: 0,
           padding: function(context) {
-            if(context.chart.width < 500) return legendLabelPaddingMobile;
+            if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
             else return legendLabelPaddingWeb;
           },
           color: 'white',
           font: {
             size:function(context) {
-              if(context.chart.width < 500) return legendFontSizeMobile;
+              if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
               else return legendFontSizeWeb;
             },
           },
@@ -2295,7 +2297,7 @@ const myChart = new Chart(ctx, {
             fontSize: 24,
             font: {
               size: function(context) {
-                if(context.chart.width < 500) return labelFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                 else return labelFontSizeWeb;
               },
             },
@@ -2314,7 +2316,7 @@ const myChart = new Chart(ctx, {
             minRotation: 90,
             font: {
               size: function(context) {
-                if(context.chart.width < 500) return labelFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                 else return labelFontSizeWeb;
               },
             },
@@ -2333,8 +2335,8 @@ function fnChart1Fp02() {
   
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Fp02)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Fp02)";
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
@@ -2353,7 +2355,7 @@ function fnChart1Fp02() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           tension: 0,
@@ -2361,7 +2363,7 @@ function fnChart1Fp02() {
           backgroundColor: borderColors[0],
           pointBorderColor: borderColors[0],
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           },
@@ -2376,11 +2378,11 @@ function fnChart1Fp02() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2396,11 +2398,11 @@ function fnChart1Fp02() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2416,11 +2418,11 @@ function fnChart1Fp02() {
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return 5;
           },
           tension: 0,
@@ -2436,11 +2438,11 @@ function fnChart1Fp02() {
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2449,7 +2451,7 @@ function fnChart1Fp02() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       onHover: (e, chartElement) => {
@@ -2483,14 +2485,14 @@ function fnChart1Fp02() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           },
@@ -2506,7 +2508,7 @@ function fnChart1Fp02() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -2515,23 +2517,23 @@ function fnChart1Fp02() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -2558,7 +2560,7 @@ function fnChart1Fp02() {
               fontSize: 24,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2577,7 +2579,7 @@ function fnChart1Fp02() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2593,8 +2595,8 @@ function fnChart1Fp02() {
 function fnChart2Uni01() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Uni01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
@@ -2612,11 +2614,11 @@ function fnChart2Uni01() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2635,11 +2637,11 @@ function fnChart2Uni01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2654,11 +2656,11 @@ function fnChart2Uni01() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2667,7 +2669,7 @@ function fnChart2Uni01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -2703,14 +2705,14 @@ function fnChart2Uni01() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -2726,7 +2728,7 @@ function fnChart2Uni01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -2735,23 +2737,23 @@ function fnChart2Uni01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -2777,7 +2779,7 @@ function fnChart2Uni01() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2796,7 +2798,7 @@ function fnChart2Uni01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -2812,8 +2814,8 @@ function fnChart2Uni01() {
 function fnChart2Uni03() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Uni03)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni03)";
   const borderColors = [totalBorderColors[0], totalBorderColors[3],totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3], totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[1]];
@@ -2831,11 +2833,11 @@ function fnChart2Uni03() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2854,11 +2856,11 @@ function fnChart2Uni03() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2873,11 +2875,11 @@ function fnChart2Uni03() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2892,11 +2894,11 @@ function fnChart2Uni03() {
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2911,11 +2913,11 @@ function fnChart2Uni03() {
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2931,11 +2933,11 @@ function fnChart2Uni03() {
           backgroundColor: borderColors[5],
           pointBorderColor: borderColors[5],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -2945,7 +2947,7 @@ function fnChart2Uni03() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -2981,14 +2983,14 @@ function fnChart2Uni03() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: "start",
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
 
@@ -3005,7 +3007,7 @@ function fnChart2Uni03() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -3014,23 +3016,23 @@ function fnChart2Uni03() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
-            else return "right";
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "bottom";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
-              else return legendLabelPaddingWeb;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return 20;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -3056,7 +3058,7 @@ function fnChart2Uni03() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3075,7 +3077,7 @@ function fnChart2Uni03() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3092,8 +3094,8 @@ function fnChart2Uni03() {
 function fnChart2Sk01() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Sk01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Sk01)";
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
@@ -3113,11 +3115,11 @@ function fnChart2Sk01() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3137,11 +3139,11 @@ function fnChart2Sk01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3157,11 +3159,11 @@ function fnChart2Sk01() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3170,7 +3172,7 @@ function fnChart2Sk01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -3206,7 +3208,7 @@ function fnChart2Sk01() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
 
@@ -3214,7 +3216,7 @@ function fnChart2Sk01() {
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
 
@@ -3231,7 +3233,7 @@ function fnChart2Sk01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -3240,23 +3242,23 @@ function fnChart2Sk01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -3282,7 +3284,7 @@ function fnChart2Sk01() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3301,7 +3303,7 @@ function fnChart2Sk01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3317,8 +3319,8 @@ function fnChart2Sk01() {
 function fnChart2Sk03() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Sk03)";  
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Sk03)";  
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
@@ -3336,11 +3338,11 @@ function fnChart2Sk03() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3359,11 +3361,11 @@ function fnChart2Sk03() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3378,11 +3380,11 @@ function fnChart2Sk03() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3391,7 +3393,7 @@ function fnChart2Sk03() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -3427,7 +3429,7 @@ function fnChart2Sk03() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
 
@@ -3435,7 +3437,7 @@ function fnChart2Sk03() {
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -3451,7 +3453,7 @@ function fnChart2Sk03() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -3460,23 +3462,23 @@ function fnChart2Sk03() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -3502,7 +3504,7 @@ function fnChart2Sk03() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3521,7 +3523,7 @@ function fnChart2Sk03() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3537,8 +3539,8 @@ function fnChart2Sk03() {
 function fnChart2Sk06() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Sk06)";  
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Sk06)";  
   const borderColors = [totalBorderColors[3],totalBorderColors[5]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[5]]
   const pointStyle = [totalPointStyle[3], totalPointStyle[5]];
@@ -3557,11 +3559,11 @@ function fnChart2Sk06() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3581,11 +3583,11 @@ function fnChart2Sk06() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3594,7 +3596,7 @@ function fnChart2Sk06() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -3630,14 +3632,14 @@ function fnChart2Sk06() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -3653,7 +3655,7 @@ function fnChart2Sk06() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -3662,23 +3664,23 @@ function fnChart2Sk06() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -3704,7 +3706,7 @@ function fnChart2Sk06() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3723,7 +3725,7 @@ function fnChart2Sk06() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3740,8 +3742,8 @@ function fnChart2Sk06() {
 function fnChart2Sk07() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Sk07)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Sk07)";
   const borderColors = [totalBorderColors[0],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -3759,11 +3761,11 @@ function fnChart2Sk07() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3782,11 +3784,11 @@ function fnChart2Sk07() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3795,7 +3797,7 @@ function fnChart2Sk07() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -3831,14 +3833,14 @@ function fnChart2Sk07() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -3854,7 +3856,7 @@ function fnChart2Sk07() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -3863,23 +3865,23 @@ function fnChart2Sk07() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -3905,7 +3907,7 @@ function fnChart2Sk07() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3924,7 +3926,7 @@ function fnChart2Sk07() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -3941,8 +3943,8 @@ function fnChart2Sk07() {
 function fnChart2Nk02() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nk02)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nk02)";
   const borderColors = [totalBorderColors[0],totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
@@ -3961,11 +3963,11 @@ function fnChart2Nk02() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -3985,11 +3987,11 @@ function fnChart2Nk02() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4005,11 +4007,11 @@ function fnChart2Nk02() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4018,7 +4020,7 @@ function fnChart2Nk02() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -4054,14 +4056,14 @@ function fnChart2Nk02() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -4077,7 +4079,7 @@ function fnChart2Nk02() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -4086,23 +4088,23 @@ function fnChart2Nk02() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -4128,7 +4130,7 @@ function fnChart2Nk02() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4147,7 +4149,7 @@ function fnChart2Nk02() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4164,8 +4166,8 @@ function fnChart2Nk02() {
 function fnChart2Nk07() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Nk07)";  
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Nk07)";  
   const borderColors = [totalBorderColors[0],totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
@@ -4184,11 +4186,11 @@ function fnChart2Nk07() {
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4208,11 +4210,11 @@ function fnChart2Nk07() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4228,11 +4230,11 @@ function fnChart2Nk07() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4241,7 +4243,7 @@ function fnChart2Nk07() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -4277,14 +4279,14 @@ function fnChart2Nk07() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -4300,7 +4302,7 @@ function fnChart2Nk07() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -4309,23 +4311,23 @@ function fnChart2Nk07() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -4351,7 +4353,7 @@ function fnChart2Nk07() {
               stepSize: 10,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4370,7 +4372,7 @@ function fnChart2Nk07() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4387,8 +4389,8 @@ function fnChart2Nk07() {
 function fnChart2Fp01() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Fp01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Fp01)";
   const borderColors = [totalBorderColors[0],totalBorderColors[1],totalBorderColors[5],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[5],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1],totalPointStyle[5],totalPointStyle[3],totalPointStyle[4]];
@@ -4406,11 +4408,11 @@ function fnChart2Fp01() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4428,11 +4430,11 @@ function fnChart2Fp01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4447,11 +4449,11 @@ function fnChart2Fp01() {
           backgroundColor: borderColors[2],
           pointBorderColor: borderColors[2],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4466,11 +4468,11 @@ function fnChart2Fp01() {
           backgroundColor: borderColors[3],
           pointBorderColor: borderColors[3],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4485,11 +4487,11 @@ function fnChart2Fp01() {
           backgroundColor: borderColors[4],
           pointBorderColor: borderColors[4],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4498,7 +4500,7 @@ function fnChart2Fp01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -4534,14 +4536,14 @@ function fnChart2Fp01() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -4557,7 +4559,7 @@ function fnChart2Fp01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -4566,23 +4568,23 @@ function fnChart2Fp01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -4608,7 +4610,7 @@ function fnChart2Fp01() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4627,7 +4629,7 @@ function fnChart2Fp01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4644,8 +4646,8 @@ function fnChart2Fp01() {
 function fnChart2Skd01() {
   deleteChart();
 
-  const subject = document.getElementById("code");
-  subject.innerHTML = "Skd01)";
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Skd01)";
   const borderColors = [totalBorderColors[0],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
@@ -4664,11 +4666,11 @@ function fnChart2Skd01() {
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4686,11 +4688,11 @@ function fnChart2Skd01() {
           backgroundColor: borderColors[1],
           pointBorderColor: borderColors[1],
           borderWidth: function(context) {
-            if(context.chart.width < 500) return borderWidthMobile;
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
             else return borderWidth;
           },
           pointRadius: function(context) {
-            if(context.chart.width < 500) return pointRadiusMobile;
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
             else return pointRadius;
           },
           tension: 0,
@@ -4699,7 +4701,7 @@ function fnChart2Skd01() {
     },
     options: {
       aspectRatio: function(context) {
-        if(context.chart.width < 500) return aspectRatioMobile;
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
         else return aspectRatioWeb;
       },
       // responsive: false,
@@ -4735,14 +4737,14 @@ function fnChart2Skd01() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < 500) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
               else return titleSizeWeb;
             },
           },
           align: 'start',
           padding:{
             bottom: function(context) {
-              if(context.chart.width < 500) return titleBottomMobile;
+              if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
             },
           }
@@ -4758,7 +4760,7 @@ function fnChart2Skd01() {
           },
           textAlign: 'center',
           display: function(context) {
-            if(context.chart.width < 500){
+            if(context.chart.width < mobileScreenSize){
               return false;
             }
             else {
@@ -4767,23 +4769,23 @@ function fnChart2Skd01() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
-            if(context.chart.width < 500) return "bottom";
+            if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
           align: "center",
           labels: {
             boxHeight: 0,
             padding: function(context) {
-              if(context.chart.width < 500) return legendLabelPaddingMobile;
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
               else return legendLabelPaddingWeb;
             },
             color: 'white',
             font: {
               size:function(context) {
-                if(context.chart.width < 500) return legendFontSizeMobile;
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
                 else return legendFontSizeWeb;
               },
             },
@@ -4809,7 +4811,7 @@ function fnChart2Skd01() {
               stepSize: 20,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
@@ -4828,7 +4830,7 @@ function fnChart2Skd01() {
               minRotation: 90,
               font: {
                 size: function(context) {
-                  if(context.chart.width < 500) return labelFontSizeMobile;
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
                   else return labelFontSizeWeb;
                 },
               },
