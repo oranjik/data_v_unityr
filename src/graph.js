@@ -2803,7 +2803,7 @@ function fnChart2Uni03() {
             if(context.chart.width < mobileScreenSize) return "bottom";
             else return "bottom";
           },
-          align: "center",
+          align: "start",
           labels: {
             boxHeight: 0,
             padding: function(context) {
