@@ -1,8 +1,8 @@
 Chart.defaults.font.family = 'NanumSquare';
 
-const totalBorderColors = ["#3E5FFF", "#40FF76", "#E94B03", "#FF006E", "#804AA8", "#FF8A0A"]
-const totalBorderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128,74,168],[255,138,10]]
-const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'square']
+const totalBorderColors = ["#3E5FFF", "#40FF76", "#E94B03", "#FF006E", "#804AA8", "#FF8A0A", "#636363"]
+const totalBorderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128,74,168],[255,138,10], [99,99,99]]
+const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'square', 'rect']
 const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./img/china.png','./img/russia.png']
 
 let curIndex = -1;
@@ -33,6 +33,8 @@ const legendLabelPaddingWeb = 40;
 
 const labelFontSizeMobile = 10;
 const labelFontSizeWeb = 14;
+
+const borderDashWeb = [10, 5];
 
 
 const pluginMultipleImg = {
@@ -4637,8 +4639,2722 @@ function fnChart2Skd01() {
 }
 
 function fnChart3q1_1() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[4],totalBorderColors[5],totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
 
-}
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "하루 세 끼 이상",
+          data: [
+            74.3,	81.1,	74.8,	87.9,	90.4,	87.3,	87.4,	87.8,	83.5,
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "하루 두 끼",
+          data: [
+            16.8,	12.1,	10.9,	8.6,	8.2,	8,	11.5,	10.4,	12.8
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "하루 한 끼",
+          data: [
+            5.3,	6.8,	12.9,	2.9,	1.5,	4,	1.2,	0.9,	2.8
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          tension: 0,
+        },
+        {
+          label: "한 끼도 못 먹을 때가 많았다",
+          data: [
+            3.5,	0,	1.4,	7.1,	0,	8,	0,	0.9,	0.9
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          tension: 0,
+        },
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["끼니", "보통 하루 몇 끼를 먹었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 100,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 20,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q1_11() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels, plugin_1img],
+    data: {
+      labels: Array.from({ length: 6 }, (_, i) => i + 2015),
+      datasets: [
+        {
+          label: "있었음",
+          data: [
+            10.7,	8.2,	5.6,	5.7,	7,	8.3
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "없었음",
+          data: [
+            89.3,	91.8,	94.4,	94.3,	93,	91.7
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        background_image: {
+          imgSrc : 'img/chart3_2_bg.png',
+        },
+        title: {
+          display: true,
+          text: ["인트라넷", "북한에서 인트라넷 (해외접속이 차단된 북한 내부망)을", "사용해보신 적이 있었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 100,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 20,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q1_11_1() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels, plugin_1img],
+    data: {
+      labels: Array.from({ length: 6 }, (_, i) => i + 2015),
+      datasets: [
+        {
+          label: "있었음",
+          data: [
+            55.5,	46.4,	43.9,	44.8,	62.6,	56
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "없었음",
+          data: [
+            44.5,	53.6,	56.1,	55.2,	37.4,	44
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        background_image: {
+          imgSrc : 'img/chart3_3_bg.png',
+        },
+        title: {
+          display: true,
+          text: ["손전화", "북한에서 본인의 손전화(휴대폰)가 있었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 30,
+            suggestedMax: 80,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q1_12() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 7 }, (_, i) => i + 2014),
+      datasets: [
+        {
+          label: "있었음",
+          data: [
+            66,	72.1,	60.7,	57.1,	41.4,	60,	52.3
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "없었음",
+          data: [
+            34,	27.9,	39.3,	42.9,	58.6,	40,	47.7
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["남한 물건", "북한에서 남한산 물건을 사용해본 적이 있었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 100,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 20,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q1_13() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[4], totalBorderColors[5], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 6 }, (_, i) => i + 2015),
+      datasets: [
+        {
+          label: ["가족 모두 충분한 양과", "다양한 음식"],
+          data: [
+            40,	34.1,	31.7,	26.4,	40.9,	36.7,
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: ["가족 모두 충분한 양", "그러나 다양하지 않은 음식"],
+          data: [
+            41.4,	51.1,	50.8,	47.1,	45.2,	44,
+          
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "가끔 먹을 것이 부족",
+          data: [
+            17.1,	11.9,	11.9,	17.2,	10.4,	18.3
+          
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "자주 먹을 것이 부족",
+          data: [
+            1.4,	3,	5.6,	9.2,	3.5,	0.9
+          
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["식생활 현황", "귀하가 북한을 떠나기 전, 1년 동안 귀댁의 식생활을", "가장 잘 나타낸 것은 어느 것입니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 60,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q4_1_1() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[3], totalBorderColors[2], totalBorderColors[5], totalBorderColors[0], totalBorderColors[4], totalBorderColors[1],totalBorderColors[0],totalBorderColors[3],totalBorderColors[2],totalBorderColors[4],totalBorderColors[5],totalBorderColors[6]];
+  const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5], totalBorderColorsRGB[0],totalBorderColorsRGB[4], totalBorderColorsRGB[1],totalBorderColorsRGB[0], totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[4],totalBorderColorsRGB[5],totalBorderColorsRGB[6]];
+  const pointStyle = [totalPointStyle[3], totalPointStyle[2], totalPointStyle[5], totalPointStyle[0],totalPointStyle[4], totalPointStyle[1],totalPointStyle[0],totalPointStyle[3],totalPointStyle[2],totalPointStyle[4],totalPointStyle[5],totalPointStyle[6]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "중앙당 간부",
+          data: [
+            76.1,	84.1,	73.5,	80.7,	83.7,	80.2,	79.3,	81.7,	77.1
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "지방당 간부",
+          data: [
+            2.7,	0,	3.4,	0.7,	0,	0.8,	2.3,	0.9,	0
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "법기관(보위부, 안전부, 검찰) 간부",
+          data: [
+            14.2,	13.6,	18.4,	11.4,	12.6,	14.3,	12.6,	11.3,	15.6
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "인민위원회 간부",
+          data: [
+            0.9,	0,	0,	0,	0,	0,	0,	0,	1
+          
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "전문직(의사, 교수, 기술자 등)",
+          data: [
+            0,	0,	0,	0,	0,	0,	0,	0,	0
+          
+          ],
+          borderColor: borderColors[4],
+          pointStyle: pointStyle[4],
+          backgroundColor: borderColors[4],
+          pointBorderColor: borderColors[4],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "군관",
+          data: [
+            0,	0,	0.7,	0,	0,	0,	0,	0,	0
+          
+          ],
+          borderColor: borderColors[5],
+          pointStyle: pointStyle[5],
+          backgroundColor: borderColors[5],
+          pointBorderColor: borderColors[5],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "외화벌이",
+          data: [
+            5.3,	2.3,	4.1,	5,	3,	4,	5.8,	4.4,	5.5
+          ],
+          borderColor: borderColors[6],
+          pointStyle: pointStyle[6],
+          backgroundColor: borderColors[6],
+          pointBorderColor: borderColors[6],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "시장 상인",
+          data: [
+            0.9,	0,	0,	2.1,	0.7,	0,	0, 0,	1
+          
+          ],
+          borderColor: borderColors[7],
+          pointStyle: pointStyle[7],
+          backgroundColor: borderColors[7],
+          pointBorderColor: borderColors[7],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "기업소 공장 간부",
+          data: [
+            0,	0,	0,	0,	0,	0.8,	0,	1.7,	0
+          
+          ],
+          borderColor: borderColors[8],
+          pointStyle: pointStyle[8],
+          backgroundColor: borderColors[8],
+          pointBorderColor: borderColors[8],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "기업소 공장 노동자",
+          data: [
+            0,	0,	0,	0,	0,	0,	0,	0,	0
+          
+          ],
+          borderColor: borderColors[9],
+          pointStyle: pointStyle[9],
+          backgroundColor: borderColors[9],
+          pointBorderColor: borderColors[9],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "농장 관리일꾼",
+          data: [
+            0,	0,	0,	0,	0,	0,	0,	0,	0
+          
+          ],
+          borderColor: borderColors[10],
+          pointStyle: pointStyle[10],
+          backgroundColor: borderColors[10],
+          pointBorderColor: borderColors[10],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "농장원",
+          data: [
+            0,	0,	0,	0,	0,	0,	0,	0,	0
+          
+          ],
+          borderColor: borderColors[11],
+          pointStyle: pointStyle[11],
+          backgroundColor: borderColors[11],
+          pointBorderColor: borderColors[11],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["잘사는 직업", "귀하는 북한에 거주할 당시 어느 직업을 가진 사람들이", "가장 잘산다고 생각했습니까? (1순위)"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "bottom";
+          },
+          align: "start",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return 10;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 100,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 20,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q8_1() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[1], totalBorderColors[3], totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[6]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[3], totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[6]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[3], totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[6]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "돈 버는 것",
+          data: [
+            60.9,	50,	53.2,	46.8,	49.3,	52,	55.2,	43.1,	48.6
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "보안원/보위부 각종 단속",
+          data: [
+            20.9,	30.3,	29.8,	32.4,	27.6,	28.5,	26.4,	35.8,	27.1
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "간부에게 뇌물 고이는 것",
+          data: [
+            0.9,	3,	4.3,	2.2,	5.2,	2.4,	3.5,	3.7,	1.9
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "조직생활",
+          data: [
+            7.3,	6.8,	4.3,	8.6,	9,	5.7,	5.8,	9.2,	13.1
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "출세",
+          data: [
+            2.7,	4.6,	2.8,	4.3,	3.7,	0,	3.5,	2.8,	3.7
+          ],
+          borderColor: borderColors[4],
+          pointStyle: pointStyle[4],
+          backgroundColor: borderColors[4],
+          pointBorderColor: borderColors[4],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "자녀 교육",
+          data: [
+            5.5,	3,	5,	5,	5.2,	8.1,	4.6,	2.8,	2.8
+          ],
+          borderColor: borderColors[5],
+          pointStyle: pointStyle[5],
+          backgroundColor: borderColors[5],
+          pointBorderColor: borderColors[5],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "기타",
+          data: [
+            1.8,	2.3,	0.7,	0.7,	0,	3.3,	1.2,	2.8,	2.8
+          ],
+          borderColor: borderColors[6],
+          pointStyle: pointStyle[6],
+          backgroundColor: borderColors[6],
+          pointBorderColor: borderColors[6],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["일상문제", "일상에서 가장 걱정을 많이 했던 문제는 무엇이었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 80,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q12() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[0], totalBorderColors[4], totalBorderColors[5], totalBorderColors[3]];
+  const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
+  const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "많음-50% 이상",
+          data: [
+            12.1,	7.2,	10.2,	9.7,	8.9,	16.2,	8.1,	4.6,	8.3
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "보통-30% 초과 50% 이하",
+          data: [
+            14.8,	20.9,	14.3,	16.1,	18.5,	15.5,	10.3,	14.1,	12.8
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "적음-0% 초과 30% 이하",
+          data: [
+            60.8,	61.6, 59.9,	54.7,	57.8,	53.6,	52.9,	68,	62.4
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "전혀 없음",
+          data: [
+            12.1,	10.3,	15.6,	19.7,	14.8,	14.7,	28.7,	13.2,	16.5,
+          
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["뇌물", "귀하가 북한에 거주할 당시에 벌어들인 전체 수입중에서", "각종 뇌물로 고인 액수의 비율은 얼마나 되었는지 골라주세요."],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 80,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q15() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[3], totalBorderColors[2], totalBorderColors[5], totalBorderColors[4], totalBorderColors[0], totalBorderColors[1],totalBorderColors[3],totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[0]];
+  const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5], totalBorderColorsRGB[4],totalBorderColorsRGB[0], totalBorderColorsRGB[1],totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[0]];
+  const pointStyle = [totalPointStyle[3], totalPointStyle[2], totalPointStyle[5], totalPointStyle[4],totalPointStyle[0], totalPointStyle[1],totalPointStyle[3],totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[0]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "소매장사",
+          data: [
+            36.8,	38.8,	32.3,	26.8,	21.2,	14,	11.5,	25.3,	19.3
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "개인 편의봉사",
+          data: [
+            5.3,	5.2,	5.7,	2.4,	3.4,	6.1,	6.4,	3.5,	3.7
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "개인 (임)가공",
+          data: [
+            2.1,	4.3,	3.2,	2.4,	0,	2.6,	6.4,	1.2,	2.8
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "식당, 상점 임대 운영",
+          data: [
+            2.1,	0,	3.2,	4.9,	2.5,	0,	2.6,	2.3,	2.8
+          
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "되거리장사",
+          data: [
+            11.6,	6,	16.1,	13,	22, 11.4,	7.7, 24.1,	10.1
+          
+          ],
+          borderColor: borderColors[4],
+          pointStyle: pointStyle[4],
+          backgroundColor: borderColors[4],
+          pointBorderColor: borderColors[4],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "외화벌이 계통",
+          data: [
+            8.4,	12.1,	6.5,	16.3,	8.5,	10.5,	9,	14.9,	10.1
+          
+          ],
+          borderColor: borderColors[5],
+          pointStyle: pointStyle[5],
+          backgroundColor: borderColors[5],
+          pointBorderColor: borderColors[5],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "돈장사",
+          data: [
+            6.3,	5.2,	3.2,	8.1,	3.4,	6.1,	3.9,	4.6,	2.8
+          ],
+          borderColor: borderColors[6],
+          pointStyle: pointStyle[6],
+          backgroundColor: borderColors[6],
+          pointBorderColor: borderColors[6],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "삯벌이",
+          data: [
+            3.2,	10.3,	8,	2.4,	6.8,	7.9,	19.2,	5.8,	5.5
+          
+          ],
+          borderColor: borderColors[7],
+          pointStyle: pointStyle[7],
+          backgroundColor: borderColors[7],
+          pointBorderColor: borderColors[7],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "해외 파견노력 근무",
+          data: [
+            0,	1.7,	1.6,	0,	0.8,	3.5,	3.9,	1.2,	0
+          
+          ],
+          borderColor: borderColors[8],
+          pointStyle: pointStyle[8],
+          backgroundColor: borderColors[8],
+          pointBorderColor: borderColors[8],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "기타",
+          data: [
+            24.2,	16.4,	20.2,	26,	31.4,	37.7,	29.5,	17.2,	20.2
+          
+          ],
+          borderColor: borderColors[9],
+          pointStyle: pointStyle[9],
+          backgroundColor: borderColors[9],
+          pointBorderColor: borderColors[9],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        {
+          label: "해당없음(2020년 신설)",
+          data: [
+            null,	null,	null,	null,	null,	null,	null,	null,	22.9
+          
+          ],
+          borderColor: borderColors[10],
+          pointStyle: pointStyle[10],
+          backgroundColor: borderColors[10],
+          pointBorderColor: borderColors[10],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+          borderDash: borderDashWeb,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: ["잘사는 직업", "귀하는 북한에 거주할 당시 어느 직업을 가진 사람들이", "가장 잘산다고 생각했습니까? (1순위)"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "bottom";
+          },
+          align: "start",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return 10;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 100,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 20,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
+
+function fnChart3q17() {
+  deleteChart();
+  // const subject = document.getElementById("code");
+  // subject.innerHTML = "Uni01)";
+  const borderColors = [totalBorderColors[1], totalBorderColors[3], totalBorderColors[2], totalBorderColors[5],totalBorderColors[4],totalBorderColors[0]];
+  const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3],totalBorderColorsRGB[2], totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[0]];
+  const pointStyle = [totalPointStyle[1], totalPointStyle[3], totalPointStyle[2], totalPointStyle[5],totalPointStyle[4],totalPointStyle[0]];
+
+  const myChart = new Chart(ctx, {
+    type: "line",
+    plugins: [ChartDataLabels, plugin_1img],
+    data: {
+      labels: Array.from({ length: 9 }, (_, i) => i + 2012),
+      datasets: [
+        {
+          label: "북한",
+          data: [
+            23.1,	34.7,	30.4,	32.8,	29.1,	30.3,	45.2,	32.1,	21.1
+          ],
+          borderColor: borderColors[0],
+          tension: 0,
+          pointStyle: pointStyle[0],
+          backgroundColor: borderColors[0],
+          pointBorderColor: borderColors[0],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return 5;
+          },
+          },
+        {
+          label: "중국",
+          data: [
+            71.8,	62.7,	65.2,	60.3,	64.5,	66.1,	54.8,	63.1,	78.9
+          ],
+          borderColor: borderColors[1],
+          pointStyle: pointStyle[1],
+          backgroundColor: borderColors[1],
+          pointBorderColor: borderColors[1],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "남한",
+          data: [
+            0,	1.7,	2.7, 5.2,	3.6,	2.8,	0,	4.8,	0
+          ],
+          borderColor: borderColors[2],
+          pointStyle: pointStyle[2],
+          backgroundColor: borderColors[2],
+          pointBorderColor: borderColors[2],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "러시아",
+          data: [
+            0,	0,	0,	0,	1.8,	0,	0,	0,	0
+          ],
+          borderColor: borderColors[3],
+          pointStyle: pointStyle[3],
+          backgroundColor: borderColors[3],
+          pointBorderColor: borderColors[3],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "일본",
+          data: [
+            0,	0.8,	0.9,	0.9,	0.9,	0.9,	0,	0,	0
+          ],
+          borderColor: borderColors[4],
+          pointStyle: pointStyle[4],
+          backgroundColor: borderColors[4],
+          pointBorderColor: borderColors[4],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        {
+          label: "기타",
+          data: [
+            0,	0,	0.9,	0.9,	0,	0,	0,	0,	0
+          ],
+          borderColor: borderColors[5],
+          pointStyle: pointStyle[5],
+          backgroundColor: borderColors[5],
+          pointBorderColor: borderColors[5],
+          borderWidth: function(context) {
+            if(context.chart.width < mobileScreenSize) return borderWidthMobile;
+            else return borderWidth;
+          },
+          pointRadius: function(context) {
+            if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
+            else return pointRadius;
+          },
+          tension: 0,
+        },
+        
+      ],
+    },
+    options: {
+      aspectRatio: function(context) {
+        if(context.chart.width < mobileScreenSize) return aspectRatioMobile;
+        else return aspectRatioWeb;
+      },
+      // responsive: false,
+      // maintainAspectRatio: false,
+      onHover: (e, chartElement) => {
+        e.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+          const activeDataset = myChart.getActiveElements()
+          if (activeDataset.length) {
+            myChart.data.datasets.forEach((dataset, index) => {
+              if (index == activeDataset[0].datasetIndex) {
+                curIndex = index;
+              } else {
+                myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+                myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
+              }
+            })
+            
+          } else {
+            myChart.data.datasets.forEach((dataset, index) => {
+                myChart.data.datasets[index].borderColor = borderColors[index];
+                myChart.data.datasets[index].backgroundColor = borderColors[index];
+                myChart.data.datasets[index].pointBorderColor = borderColors[index];
+            })
+            curIndex = -1;
+          }
+          myChart.update();
+      },
+      plugins: {
+        background_image: {
+          imgSrc : 'img/chart3_10_bg.png',
+        },
+        title: {
+          display: true,
+          text: ["일상문제", "일상에서 가장 걱정을 많이 했던 문제는 무엇이었습니까?"],
+          color: "white",
+          font:{
+            size: function(context) {
+              if(context.chart.width < mobileScreenSize) return 14;
+              else return 24;
+            },
+          },
+          align: 'start',
+          padding:{
+            bottom: function(context) {
+              if(context.chart.width < mobileScreenSize) return 10;
+              else return 60;
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        
+        datalabels: {
+          color: 'white',
+          font :{
+            size: 12
+          },
+          textAlign: 'center',
+          display: function(context) {
+            if(context.chart.width < mobileScreenSize){
+              return false;
+            }
+            else {
+              return context.datasetIndex === curIndex;
+            }
+          },
+        },
+        legend: {
+          display: true,
+          maxWidth: 300,
+          position: function(context) {
+            if(context.chart.width < mobileScreenSize) return "bottom";
+            else return "right";
+          },
+          align: "center",
+          labels: {
+            boxHeight: 0,
+            padding: function(context) {
+              if(context.chart.width < mobileScreenSize) return legendLabelPaddingMobile;
+              else return legendLabelPaddingWeb;
+            },
+            color: 'white',
+            font: {
+              size:function(context) {
+                if(context.chart.width < mobileScreenSize) return legendFontSizeMobile;
+                else return legendFontSizeWeb;
+              },
+            },
+          },
+        },
+        scales:{
+          ticks:{
+            display: true,
+          },
+        }
+        
+      },
+      scales: {
+        y:
+          {
+            
+            suggestedMin: 0,
+            suggestedMax: 80,
+            grid:{
+              color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
+            },
+            ticks: {
+              fontSize: 24,
+              stepSize: 10,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+        x:
+          {
+            border: {
+              display: true,
+            },
+            grid:{
+              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            },
+            ticks: {
+              autoSkip: false,
+              fontSize: 24,
+              maxRotation: 0,
+              minRotation: 0,
+              font: {
+                size: function(context) {
+                  if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
+                  else return labelFontSizeWeb;
+                },
+              },
+              color: 'white',
+            },
+          },
+      },
+      
+    },
+  });
+};
 
 function fnChart4() {
   deleteChart();
@@ -4652,7 +7368,9 @@ function fnChart4() {
   document.getElementById("menu-title").innerHTML = '영역별 남북통합지수 추이';
   document.getElementById("menu-description").innerHTML = '남북통합지수 (Inter-Korean Integration Index: IKII)는 남한과 북한이 정치적, 경제적, 사회문화적, 의식상으로 통합되어 있는 수준을 계량적으로 보여주는 지표이다. 남북통합지수는 크게 구조통합지수와 의식통합지수로 구성되어 있다. 또, 구조통합지수와 의식통합지수는 영역별 (경제, 정치, 사회문화)로 나뉘어져 있다.';
   document.getElementById("score-title").innerHTML = '통합의 영역과 배점';
-  document.getElementById("score-img").src = './img/score_4.svg';
+  document.getElementById("chart-score").src = './img/score_4_web.svg';
+  document.getElementById("chart-score-mobile").srcset = "./img/score_4_mobile.svg";
+
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -4978,7 +7696,8 @@ function fnChart6() {
   document.getElementById("menu-title").innerHTML = '경제영역 구조통합';
   document.getElementById("menu-description").innerHTML = '경제통합은 남북한이 하나의 경제권으로 통합된 수준 또는 그 과정을 의미한다. 남북한의 물적 자원 교류에서 부터 생산요소의 자유로운 이동, 그리고 상호의존의 구조가 확대되는 과정 전반을 포괄한다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '경제영역 변인들의 분류와 배점';
-  document.getElementById("score-img").src = './img/score_6.svg';
+  document.getElementById("chart-score").src = './img/score_6_web.svg';
+  document.getElementById("chart-score-mobile").srcset = "./img/score_6_mobile.svg";
   const myChart = new Chart(ctx, {
     type: "line",
     plugins: [ChartDataLabels],
@@ -5208,7 +7927,8 @@ function fnChart7() {
   document.getElementById("menu-title").innerHTML = '정치영역 구조통합';
   document.getElementById("menu-description").innerHTML = '정치통합은 남북한이 정치군사적으로 하나의 통일체를 이룬 수준 또는 그 진행 과정을 의미한다. 정치, 군사 회담을 통해 교류가 확대되고 나아가 외교, 군사적 협력으로 이어지는 과정을 포함한다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '정치영역 변인들의 분류와 배점';
-  document.getElementById("score-img").src = './img/score_7.svg';
+  document.getElementById("chart-score").src = './img/score_7_web.svg';
+  document.getElementById("chart-score-mobile").srcset = "./img/score_7_mobile.svg";
   const myChart = new Chart(ctx, {
     type: "line",
     plugins: [ChartDataLabels],
@@ -5436,7 +8156,8 @@ function fnChart8() {
   document.getElementById("menu-title").innerHTML = '사회문화 구조통합';
   document.getElementById("menu-description").innerHTML = '사회문화적 통합은 남북한이 하나의 사회문화적 공동체를 이뤄나가는 과정을 의미한다. 인적 왕래, 공동행사 등을 통해 상대방의 사회문화를 더욱 이해,수용하며 동질성을 형성해가는 과정이다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '사회문화영역 변인들의 분류와 배점';
-  document.getElementById("score-img").src = './img/score_8.svg';
+  document.getElementById("chart-score").src = './img/score_8_web.svg';
+  document.getElementById("chart-score-mobile").srcset = "./img/score_8_mobile.svg";
   const myChart = new Chart(ctx, {
     type: "line",
     plugins: [ChartDataLabels],
@@ -5665,7 +8386,8 @@ function fnChart9() {
   document.getElementById("menu-title").innerHTML = '의식통합';
   document.getElementById("menu-description").innerHTML = '의식통합지수는 남북한 주민의 의식 통합 수준을 측정한다. 남북한 주민들의 통일에 대한 지향성과 상호 포용성, 사회문화 양식의 동질성 등이 의식 통합의 요인이 될 수 있다. 의식통합지수는 정치, 경제, 사회문화영역으로 나뉘고, 총 배점은 250점이다.';
   document.getElementById("score-title").innerHTML = '의식통합지수 변인과 배점';
-  document.getElementById("score-img").src = './img/score_9.svg';
+  document.getElementById("chart-score").src = './img/score_9_web.svg';
+  document.getElementById("chart-score-mobile").srcset = "./img/score_9_mobile.svg";
   const myChart = new Chart(ctx, {
     type: "line",
     plugins: [ChartDataLabels],

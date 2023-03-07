@@ -19,7 +19,7 @@
         z-index: 500;
         width: 36px;
         height: 36px;
-        background-color: #001338;
+        background-color: rgba( 255, 255, 255, 0 );
         border: 0;
     }
     .menu-wrap {
@@ -185,7 +185,7 @@
         display: flex;
         padding-top: 30px;
         padding-bottom: 30px;
-        font-size: 0.5rem;
+        font-size: 0.7rem;
         font-weight: 500;
         text-align: left;
         justify-content: space-between;
