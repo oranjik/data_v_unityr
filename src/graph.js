@@ -4945,7 +4945,8 @@ function fnChart4() {
               // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 90,
               minRotation: 90,
@@ -5170,11 +5171,12 @@ function fnChart6() {
           },
         x:
           {
-            grid:{
-              // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
-            },
+            // grid:{
+            //   // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
+            // },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 90,
               minRotation: 90,
@@ -5401,7 +5403,8 @@ function fnChart7() {
               // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 90,
               minRotation: 90,
@@ -5629,7 +5632,8 @@ function fnChart8() {
               // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 90,
               minRotation: 90,
@@ -5875,7 +5879,8 @@ function fnChart9() {
               // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 0,
               minRotation: 0,
@@ -6109,7 +6114,8 @@ function fnChart11() {
               // color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#031436'))
             },
             ticks: {
-              autoSkip: false,
+              autoskip: true,
+              autoSkipPadding: 50,
               fontSize: 24,
               maxRotation: 0,
               minRotation: 0,
