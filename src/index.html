@@ -16,27 +16,6 @@
     }
     a {
         text-decoration: none;
-        color: #FFF;
-    }
-    #popup {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display:none;
-        text-align: center;
-    }
-    /* .logo {
-        width: 100px;
-        height: 20px;
-    } */
-    #popup:after {
-        display: inline-block;
-        width: 0;
-        vertical-align: middle;
-        height: 100%;
-        content: '';
     }
     .popup-layer {
         position: relative; /*z-index는 반드시 position:relative 속성 필요*/
@@ -86,9 +65,6 @@
     .popup-section {
         width: 20vw;
     }
-    .popup-menu.inactive{
-        opacity: 50%;
-    }
     .popup-menu:hover {
         color: #FFF;
         opacity: 100%;
@@ -128,26 +104,35 @@
                         <div class="popup-title-mobile"><img class="logo" src="./img/logo1.png"/></div>
                         <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_통일의식조사.png" onClick="changeSection(1)"/></a></div>
                         <!-- <hr class="popup-menu-deco"></hr> -->
-                    <div class="popup-menu inactive"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_남북통합지수.png" onClick="changeSection(2)"/></a></div>
+                    <div class="popup-menu"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_남북통합지수.png" onClick="changeSection(2)"/></a></div>
                 </div>
                 <!-- <div class="popup-close-bar">
                     <img class="popup-close" src="./img/close.png" onClick="closeLayer()"/>
                 </div> -->
                 <div class="popup-list-menu">
                     <button type="button" class="mobile-menu">
-                        <!-- <i class="fas fa-bars"></i> -->
-                        <img class="icon-hamburger" src="./img/icon-hamburger.png" />
+                        <!-- <img class="fa-times" src="./img/icon-close.png"> -->
+                        <img class="icon-hamburger" src="./img/icon-hamburger.png"></i>
                     </button>
                 </div>
                 <div class="menu-wrap">
                     <nav id="menu">
                         <!-- "메뉴목록 표시" -->
                         <div class="main-menu">
-                            <span>통일</span>
-                            <ul class="category_list">
-                                <li class=""><a class="link_sub_item" id="menu1-mobile">남한 주민 대상<br>통일의식조사</b></a></li>
-                                <li class=""><a class="link_sub_item" id="menu2-mobile">북한이탈주민 대상<br>통일의식조사</a></li>
-                                <li class=""><a class="link_sub_item" id="menu3-mobile">북한이탈주민 대상<br>북한사회변동조사</a></li>
+                            <span class="main-menu1">통일의식조사</span>
+                            <ul class="category_list1">
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu1-mobile" onClick="changePage(1)">남한 주민 대상<br>통일의식조사</b></a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu2-mobile" onClick="changePage(2)">북한이탈주민 대상<br>통일의식조사</a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu3-mobile" onClick="changePage(3)">북한이탈주민 대상<br>북한사회변동조사</a></li>
+                            </ul>
+                            <span class="main-menu2">남북통합지수</span>
+                            <ul class="category_list2">
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu1-mobile" onClick="changePage(4)">남북통합지수</b></a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu2-mobile" onClick="changePage(6)">구조통합 - 경제영역</a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu3-mobile" onClick="changePage(7)">구조통합 - 정치영역</a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu4-mobile" onClick="changePage(8)">구조통합 - 사회영역</a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu5-mobile" onClick="changePage(9)">의식통합</a></li>
+                                <li class="hamburger-list"><a class="link_sub_item" id="menu6-mobile" onClick="changePage(11)">종합</a></li>
                             </ul> 
                         </div>           
                     </nav>
@@ -155,39 +140,53 @@
             </div>
             <div class="popup-content">
                 <header>
-                    <ul>
-                        <li id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile" style="font-weight: 800;">남한 주민 대상 통일의식조사</div></li>
-                        <li id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div  id="menu2-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
-                        <li id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu3-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
+                    <ul id="survey-menu">
+                        <li class="menu-container" id="menu1-container" onClick="changeMenuNum(1)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu1" class="popup-side-title" src="./img/active_1.png" /><div id="menu1-mobile" class="popup-side-title-mobile" style="font-weight: 800;">남한 주민 대상 통일의식조사</div></li>
+                        <li class="menu-container" id="menu2-container" onClick="changeMenuNum(2)"><img id="menu2"class="popup-side-title" src="./img/normal_2.png" /><div  id="menu2-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 통일의식조사</div></li>
+                        <li class="menu-container" id="menu3-container" onClick="changeMenuNum(3)"><img id="menu3"class="popup-side-title" src="./img/normal_3.png" /><div id="menu3-mobile" class="popup-side-title-mobile">북한 이탈 주민 대상 북한사회변동조사</div></li>
+                    </ul>
+                    <ul id="index-menu" style="display:none;">
+                        <li class="menu-container" id="menu4-container" onClick="changeMenuNum(4)" style="background-color: rgba(255, 255, 255,0.1);"><img id="menu4" class="popup-side-title" src="./img/active_4.png" /></li>
+                        <li class="menu-container" id="menu5-container" onClick="changeMenuNum(5)"><img id="menu5"class="popup-side-title" src="./img/normal_5.png" /></li>
+                        <li class="menu-container" id="menu6-container" onClick="changeMenuNum(6)" style="display: none"><img id="menu6"class="popup-side-title" src="./img/normal_6.png" /></li>
+                        <li class="menu-container" id="menu7-container" onClick="changeMenuNum(7)" style="display: none"><img id="menu7"class="popup-side-title" src="./img/normal_7.png" /></li>
+                        <li class="menu-container" id="menu8-container" onClick="changeMenuNum(8)" style="display: none"><img id="menu8"class="popup-side-title" src="./img/normal_8.png" /></li>
+                        <li class="menu-container" id="menu9-container" onClick="changeMenuNum(9)"><img id="menu9"class="popup-side-title" src="./img/normal_9.png" /></li>
+                        <li class="menu-container" id="menu10-container" onClick="changeMenuNum(10)" style="display: none"><img id="menu10"class="popup-side-title" src="./img/normal_10.png" /></li>
+                        <li class="menu-container" id="menu11-container" onClick="changeMenuNum(11)"><img id="menu11"class="popup-side-title" src="./img/normal_11.png" /></li>
+
                     </ul>
                 </header>
                 <article id="content">
                     <div class="container">
                         <div class="left-container">
-                            <img src="./img/arrow_l.png" class="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
+                            <img src="./img/arrow_l.png" id="arrow-left" onClick="fnMovePrevChart(menuNum)"/>
                         </div>
                         <div class="mid-container">
-                            <!-- <div id="code">Fp01)</div> -->
                             <div id="sub-title">
                                 <div id="sub-title-1">북한사회변동조사/통일 필요성</div>
                                 <div id="sub-title-2">남한주민대상</div>
+                            </div>
+                            <div id="menu-content-container" style="display: none">
+                                <div id="menu-title">영역별 남북통합지수 추이</div>
+                                <div id="menu-description">남북통합지수 (Inter-Korean Integration Index: IKII)는 남한과 북한이 정치적, 경제적, 사회문화적, 의식상으로 통합되어 있는 수준을 계량적으로 보여주는 지표이다. 남북통합지수는 크게 구조통합지수와 의식통합지수로 구성되어 있다. 또, 구조통합지수와 의식통합지수는 영역별 (경제, 정치, 사회문화)로 나뉘어져 있다.</div>
                             </div>
                             <div id="chart-container">
                                 <div class="canvas-container">
                                     <canvas id="myChart"></canvas>
                                 </div>
-                                <div class="chart-legend-container" style="padding:20px">
+                                <div class="chart-legend-container">
                                     <picture>
                                         <source id="chart-legend-mobile" media="(max-width: 420px)" srcset="./img/legend/chart1_1_mobile.png">
                                         <img id="chart-legend" src="./img/legend/chart1_1_web.png">
                                     </picture>
                                 </div>
                             </div>
-                            <div class="arrow-bar-container">
+                            <div id="arrow-bar-container">
                                 <div class="arrow-bar">
-                                    <img src="./img/arrow_l.png" class="arrow-left-mobile" onClick="fnMovePrevChart(menuNum)"/>
+                                    <img src="./img/arrow_l.png" id="arrow-left-mobile" onClick="fnMovePrevChart(menuNum)"/>
                                     <div class="chart-status-container"><div id="chart-status"> 1/10 </div></div>
-                                    <img src="./img/arrow_r.png" class="arrow-right-mobile" onClick="fnMoveNextChart(menuNum)"/>
+                                    <img src="./img/arrow_r.png" id="arrow-right-mobile" onClick="fnMoveNextChart(menuNum)"/>
                                 </div>
                             </div>
                             <!-- <img id="top-button" src="./img/arrow_l.png" onClick="changeMenuNum(2)"/> -->
@@ -195,12 +194,17 @@
                                     <img src="./img/download1_1.png" class="icon-data" />
                                     <img src="./img/download1_3.png" class="icon-image"/>
                             </div>
+                            <div id="score-container" style="display: none">
+                                <div id="score-title">통합의 영역과 배점</div>
+                                <img id="score-img" src="./img/score_4.svg" />
+
+                            </div>
                             <div class="copyright">
                                 Copyright © 2023 IPUS 서울대학교 통일평화연구원 all rights reserved
                             </div>
                         </div>
                         <div class="right-container">
-                        <img src="./img/arrow_r.png" class="arrow-right" onClick="fnMoveNextChart(menuNum)"/>
+                        <img src="./img/arrow_r.png" id="arrow-right" onClick="fnMoveNextChart(menuNum)"/>
                         </div>
                     </div>
                     <script type="text/javascript" src="graph.js"></script>
@@ -214,36 +218,35 @@
         var curChartNum = 1;
         var menuNum = 1;
 
-        let Top = document.querySelector("#top-button");
-        window.addEventListener('scroll', function() {
-            if (this.scrollY > 200) {
-                Top.classList.add('on');
-            }
-            else {
-                Top.classList.remove('on');
-            }
-        })
-        Top.addEventListener('click', function(e) {
-            console.log('HI');
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth'});
-        })
+        // let Top = document.querySelector("#top-button");
+        // window.addEventListener('scroll', function() {
+        //     if (this.scrollY > 200) {
+        //         Top.classList.add('on');
+        //     }
+        //     else {
+        //         Top.classList.remove('on');
+        //     }
+        // })
+        // Top.addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     window.scrollTo({ top: 0, behavior: 'smooth'});
+        // })
 
         document.addEventListener('DOMContentLoaded', function(){
             document.querySelector(".mobile-menu").addEventListener("click", function(e){
                 if ( document.querySelector('.menu-wrap').classList.contains('on') ){
                     //메뉴닫힘
                     document.querySelector('.menu-wrap').classList.remove('on');
-                    document.querySelector('.mobile-menu i').classList.remove('fa-times')
-                    document.querySelector('.mobile-menu i').classList.add('fa-bars');
+                    document.querySelector('.icon-hamburger').src="./img/icon-hamburger.png"
+                    document.querySelector('.mobile-menu').style.backgroundColor =  "#001338";
 
                     //페이지 스크롤 락 해제
                     document.querySelector('#dimmed').remove();
                 } else {
                     //메뉴펼침
                     document.querySelector('.menu-wrap').classList.add('on');
-                    document.querySelector('.mobile-menu i').classList.remove('fa-bars');
-                    document.querySelector('.mobile-menu i').classList.add('fa-times');
+                    document.querySelector('.icon-hamburger').src="./img/icon-close.png";
+                    document.querySelector('.mobile-menu').style.backgroundColor =  "#ffffff";
 
                     //페이지 스크롤 락 레이어 추가
                     let div = document.createElement('div');
@@ -264,12 +267,14 @@
             document.querySelector(".mobile-menu").click();
         });
 
-        const menu=document.querySelector(".main-menu");
-        const subBar=document.querySelector(".main-menu>.category_list");
+        const menu1=document.querySelector(".main-menu1");
+        const subBar1=document.querySelector(".main-menu1>.category_list1");
+        const menu2=document.querySelector(".main-menu2");
+        const subBar2=document.querySelector(".main-menu2>.category_list2");
 
-        let subToggle=true;
-        function show_sub(){
-            console.log(subToggle)
+        let subToggle1=false;
+        let subToggle2=false;
+        function show_sub(subBar, subToggle){
         if(subToggle){
             subBar.style.height="120px";
             subToggle=!subToggle;
@@ -280,18 +285,75 @@
         
         }
 
-        menu.addEventListener("click", show_sub);
+        menu1.addEventListener("click", show_sub(subBar1, subToggle1));
+        menu2.addEventListener("click", show_sub(subBar2, subToggle2));
+
+        function changePage(num) {
+            document.querySelector(".mobile-menu").click();
+            if(num == 1 || num == 2 || num == 3){
+                changeSection(1);
+            }
+            else{
+                changeSection(2);
+            }
+            changeMenuNum(num);
+        }
 
         function changeSection(num){
             if(num == 1){
-                // document.getElementsByClassName("popup-layer").style;
+                document.getElementById("section1").src = "./img/header_active_통일의식조사.png";
+                document.getElementById("section2").src = "./img/header_normal_남북통합지수.png";
+                document.getElementById("section1").style.opacity = "100%";
+                document.getElementById("section2").style.opacity = "50%";
+                document.getElementsByTagName("body").style = "background-color:#001338;";
                 document.getElementById("myChart").style = "background-color: #001338; background-size: 100%;";
                 document.getElementById("popup-layer-background").style="background-color: #001338; background-size: 100%;"
+                document.getElementById("index-menu").style.display = 'none';
+                document.getElementById("survey-menu").style.display = 'block';
+                document.getElementById("menu-content-container").style.display = "none";
+                document.getElementById("score-container").style.display = "none";
+                document.getElementById("arrow-left").style.visibility = "visible";
+                document.getElementById("arrow-right").style.visibility = "visible";
+                document.getElementById("arrow-bar-container").style.display = "flex";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png"
+                    document.getElementById("chart-legend").style ="width: 164px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    
+                    }
+                else {
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png"
+                    document.getElementById("chart-legend").style.width = "300px";
+                } 
+                fnChart1Uni01();
+
             }
             if(num == 2){
-                // document.getElementsByClassName("popup-layer").style;
+                document.getElementById("section1").src = "./img/header_normal_통일의식조사.png";
+                document.getElementById("section2").src = "./img/header_active_남북통합지수.png";
+                document.getElementById("section1").style.opacity = "50%";
+                document.getElementById("section2").style.opacity = "100%";
+                document.getElementsByTagName("body").style = "background-color:#260A0B;";
                 document.getElementById("myChart").style = "background-color: #260A0B; background-size: 100%;";
                 document.getElementById("popup-layer-background").style="background-color: #260A0B; background-size: 100%;";
+                document.getElementById("index-menu").style.display = 'block';
+                document.getElementById("survey-menu").style.display = 'none';
+                document.getElementById("menu-content-container").style.display = "block";
+                document.getElementById("score-container").style.display = "block"; 
+                document.getElementById("arrow-left").style.visibility = "hidden";
+                document.getElementById("arrow-right").style.visibility = "hidden";
+                document.getElementById("arrow-bar-container").style.display = "none";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart4_web.png"
+                    document.getElementById("chart-legend").style ="width: 164px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    
+                    }
+                else {
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart4_mobile.png"
+                    document.getElementById("chart-legend").style.width = "300px";
+                }
+                fnChart4();
             }
         }
 
@@ -302,57 +364,224 @@
                 fnChart1Uni01();
                 document.getElementById("menu1").src = './img/active_1.png';
                 document.getElementById("menu1-container").style = 'background-color: rgba(255, 255, 255,0.1);';
-                document.getElementById("menu1-mobile").style = 'font-weight: 800';
                 document.getElementById("menu2").src = './img/normal_2.png';
                 document.getElementById("menu2-container").style = 'background-color: none;';
-                document.getElementById("menu2-mobile").style = 'font-weight: 300';
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
-                document.getElementById("menu3-mobile").style = 'font-weight: 300';
                 document.getElementById("chart-status").innerHTML = "1/10";
                 if (screen.width > 901) {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart1_1_web.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png";
                 }
                 else {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart1_1_mobile.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart1_1_mobile.png";
                 }
             }
             if(num == 2) {
                 fnChart2Uni01();
                 document.getElementById("menu1").src = './img/normal_1.png';
                 document.getElementById("menu1-container").style = 'background-color: none;';
-                document.getElementById("menu1-mobile").style = 'font-weight: 300';
                 document.getElementById("menu2").src = './img/active_2.png';
                 document.getElementById("menu2-container").style = 'background-color: rgba(255, 255, 255,0.1);';
-                document.getElementById("menu2-mobile").style = 'font-weight: 800';
                 document.getElementById("menu3").src = './img/normal_3.png';
                 document.getElementById("menu3-container").style = 'background-color: none;';
-                document.getElementById("menu3-mobile").style = 'font-weight: 300';
                 document.getElementById("chart-status").innerHTML = "1/10";
                 if (screen.width > 901) {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart2_1_web.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart2_1_web.png";
                 }
                 else {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart2_1_mobile.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart2_1_mobile.png";
                 }
             }
             if(num == 3) {
                 fnChart3q1_1();
                 document.getElementById("menu1").src = './img/normal_1.png';
                 document.getElementById("menu1-container").style = 'background-color: none;';
-                document.getElementById("menu1-mobile").style = 'font-weight: 300';
                 document.getElementById("menu2").src = './img/normal_2.png';
                 document.getElementById("menu2-container").style = 'background-color: none;';
-                document.getElementById("menu2-mobile").style = 'font-weight: 300';
                 document.getElementById("menu3").src = './img/active_3.png';
                 document.getElementById("menu3-container").style = 'background-color: rgba(255, 255, 255,0.1);';
-                document.getElementById("menu3-mobile").style = 'font-weight: 800';
                 document.getElementById("chart-status").innerHTML = "1/10";
                 if (screen.width > 901) {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart3_1_web.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png";
                 }
                 else {
-                    document.getElementById("chart-legend").style.content = url("./img/legend/chart3_1_mobile.png");
+                    document.getElementById("chart-legend").src = "./img/legend/chart3_1_mobile.png";
+                }
+            }
+            if(num == 4) {
+                fnChart4();
+                document.getElementById("menu4").src = './img/active_4.png';
+                document.getElementById("menu4-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu5").src = './img/normal_5.png';
+                document.getElementById("menu5-container").style = 'background-color: none;';
+                document.getElementById("menu6-container").style.display = 'none';
+                document.getElementById("menu7-container").style.display = 'none';
+                document.getElementById("menu8-container").style.display = 'none';
+                document.getElementById("menu9").src = './img/normal_9.png';
+                document.getElementById("menu9-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'none';
+                document.getElementById("menu11").src = './img/normal_11.png';
+                document.getElementById("menu11-container").style = 'background-color: none;';
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart4_web.png"
+                    document.getElementById("chart-legend").style ="width: 164px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    
+                    
+                    }
+                else {
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart4_mobile.png"
+                    document.getElementById("chart-legend").style.width = "300px";
+                }
+            }
+            if(num == 5 || num == 6) {
+                fnChart6();
+                document.getElementById("menu4").src = './img/normal_4.png';
+                document.getElementById("menu4-container").style = 'background-color: none';
+                document.getElementById("menu5").src = './img/active_5.png';
+                document.getElementById("menu5-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu6-container").style.display = 'block';
+                document.getElementById("menu7-container").style.display = 'block';
+                document.getElementById("menu8-container").style.display = 'block';
+                document.getElementById("menu6").src = './img/active_6.png';
+                document.getElementById("menu7").src = './img/normal_7.png';
+                document.getElementById("menu8").src = './img/normal_8.png';
+                document.getElementById("menu9").src = './img/normal_9.png';
+                document.getElementById("menu9-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'none';
+                document.getElementById("menu11").src = './img/normal_11.png';
+                document.getElementById("menu11-container").style = 'background-color: none;';
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart6_web.png"
+                    document.getElementById("chart-legend").style ="width: 172px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                else {
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart6_mobile.png"
+                    document.getElementById("chart-legend").style.width = "300px";
+                }
+            }
+            if(num == 7) {
+                fnChart7();
+                document.getElementById("menu4").src = './img/normal_4.png';
+                document.getElementById("menu4-container").style = 'background-color: none';
+                document.getElementById("menu5").src = './img/active_5.png';
+                document.getElementById("menu5-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu6-container").style.display = 'block';
+                document.getElementById("menu7-container").style.display = 'block';
+                document.getElementById("menu8-container").style.display = 'block';
+                document.getElementById("menu6").src = './img/normal_6.png';
+                document.getElementById("menu7").src = './img/active_7.png';
+                document.getElementById("menu8").src = './img/normal_8.png';
+                document.getElementById("menu9").src = './img/normal_9.png';
+                document.getElementById("menu9-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'none';
+                document.getElementById("menu11").src = './img/normal_11.png';
+                document.getElementById("menu11-container").style = 'background-color: none;';
+                // document.getElementById("chart-status").innerHTML = "1/10";
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart7_web.png"
+                    document.getElementById("chart-legend").style ="width: 166px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                else {
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart7_mobile.png"
+                    document.getElementById("chart-legend").style.width = "300px";
+                }
+            }
+            if(num == 8) {
+                fnChart8();
+                document.getElementById("menu4").src = './img/normal_4.png';
+                document.getElementById("menu4-container").style = 'background-color: none';
+                document.getElementById("menu5").src = './img/active_5.png';
+                document.getElementById("menu5-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu6-container").style.display = 'block';
+                document.getElementById("menu7-container").style.display = 'block';
+                document.getElementById("menu8-container").style.display = 'block';
+                document.getElementById("menu6").src = './img/normal_6.png';
+                document.getElementById("menu7").src = './img/normal_7.png';
+                document.getElementById("menu8").src = './img/active_8.png';
+                document.getElementById("menu9").src = './img/normal_9.png';
+                document.getElementById("menu9-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'none';
+                document.getElementById("menu11").src = './img/normal_11.png';
+                document.getElementById("menu11-container").style = 'background-color: none;';
+                // document.getElementById("chart-status").innerHTML = "1/10";
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart8_web.png"
+                    document.getElementById("chart-legend").style ="width: 176px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    
+                    
+                    }
+                else {
+                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart8_mobile.png"
+                }
+            }
+            if(num == 9 || num == 10) {
+                fnChart9();
+                document.getElementById("menu4").src = './img/normal_4.png';
+                document.getElementById("menu4-container").style = 'background-color: none';
+                document.getElementById("menu5").src = './img/normal_5.png';
+                document.getElementById("menu5-container").style = 'background-color: none';
+                document.getElementById("menu6-container").style.display = 'none';
+                document.getElementById("menu7-container").style.display = 'none';
+                document.getElementById("menu8-container").style.display = 'none';
+                document.getElementById("menu9").src = './img/active_9.png';
+                document.getElementById("menu9-container").style = 'background-color: rgba(255, 255, 255,0.1);';
+                document.getElementById("menu10").src = './img/active_10.png';
+                document.getElementById("menu10-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'block';
+                document.getElementById("menu11").src = './img/normal_11.png';
+                document.getElementById("menu11-container").style = 'background-color: none;';
+                // document.getElementById("chart-status").innerHTML = "1/10";
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart9_web.png"
+                    document.getElementById("chart-legend").style ="width: 163px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    
+                    }
+                else {
+                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart9_mobile.png"
+                }
+            }
+            if(num == 11) {
+                fnChart11();
+                document.getElementById("menu4").src = './img/normal_4.png';
+                document.getElementById("menu4-container").style = 'background-color: none';
+                document.getElementById("menu5").src = './img/normal_5.png';
+                document.getElementById("menu5-container").style = 'background-color: none';
+                document.getElementById("menu6-container").style.display = 'none';
+                document.getElementById("menu7-container").style.display = 'none';
+                document.getElementById("menu8-container").style.display = 'none';
+                document.getElementById("menu9").src = './img/normal_9.png';
+                document.getElementById("menu9-container").style = 'background-color: none;';
+                document.getElementById("menu10-container").style.display = 'none';
+                document.getElementById("menu11").src = './img/active_11.png';
+                document.getElementById("menu11-container").style = 'background-color:  rgba(255, 255, 255,0.1);';
+                // document.getElementById("chart-status").innerHTML = "1/10";
+                document.getElementById("sub-title-1").innerHTML = "남북통합지수";
+                document.getElementById("sub-title-2").innerHTML = "";
+                if(screen.width > 901) {
+                    document.getElementById("chart-legend").src = "./img/legend/chart11_web.png"
+                    document.getElementById("chart-legend").style ="width: 141px; height: auto; padding-top: 20px;";
+                    document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                else {
+                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart11_mobile.png"
                 }
             }
         }
@@ -507,7 +736,7 @@
                     document.getElementById("sub-title-2").innerHTML = "남한주민대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart1_10_web.png"
-                        document.getElementById("chart-legend").style = "width: 138px; height: auto; padding-top: 120px;"
+                        document.getElementById("chart-legend").style = "width: 148px; height: auto; padding-top: 120px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -869,7 +1098,7 @@
                     document.getElementById("sub-title-2").innerHTML = "남한주민대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart1_10_web.png"
-                        document.getElementById("chart-legend").style = "width: 138px; height: auto; padding-top: 120px;"
+                        document.getElementById("chart-legend").style = "width: 148px; height: auto; padding-top: 120px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
