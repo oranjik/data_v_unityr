@@ -13,9 +13,9 @@
     }
     .mobile-menu {
         display: block;
-        position: fixed;
-        top: 20px;
-        right: 15px;
+        position: relative;
+        top: -5px;
+        left: 60px;
         z-index: 500;
         width: 36px;
         height: 36px;
