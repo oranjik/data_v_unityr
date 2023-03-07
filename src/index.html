@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style4.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    <link rel="stylesheet" href="https://use.typekit.net/vts3lys.css">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="./js/includeHTML.js"></script>
@@ -13,20 +14,10 @@
     <style>
     body {
         background-color: #001338;
+        margin: 0;
     }
     a {
         text-decoration: none;
-    }
-    .popup-layer {
-        position: relative; /*z-index는 반드시 position:relative 속성 필요*/
-        display: inline-block; /*속성 변경*/
-        width: 90vw;
-        height: 100vh;
-        vertical-align: middle;
-        margin: auto;
-        min-height: 150px; /*min-height로 되어있어서 텍스트가 길어짐에 따라 높이가 커짐*/
-        padding-bottom: 50px; /*텍스트를 온전히 보이게 하기 위해 버튼 부분을 padding으로 밀어줌*/
-        z-index: 10; /*dimmed보다 z-index 높힘*/
     }
     #popup-layer-background{
         background-color: #001338;
@@ -102,9 +93,9 @@
                 </div>
                 <div class="popup-menu-bar">
                         <div class="popup-title-mobile"><img class="logo" src="./img/logo1.png"/></div>
-                        <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_1.png" onClick="changeSection(1)"/></a></div>
+                        <div class="popup-menu active"><a href="#unity"><img id="section1" class="popup-menu-header" src="./img/header_active_1.png" onClick="changePage(1)"/></a></div>
                         <!-- <hr class="popup-menu-deco"></hr> -->
-                    <div class="popup-menu"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_2.png" onClick="changeSection(2)"/></a></div>
+                    <div class="popup-menu"><a href="#index"><img id="section2" class="popup-menu-header" src="./img/header_normal_2.png" onClick="changePage(4)"/></a></div>
                 </div>
                 <!-- <div class="popup-close-bar">
                     <img class="popup-close" src="./img/close.png" onClick="closeLayer()"/>
@@ -164,10 +155,11 @@
                         </div>
                         <div class="mid-container">
                             <div id="sub-title">
-                                <div id="sub-title-1">북한사회변동조사/통일 필요성</div>
+                                <div id="sub-title-1">북한사회변동조사</div>
                                 <div id="sub-title-2">남한주민대상</div>
                             </div>
                             <div id="menu-content-container" style="display: none">
+                                <div id="menu-subtitle">남북통합지수</div>
                                 <div id="menu-title">영역별 남북통합지수 추이</div>
                                 <div id="menu-description">남북통합지수 (Inter-Korean Integration Index: IKII)는 남한과 북한이 정치적, 경제적, 사회문화적, 의식상으로 통합되어 있는 수준을 계량적으로 보여주는 지표이다. 남북통합지수는 크게 구조통합지수와 의식통합지수로 구성되어 있다. 또, 구조통합지수와 의식통합지수는 영역별 (경제, 정치, 사회문화)로 나뉘어져 있다.</div>
                             </div>
@@ -177,7 +169,7 @@
                                 </div>
                                 <div class="chart-legend-container">
                                     <picture>
-                                        <source id="chart-legend-mobile" media="(max-width: 420px)" srcset="./img/legend/chart1_1_mobile.png">
+                                        <source id="chart-legend-mobile" media="(max-width: 900px)" srcset="./img/legend/chart1_1_mobile.png">
                                         <img id="chart-legend" src="./img/legend/chart1_1_web.png">
                                     </picture>
                                 </div>
@@ -197,7 +189,7 @@
                             <div id="score-container" style="display: none">
                                 <div id="score-title">통합의 영역과 배점</div>
                                 <picture>
-                                    <source id="chart-score-mobile" media="(max-width: 420px)" srcset="./img/score_4_mobile.svg">
+                                    <source id="chart-score-mobile" media="(max-width: 900px)" srcset="./img/score_4_mobile.svg">
                                     <img id="chart-score" src="./img/score_4_web.svg">
                                 </picture>
 
@@ -327,7 +319,7 @@
                     }
                 else {
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png"
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 } 
                 fnChart1Uni01();
 
@@ -347,16 +339,6 @@
                 document.getElementById("arrow-left").style.visibility = "hidden";
                 document.getElementById("arrow-right").style.visibility = "hidden";
                 document.getElementById("arrow-bar-container").style.display = "none";
-                if(screen.width > 901) {
-                    document.getElementById("chart-legend").src = "./img/legend/chart4_web.png"
-                    document.getElementById("chart-legend").style ="width: 164px; height: auto; padding-top: 20px;";
-                    document.getElementById("chart-container").style = "flex-direction: row;";
-                    
-                    }
-                else {
-                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart4_mobile.png"
-                    document.getElementById("chart-legend").style.width = "300px";
-                }
                 fnChart4();
             }
         }
@@ -376,11 +358,14 @@
                 document.getElementById("chart-status").innerHTML = "1/10";
                 document.getElementById("sub-title-1").innerHTML = "통일의식조사";
                 document.getElementById("sub-title-2").innerHTML = "남한주민대상";
-                if (screen.width > 901) {
-                    document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png";
-                }
-                else {
-                    document.getElementById("chart-legend").src = "./img/legend/chart1_1_mobile.png";
+                if(screen.width > 901) {
+                        document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png"
+                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-container").style = "flex-direction: row;";
+                    }
+                    else{
+                        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png"
+                        document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 2) {
@@ -401,7 +386,7 @@
                     }
                     else{
                         document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_1_mobile.png"
-                        document.getElementById("chart-legend").style = "300px";
+                        document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 3) {
@@ -417,12 +402,12 @@
                 document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                 if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png"
-                        document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
                         document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_1_mobile.png"
-                        document.getElementById("chart-legend").style = "300px";
+                        document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 4) {
@@ -445,12 +430,10 @@
                     document.getElementById("chart-legend").src = "./img/legend/chart4_web.png"
                     document.getElementById("chart-legend").style ="width: 164px; height: auto; padding-top: 20px;";
                     document.getElementById("chart-container").style = "flex-direction: row;";
-                    
-                    
                     }
                 else {
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart4_mobile.png"
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 5 || num == 6) {
@@ -479,7 +462,7 @@
                     }
                 else {
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart6_mobile.png"
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 7) {
@@ -509,7 +492,7 @@
                     }
                 else {
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart7_mobile.png"
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 8) {
@@ -540,7 +523,7 @@
                     
                     }
                 else {
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart8_mobile.png"
                 }
             }
@@ -560,7 +543,6 @@
                 document.getElementById("menu10-container").style.display = 'block';
                 document.getElementById("menu11").src = './img/normal_11.svg';
                 document.getElementById("menu11-container").style = 'background-color: none;';
-                // document.getElementById("chart-status").innerHTML = "1/10";
                 document.getElementById("sub-title-1").innerHTML = "남북통합지수";
                 document.getElementById("sub-title-2").innerHTML = "";
                 if(screen.width > 901) {
@@ -570,8 +552,8 @@
                     
                     }
                 else {
-                    document.getElementById("chart-legend").style.width = "300px";
-                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart9_mobile.png"
+                    document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart9_mobile.png";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                 }
             }
             if(num == 11) {
@@ -597,7 +579,7 @@
                     document.getElementById("chart-container").style = "flex-direction: row;";
                 }
                 else {
-                    document.getElementById("chart-legend").style.width = "300px";
+                    document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;"
                     document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart11_mobile.png"
                 }
             }
@@ -930,7 +912,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -945,7 +927,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_2_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -960,7 +942,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_3_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -975,7 +957,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_4_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -990,7 +972,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_5_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 223px; height: auto; padding-top: 140px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1005,7 +987,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_6_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1020,7 +1002,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_7_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 203px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1035,7 +1017,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_8_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 235px; height: auto; padding-top: 120px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1050,7 +1032,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_9_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1065,7 +1047,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_10_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 108px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1402,7 +1384,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1417,7 +1399,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_2_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1432,7 +1414,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_3_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1447,7 +1429,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_4_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1462,7 +1444,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_5_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 223px; height: auto; padding-top: 140px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1477,7 +1459,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_6_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1492,7 +1474,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_7_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 203px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1507,7 +1489,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_8_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 235px; height: auto; padding-top: 120px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1522,7 +1504,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_9_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 500px; height: auto; padding-top: 20px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{
@@ -1537,7 +1519,7 @@
                     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
                     if(screen.width > 901) {
                         document.getElementById("chart-legend").src = "./img/legend/chart3_10_web.png"
-                        document.getElementById("chart-legend").style = "width: 134px; height: auto; padding-top: 100px;"
+                        document.getElementById("chart-legend").style = "width: 108px; height: auto; padding-top: 100px;"
                         document.getElementById("chart-container").style = "flex-direction: row;";
                     }
                     else{

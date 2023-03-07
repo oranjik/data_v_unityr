@@ -2,7 +2,8 @@ Chart.defaults.font.family = 'NanumSquare';
 
 const totalBorderColors = ["#3E5FFF", "#40FF76", "#E94B03", "#FF006E", "#804AA8", "#FF8A0A", "#636363"]
 const totalBorderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128,74,168],[255,138,10], [99,99,99]]
-const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'square', 'rect']
+const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'rectRounded', 'rect']
+const totalPointRadius = [5, 5, 4, 5, 4, 5, 5]
 const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./img/china.png','./img/russia.png']
 
 let curIndex = -1;
@@ -17,6 +18,7 @@ const borderWidthMobile = 1;
 const borderWidth = 3;
 const pointRadiusMobile = 2;
 const pointRadius = 4;
+const pointRadiusBig = 5;
 
 const titleSizeMobile = 13;
 const titleSizeWeb = 24;
@@ -100,6 +102,7 @@ function fnChart1Uni01() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -123,7 +126,7 @@ function fnChart1Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -142,7 +145,7 @@ function fnChart1Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -161,7 +164,7 @@ function fnChart1Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -325,6 +328,7 @@ function fnChart1Uni06() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4],totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4], totalPointStyle[1]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[2],totalPointRadius[3], totalPointRadius[4], totalPointRadius[1]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -354,7 +358,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -373,7 +377,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -392,7 +396,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -411,7 +415,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -430,7 +434,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
   
@@ -450,7 +454,7 @@ function fnChart1Uni06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
   
@@ -607,6 +611,7 @@ function fnChart1Nk01() {
   const borderColors = [totalBorderColors[5], totalBorderColors[2],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[5],totalBorderColorsRGB[2],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[5], totalPointStyle[2], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[5], totalPointRadius[2], totalPointRadius[3]];
 
 
   const myChart = new Chart(ctx, {
@@ -628,7 +633,7 @@ function fnChart1Nk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -651,7 +656,7 @@ function fnChart1Nk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -671,7 +676,7 @@ function fnChart1Nk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -829,6 +834,7 @@ function fnChart1Nk03() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]]
 
 
   const myChart = new Chart(ctx, {
@@ -854,7 +860,7 @@ function fnChart1Nk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -873,7 +879,7 @@ function fnChart1Nk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return  pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -1032,6 +1038,7 @@ function fnChart1Nk10() {
   const borderColors = [totalBorderColors[3], totalBorderColors[0]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[0]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[0]];
+  const pointRadiusWeb = [totalPointRadius[3], totalPointRadius[0]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -1052,7 +1059,7 @@ function fnChart1Nk10() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1075,7 +1082,7 @@ function fnChart1Nk10() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -1237,6 +1244,7 @@ function fnChart1Nkp03() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -1257,7 +1265,7 @@ function fnChart1Nkp03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1280,7 +1288,7 @@ function fnChart1Nkp03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -1439,6 +1447,7 @@ function fnChart1Nkp07_11() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
 
   const myChart = new Chart(ctx, {
@@ -1460,7 +1469,7 @@ function fnChart1Nkp07_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1483,7 +1492,7 @@ function fnChart1Nkp07_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -1503,7 +1512,7 @@ function fnChart1Nkp07_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -1662,6 +1671,7 @@ function fnChart1Nkd01_11() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -1681,7 +1691,7 @@ function fnChart1Nkd01_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -1703,7 +1713,7 @@ function fnChart1Nkd01_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -1859,6 +1869,7 @@ function fnChart1Fp01() {
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[1], totalPointRadius[2],totalPointRadius[3],totalPointRadius[4]]
 
 
 const myChart = new Chart(ctx, {
@@ -1883,7 +1894,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-          else return 5;
+          else return pointRadiusWeb[0];
         },
         },
       {
@@ -1901,7 +1912,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-          else return pointRadius;
+          else return pointRadiusWeb[1];
         },
         tension: 0,
       },
@@ -1920,7 +1931,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-          else return pointRadius;
+          else return pointRadiusWeb[2];
         },
         tension: 0,
       },
@@ -1940,7 +1951,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-          else return 5;
+          else return pointRadiusWeb[3];
         },
         tension: 0,
       },
@@ -1959,7 +1970,7 @@ const myChart = new Chart(ctx, {
         },
         pointRadius: function(context) {
           if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-          else return pointRadius;
+          else return pointRadiusWeb[4];
         },
         tension: 0,
       },
@@ -2120,6 +2131,7 @@ function fnChart1Fp02() {
   const borderColors = [totalBorderColors[0], totalBorderColors[1],totalBorderColors[2],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[2],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[2], totalPointStyle[3], totalPointStyle[4]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[1], totalPointRadius[2],totalPointRadius[3],totalPointRadius[4]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2144,7 +2156,7 @@ function fnChart1Fp02() {
           pointBorderColor: borderColors[0],
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -2163,7 +2175,7 @@ function fnChart1Fp02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -2183,7 +2195,7 @@ function fnChart1Fp02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -2203,7 +2215,7 @@ function fnChart1Fp02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -2223,7 +2235,7 @@ function fnChart1Fp02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -2380,6 +2392,7 @@ function fnChart2Uni01() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2399,7 +2412,7 @@ function fnChart2Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2422,7 +2435,7 @@ function fnChart2Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -2441,7 +2454,7 @@ function fnChart2Uni01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -2602,6 +2615,7 @@ function fnChart2Uni03() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3],totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[1]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[1]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3], totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[1]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3], totalPointRadius[2],totalPointRadius[5],totalPointRadius[4],totalPointRadius[1]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -2621,7 +2635,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2644,7 +2658,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -2663,7 +2677,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -2682,7 +2696,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -2701,7 +2715,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
   
@@ -2721,7 +2735,7 @@ function fnChart2Uni03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
   
@@ -2882,6 +2896,7 @@ function fnChart2Sk01() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
 
   const myChart = new Chart(ctx, {
@@ -2903,7 +2918,7 @@ function fnChart2Sk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -2927,7 +2942,7 @@ function fnChart2Sk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -2947,7 +2962,7 @@ function fnChart2Sk01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -3107,6 +3122,7 @@ function fnChart2Sk03() {
   const borderColors = [totalBorderColors[0], totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3126,7 +3142,7 @@ function fnChart2Sk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3149,7 +3165,7 @@ function fnChart2Sk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -3168,7 +3184,7 @@ function fnChart2Sk03() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -3330,6 +3346,7 @@ function fnChart2Sk06() {
   const borderColors = [totalBorderColors[3],totalBorderColors[5]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[5]]
   const pointStyle = [totalPointStyle[3], totalPointStyle[5]];
+  const pointRadiusWeb = [totalPointRadius[3], totalPointRadius[5]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3350,7 +3367,7 @@ function fnChart2Sk06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3374,7 +3391,7 @@ function fnChart2Sk06() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -3536,6 +3553,7 @@ function fnChart2Sk07() {
   const borderColors = [totalBorderColors[0],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3555,7 +3573,7 @@ function fnChart2Sk07() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3578,7 +3596,7 @@ function fnChart2Sk07() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -3737,6 +3755,7 @@ function fnChart2Nk02() {
   const borderColors = [totalBorderColors[0],totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3757,7 +3776,7 @@ function fnChart2Nk02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -3781,7 +3800,7 @@ function fnChart2Nk02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -3801,7 +3820,7 @@ function fnChart2Nk02() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -3963,6 +3982,7 @@ function fnChart2Nk07() {
   const borderColors = [totalBorderColors[0],totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[5],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[5],totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[5], totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -3983,7 +4003,7 @@ function fnChart2Nk07() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -4007,7 +4027,7 @@ function fnChart2Nk07() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -4027,7 +4047,7 @@ function fnChart2Nk07() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -4189,6 +4209,7 @@ function fnChart2Fp01() {
   const borderColors = [totalBorderColors[0],totalBorderColors[1],totalBorderColors[5],totalBorderColors[3],totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[5],totalBorderColorsRGB[3],totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[1],totalPointStyle[5],totalPointStyle[3],totalPointStyle[4]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[1], totalPointRadius[5],totalPointRadius[3],totalPointRadius[4]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -4208,7 +4229,7 @@ function fnChart2Fp01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -4230,7 +4251,7 @@ function fnChart2Fp01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -4249,7 +4270,7 @@ function fnChart2Fp01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -4268,7 +4289,7 @@ function fnChart2Fp01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -4287,7 +4308,7 @@ function fnChart2Fp01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -4446,6 +4467,7 @@ function fnChart2Skd01() {
   const borderColors = [totalBorderColors[0],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
 
   const myChart = new Chart(ctx, {
@@ -4466,7 +4488,7 @@ function fnChart2Skd01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -4488,7 +4510,7 @@ function fnChart2Skd01() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -4645,6 +4667,7 @@ function fnChart3q1_1() {
   const borderColors = [totalBorderColors[0], totalBorderColors[4],totalBorderColors[5],totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[4], totalPointRadius[5],totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -4668,7 +4691,7 @@ function fnChart3q1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -4687,7 +4710,7 @@ function fnChart3q1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -4706,7 +4729,7 @@ function fnChart3q1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -4725,7 +4748,7 @@ function fnChart3q1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -4801,7 +4824,7 @@ function fnChart3q1_1() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -4886,6 +4909,7 @@ function fnChart3q1_11() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -4909,7 +4933,7 @@ function fnChart3q1_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -4928,7 +4952,7 @@ function fnChart3q1_11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -5008,7 +5032,7 @@ function fnChart3q1_11() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -5093,6 +5117,7 @@ function fnChart3q1_11_1() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -5116,7 +5141,7 @@ function fnChart3q1_11_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -5135,7 +5160,7 @@ function fnChart3q1_11_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -5215,7 +5240,7 @@ function fnChart3q1_11_1() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -5300,6 +5325,7 @@ function fnChart3q1_12() {
   const borderColors = [totalBorderColors[0], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -5323,7 +5349,7 @@ function fnChart3q1_12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -5342,7 +5368,7 @@ function fnChart3q1_12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -5419,7 +5445,7 @@ function fnChart3q1_12() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -5504,6 +5530,8 @@ function fnChart3q1_13() {
   const borderColors = [totalBorderColors[0], totalBorderColors[4], totalBorderColors[5], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[4], totalPointRadius[5],totalPointRadius[3]]
+
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -5512,7 +5540,7 @@ function fnChart3q1_13() {
       labels: Array.from({ length: 6 }, (_, i) => i + 2015),
       datasets: [
         {
-          label: ["가족 모두 충분한 양과", "다양한 음식"],
+          label: "가족 모두 충분한 양과 다양한 음식",
           data: [
             40,	34.1,	31.7,	26.4,	40.9,	36.7,
           ],
@@ -5527,11 +5555,11 @@ function fnChart3q1_13() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
-          label: ["가족 모두 충분한 양", "그러나 다양하지 않은 음식"],
+          label: "가족 모두 충분한 양, 그러나 다양하지 않은 음식",
           data: [
             41.4,	51.1,	50.8,	47.1,	45.2,	44,
           
@@ -5546,7 +5574,7 @@ function fnChart3q1_13() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -5566,7 +5594,7 @@ function fnChart3q1_13() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -5586,7 +5614,7 @@ function fnChart3q1_13() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -5663,13 +5691,13 @@ function fnChart3q1_13() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
-          align: "center",
+          align: "start",
           labels: {
             boxHeight: 0,
             padding: function(context) {
@@ -5748,6 +5776,7 @@ function fnChart3q4_1_1() {
   const borderColors = [totalBorderColors[3], totalBorderColors[2], totalBorderColors[5], totalBorderColors[0], totalBorderColors[4], totalBorderColors[1],totalBorderColors[0],totalBorderColors[3],totalBorderColors[2],totalBorderColors[4],totalBorderColors[5],totalBorderColors[6]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5], totalBorderColorsRGB[0],totalBorderColorsRGB[4], totalBorderColorsRGB[1],totalBorderColorsRGB[0], totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[4],totalBorderColorsRGB[5],totalBorderColorsRGB[6]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[2], totalPointStyle[5], totalPointStyle[0],totalPointStyle[4], totalPointStyle[1],totalPointStyle[0],totalPointStyle[3],totalPointStyle[2],totalPointStyle[4],totalPointStyle[5],totalPointStyle[6]];
+  const pointRadiusWeb = [totalPointRadius[3], totalPointRadius[2], totalPointRadius[5],totalPointRadius[0],totalPointRadius[4],totalPointRadius[1],totalPointRadius[0],totalPointRadius[3],totalPointRadius[2],totalPointRadius[4],totalPointRadius[5],totalPointRadius[6]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -5771,7 +5800,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return  pointRadiusWeb[0];
           },
           },
         {
@@ -5789,7 +5818,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -5808,7 +5837,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return  pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -5828,7 +5857,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -5848,7 +5877,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -5868,7 +5897,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
         },
@@ -5887,7 +5916,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[6];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -5908,7 +5937,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[7];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -5929,7 +5958,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[8];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -5950,7 +5979,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[9];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -5971,7 +6000,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[10];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -5992,7 +6021,7 @@ function fnChart3q4_1_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[11];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6070,7 +6099,7 @@ function fnChart3q4_1_1() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -6155,6 +6184,7 @@ function fnChart3q8_1() {
   const borderColors = [totalBorderColors[0], totalBorderColors[1], totalBorderColors[3], totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[6]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[1],totalBorderColorsRGB[3], totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[6]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[1], totalPointStyle[3], totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[6]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[1], totalPointRadius[3],totalPointRadius[2],totalPointRadius[5],totalPointRadius[4],totalPointRadius[6]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -6178,7 +6208,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -6196,7 +6226,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -6215,7 +6245,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -6234,7 +6264,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -6253,7 +6283,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -6272,7 +6302,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
         },
@@ -6291,7 +6321,7 @@ function fnChart3q8_1() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[6];
           },
           tension: 0,
         },
@@ -6368,13 +6398,13 @@ function fnChart3q8_1() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
-          align: "center",
+          align: "start",
           labels: {
             boxHeight: 0,
             padding: function(context) {
@@ -6453,6 +6483,7 @@ function fnChart3q12() {
   const borderColors = [totalBorderColors[0], totalBorderColors[4], totalBorderColors[5], totalBorderColors[3]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[4],totalBorderColorsRGB[5], totalBorderColorsRGB[3]];
   const pointStyle = [totalPointStyle[0], totalPointStyle[4], totalPointStyle[5], totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[4], totalPointRadius[5],totalPointRadius[3]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -6476,7 +6507,7 @@ function fnChart3q12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -6494,7 +6525,7 @@ function fnChart3q12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -6513,7 +6544,7 @@ function fnChart3q12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -6533,7 +6564,7 @@ function fnChart3q12() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -6610,13 +6641,13 @@ function fnChart3q12() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
-          align: "center",
+          align: "start",
           labels: {
             boxHeight: 0,
             padding: function(context) {
@@ -6695,6 +6726,7 @@ function fnChart3q15() {
   const borderColors = [totalBorderColors[3], totalBorderColors[2], totalBorderColors[5], totalBorderColors[4], totalBorderColors[0], totalBorderColors[1],totalBorderColors[3],totalBorderColors[2],totalBorderColors[5],totalBorderColors[4],totalBorderColors[0]];
   const borderColorsRGB = [totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5], totalBorderColorsRGB[4],totalBorderColorsRGB[0], totalBorderColorsRGB[1],totalBorderColorsRGB[3],totalBorderColorsRGB[2],totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[0]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[2], totalPointStyle[5], totalPointStyle[4],totalPointStyle[0], totalPointStyle[1],totalPointStyle[3],totalPointStyle[2],totalPointStyle[5],totalPointStyle[4],totalPointStyle[0]];
+  const pointRadiusWeb = [totalPointRadius[3], totalPointRadius[2], totalPointRadius[5],totalPointRadius[4],totalPointRadius[0],totalPointRadius[1],totalPointRadius[3],totalPointRadius[2],totalPointRadius[5],totalPointRadius[4],totalPointRadius[0]];
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -6718,7 +6750,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -6736,7 +6768,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -6755,7 +6787,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -6775,7 +6807,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -6795,7 +6827,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -6815,7 +6847,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
         },
@@ -6834,7 +6866,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[6];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6855,7 +6887,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[7];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6876,7 +6908,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[8];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6897,7 +6929,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[9];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6918,7 +6950,7 @@ function fnChart3q15() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[10];
           },
           tension: 0,
           borderDash: borderDashWeb,
@@ -6996,7 +7028,7 @@ function fnChart3q15() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
@@ -7081,6 +7113,7 @@ function fnChart3q17() {
   const borderColors = [totalBorderColors[1], totalBorderColors[3], totalBorderColors[2], totalBorderColors[5],totalBorderColors[4],totalBorderColors[0]];
   const borderColorsRGB = [totalBorderColorsRGB[1],totalBorderColorsRGB[3],totalBorderColorsRGB[2], totalBorderColorsRGB[5],totalBorderColorsRGB[4],totalBorderColorsRGB[0]];
   const pointStyle = [totalPointStyle[1], totalPointStyle[3], totalPointStyle[2], totalPointStyle[5],totalPointStyle[4],totalPointStyle[0]];
+  const pointRadiusWeb = [totalPointRadius[1], totalPointRadius[3], totalPointRadius[2],totalPointRadius[5],totalPointRadius[4],totalPointRadius[0]]
 
   const myChart = new Chart(ctx, {
     type: "line",
@@ -7104,7 +7137,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return 5;
+            else return pointRadiusWeb[0];
           },
           },
         {
@@ -7122,7 +7155,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -7141,7 +7174,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -7160,7 +7193,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -7179,7 +7212,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -7198,7 +7231,7 @@ function fnChart3q17() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[5];
           },
           tension: 0,
         },
@@ -7278,13 +7311,13 @@ function fnChart3q17() {
           },
         },
         legend: {
-          display: true,
+          display: false,
           maxWidth: 300,
           position: function(context) {
             if(context.chart.width < mobileScreenSize) return "bottom";
             else return "right";
           },
-          align: "center",
+          align: "start",
           labels: {
             boxHeight: 0,
             padding: function(context) {
@@ -7312,13 +7345,13 @@ function fnChart3q17() {
           {
             
             suggestedMin: 0,
-            suggestedMax: 80,
+            suggestedMax: 40,
             grid:{
               color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
               fontSize: 24,
-              stepSize: 10,
+              stepSize: 5,
               font: {
                 size: function(context) {
                   if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
@@ -7358,15 +7391,14 @@ function fnChart3q17() {
 
 function fnChart4() {
   deleteChart();
-
-  // const subject = document.getElementById("code");
-  // subject.innerHTML = "Skd01)";
   const borderColors = [totalBorderColors[0],totalBorderColors[3], totalBorderColors[2], totalBorderColors[1], totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3], totalBorderColorsRGB[2], totalBorderColorsRGB[1], totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3], totalPointStyle[2], totalPointStyle[1], totalPointStyle[4]];
-
-  document.getElementById("menu-title").innerHTML = '영역별 남북통합지수 추이';
-  document.getElementById("menu-description").innerHTML = '남북통합지수 (Inter-Korean Integration Index: IKII)는 남한과 북한이 정치적, 경제적, 사회문화적, 의식상으로 통합되어 있는 수준을 계량적으로 보여주는 지표이다. 남북통합지수는 크게 구조통합지수와 의식통합지수로 구성되어 있다. 또, 구조통합지수와 의식통합지수는 영역별 (경제, 정치, 사회문화)로 나뉘어져 있다.';
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3], totalPointRadius[2],totalPointRadius[1],totalPointRadius[4]]
+  document.getElementById("menu-subtitle").style.display = 'block';
+  document.getElementById("menu-subtitle").innerHTML ='남북통합지수';
+  document.getElementById("menu-title").innerHTML = "남북통합지수<span style='font-size:12px; font-weight:500;'>(Inter-Korean Integration Index: IKII)</span>는 남한과 북한이 정치적, 경제적, 사회문화적, 의식상으로 통합되어 있는 수준을 계량적으로 보여주는 지표이다.";
+  document.getElementById("menu-description").innerHTML = "<span style='font-size:12px'>남북통합지수는 크게 <b>구조통합지수</b>와 <b>의식통합지수</b>로 구성되어 있다. 또, 구조통합지수와 의식통합지수는 영역별(경제, 정치, 사회문화)로 나뉘어져 있다.</span>";
   document.getElementById("score-title").innerHTML = '통합의 영역과 배점';
   document.getElementById("chart-score").src = './img/score_4_web.svg';
   document.getElementById("chart-score-mobile").srcset = "./img/score_4_mobile.svg";
@@ -7390,7 +7422,7 @@ function fnChart4() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -7412,7 +7444,7 @@ function fnChart4() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -7431,7 +7463,7 @@ function fnChart4() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -7450,7 +7482,7 @@ function fnChart4() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -7469,7 +7501,7 @@ function fnChart4() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[4];
           },
           tension: 0,
         },
@@ -7489,14 +7521,13 @@ function fnChart4() {
             myChart.data.datasets.forEach((dataset, index) => {
               if (index == activeDataset[0].datasetIndex) {
                 curIndex = index;
-                curDataIndex = activeDataset[0].dataIndex;
+                curDataIndex = activeDataset[0].index;
               } else {
                 myChart.data.datasets[index].pointBorderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
                 myChart.data.datasets[index].backgroundColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
                 myChart.data.datasets[index].borderColor = `rgba(${borderColorsRGB[index][0]}, ${borderColorsRGB[index][1]}, ${borderColorsRGB[index][2]}, 0.2)`;
               }
             })
-            
           } else {
             myChart.data.datasets.forEach((dataset, index) => {
                 myChart.data.datasets[index].borderColor = borderColors[index];
@@ -7504,22 +7535,27 @@ function fnChart4() {
                 myChart.data.datasets[index].pointBorderColor = borderColors[index];
             })
             curIndex = -1;
+            curDataIndex = -1;
           }
           myChart.update();
       },
       plugins: {
         title: {
-          display: false,
-          text: ["남한 주민 친근감", "귀하는 남한에 살면서 남한 주민들이 얼마나 친근하게","느껴지십니까?"],
+          display: true,
+          text: "영역별 남북통합지수 추이",
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
-              else return titleSizeWeb;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile_index;
+              else return titleSizeWeb_index;
             },
           },
           align: 'start',
           padding:{
+            top: function(context) {
+              if(context.chart.width < mobileScreenSize) return 30;
+              else return 50;
+            },
             bottom: function(context) {
               if(context.chart.width < mobileScreenSize) return titleBottomMobile;
               else return titleBottomWeb;
@@ -7538,29 +7574,24 @@ function fnChart4() {
             else return 'gray';
           },
           display: false,
-          // anchor : 'start',
-          align: function(context) {
-            if (context.dataIndex == 3 || context.dataIndex == 11){
-              return 'end';
-            }
-            else {
-              return 'left';
-            }
-          },
-          textAlign: function(context) {
-            if(context.dataIndex == 3) {
-              return 'left';
-            }
-            else {
-              return 'right';
-            }
-          },
+          anchor : 'start',
           offset: 10,
           labels: {
             title: {
               font: {
                 size: 25,
-                lineHeight: 1.8,
+                lineHeight: 1.6,
+                family: "acumin-pro-condensed",
+                weight: 700,
+              },
+              align: function(context) {
+                if (context.dataIndex == 3 || context.dataIndex == 11){
+                  return 'top';
+                } else if (context.dataIndex == 18) {
+                  return '176';
+                } else {
+                  return '178';
+                }
               },
               formatter: function(value, context) {
                 return context.chart.data.labels[context.dataIndex]
@@ -7574,14 +7605,29 @@ function fnChart4() {
               },
             },
             value: {
-              textAlign: function(context) {
-                if(context.datasetIndex == 3) {
-                  return 'left';
-                }
-                else return 'right';
-              },
               font : {
                 size: 8,
+              },
+              align: function(context) {
+                if (context.dataIndex == 3){
+                  return '-80';
+                } else if (context.dataIndex == 11) {
+                  return '-110';
+                }
+                else {
+                  return '130';
+                }
+              },
+              padding: function(context) {
+                if (context.dataIndex == 3){
+                  return {left: 55, top: 10};
+                } else if (context.dataIndex == 11) {
+                  return {top: 12};
+                } else if (context.dataIndex == 18) {
+                  return {left: 35, top: 7};
+                } else {
+                  return {left: 35, top: 5};
+                }
               },
               formatter: function(value, context) {
                 if(context.dataIndex == 3) {
@@ -7691,8 +7737,9 @@ function fnChart6() {
   const borderColors = ["#00468A","#3A82FF", "#C0DCFF"];
   const borderColorsRGB = [[0, 70, 138], [58, 130, 255], [192, 220, 255]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[0],totalPointStyle[0]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[0], totalPointRadius[0]]
 
-
+  document.getElementById("menu-subtitle").style.display = 'none';
   document.getElementById("menu-title").innerHTML = '경제영역 구조통합';
   document.getElementById("menu-description").innerHTML = '경제통합은 남북한이 하나의 경제권으로 통합된 수준 또는 그 과정을 의미한다. 남북한의 물적 자원 교류에서 부터 생산요소의 자유로운 이동, 그리고 상호의존의 구조가 확대되는 과정 전반을 포괄한다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '경제영역 변인들의 분류와 배점';
@@ -7716,7 +7763,7 @@ function fnChart6() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -7738,7 +7785,7 @@ function fnChart6() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -7757,7 +7804,7 @@ function fnChart6() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -7922,8 +7969,9 @@ function fnChart7() {
   const borderColors = ["#6B0040", "#FF006E", "#FF9BCD"];
   const borderColorsRGB = [[107, 0, 64], [220, 0, 110], [255, 155, 205]];
   const pointStyle = [totalPointStyle[3], totalPointStyle[3],totalPointStyle[3]];
+  const pointRadiusWeb = [totalPointRadius[3], totalPointRadius[3], totalPointRadius[3]]
 
-
+  document.getElementById("menu-subtitle").style.display = 'none';
   document.getElementById("menu-title").innerHTML = '정치영역 구조통합';
   document.getElementById("menu-description").innerHTML = '정치통합은 남북한이 정치군사적으로 하나의 통일체를 이룬 수준 또는 그 진행 과정을 의미한다. 정치, 군사 회담을 통해 교류가 확대되고 나아가 외교, 군사적 협력으로 이어지는 과정을 포함한다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '정치영역 변인들의 분류와 배점';
@@ -7947,7 +7995,7 @@ function fnChart7() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -7969,7 +8017,7 @@ function fnChart7() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -7988,7 +8036,7 @@ function fnChart7() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -8151,8 +8199,9 @@ function fnChart8() {
   const borderColors = ["#722E00","#F85606", "#FFA084"];
   const borderColorsRGB = [[114, 46, 0], [248, 86, 6], [255, 160, 132]];
   const pointStyle = [totalPointStyle[2], totalPointStyle[2], totalPointStyle[2]];
+  const pointRadiusWeb = [totalPointRadius[2], totalPointRadius[2], totalPointRadius[2]]
 
-
+  document.getElementById("menu-subtitle").style.display = 'none';
   document.getElementById("menu-title").innerHTML = '사회문화 구조통합';
   document.getElementById("menu-description").innerHTML = '사회문화적 통합은 남북한이 하나의 사회문화적 공동체를 이뤄나가는 과정을 의미한다. 인적 왕래, 공동행사 등을 통해 상대방의 사회문화를 더욱 이해,수용하며 동질성을 형성해가는 과정이다. 배점은 제도적 통합에 90점, 관계적 통합에 160점을 각각 배정하여 총 250점이다.';
   document.getElementById("score-title").innerHTML = '사회문화영역 변인들의 분류와 배점';
@@ -8162,7 +8211,7 @@ function fnChart8() {
     type: "line",
     plugins: [ChartDataLabels],
     data: {
-      labels: Array.from({ length: 32 }, (_, i) => i + 2008),
+      labels: Array.from({ length: 32 }, (_, i) => i + 1989),
       datasets: [
         {
           label: "제도통합지수",
@@ -8176,7 +8225,7 @@ function fnChart8() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -8198,7 +8247,7 @@ function fnChart8() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -8217,7 +8266,7 @@ function fnChart8() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -8381,8 +8430,9 @@ function fnChart9() {
   const borderColors = [totalBorderColors[0],totalBorderColors[3], totalBorderColors[2], totalBorderColors[4]];
   const borderColorsRGB = [totalBorderColorsRGB[0],totalBorderColorsRGB[3], totalBorderColorsRGB[2], totalBorderColorsRGB[4]]
   const pointStyle = [totalPointStyle[0], totalPointStyle[3], totalPointStyle[2], totalPointStyle[4]];
+  const pointRadiusWeb = [totalPointRadius[0], totalPointRadius[3], totalPointRadius[2],totalPointRadius[4]]
 
-
+  document.getElementById("menu-subtitle").style.display = 'none';
   document.getElementById("menu-title").innerHTML = '의식통합';
   document.getElementById("menu-description").innerHTML = '의식통합지수는 남북한 주민의 의식 통합 수준을 측정한다. 남북한 주민들의 통일에 대한 지향성과 상호 포용성, 사회문화 양식의 동질성 등이 의식 통합의 요인이 될 수 있다. 의식통합지수는 정치, 경제, 사회문화영역으로 나뉘고, 총 배점은 250점이다.';
   document.getElementById("score-title").innerHTML = '의식통합지수 변인과 배점';
@@ -8406,7 +8456,7 @@ function fnChart9() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
@@ -8428,7 +8478,7 @@ function fnChart9() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[1];
           },
           tension: 0,
         },
@@ -8447,7 +8497,7 @@ function fnChart9() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[2];
           },
           tension: 0,
         },
@@ -8466,7 +8516,7 @@ function fnChart9() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[3];
           },
           tension: 0,
         },
@@ -8629,12 +8679,14 @@ function fnChart11() {
   const borderColors = ["#FFFFFF"];
   const borderColorsRGB = [[255, 255, 255]]
   const pointStyle = [totalPointStyle[0]];
+  const pointRadiusWeb = [totalPointRadius[0]];
 
-
+  document.getElementById("menu-subtitle").style.display = 'none';
   document.getElementById("menu-title").innerHTML = '2010~2020년 남북 통합지수 추이';
   document.getElementById("menu-description").innerHTML = '2020년 남북통합지수는 1000점 만점에 180.1 점이다. 남북한의 통합 수준을 백분율로 표시하면 18.0%이다.';
   document.getElementById("score-title").innerHTML = '';
-  document.getElementById("score-img").src = '';
+  document.getElementById("chart-score").src = '';
+  document.getElementById("chart-score-mobile").srcset = "";
   const myChart = new Chart(ctx, {
     plugins: [ChartDataLabels],
     data: {
@@ -8653,7 +8705,7 @@ function fnChart11() {
           },
           pointRadius: function(context) {
             if(context.chart.width < mobileScreenSize) return pointRadiusMobile;
-            else return pointRadius;
+            else return pointRadiusWeb[0];
           },
           tension: 0,
           pointStyle: pointStyle[0],
