@@ -21,6 +21,7 @@ const pointRadius = 4;
 const titleSizeMobile = 13;
 const titleSizeWeb = 24;
 const titleSizeWeb_index = 18;
+const titleSizeMobile_index = 16;
 const titleBottomMobile = 10;
 const titleBottomWeb = 60;
 const titleBottomWeb_index = 30;
@@ -5075,12 +5076,12 @@ function fnChart6() {
       },
       plugins: {
         title: {
-          display: false,
+          display: true,
           text: "경제영역 구조통합지수 (UN 명목소득 기준)",
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile_index;
               else return titleSizeWeb_index;
             },
           },
@@ -5309,7 +5310,7 @@ function fnChart7() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile_index;
               else return titleSizeWeb_index;
             },
           },
@@ -5537,7 +5538,7 @@ function fnChart8() {
           color: "white",
           font:{
             size: function(context) {
-              if(context.chart.width < mobileScreenSize) return titleSizeMobile;
+              if(context.chart.width < mobileScreenSize) return titleSizeMobile_index;
               else return titleSizeWeb_index;
             },
           },
