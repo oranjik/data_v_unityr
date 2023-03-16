@@ -1677,12 +1677,12 @@ function fnChart1Nkd01_11() {
     type: "line",
     plugins: [ChartDataLabels],
     data: {
-      labels: Array.from({ length: 10 }, (_, i) => i + 2013),
+      labels: Array.from({ length: 16 }, (_, i) => i + 2007),
       datasets: [
         {
           label: "친근",
           data: [
-            52.3,	54.2,	55.1,	52.4,	49.8,	40,	38.1,	45.6,	44.2,	55.8,
+            36.1,	36.2,	36.5,	42.4,	41.3,	39.5,	42.1,	43.8,	45.7,	52.4,	51.3,	53.4,	58.9,	42,	47.2,	42
           ],
           borderColor: borderColors[0],
           borderWidth: function(context) {
@@ -1701,7 +1701,7 @@ function fnChart1Nkd01_11() {
         {
           label: "친근하지 않음",
           data: [
-            27.9,	28.1,	27.2,	31.8,	31.1,	35,	34.4,	32.1,	34,	28.3
+            63.9,	63.8,	63.5,	57.6,	58.8,	60.5,	58,	56.3,	54.3,	47.6,	48.7,	46.6,	41.1,	58,	52.8,	58
           ],
           borderColor: borderColors[1],
           pointStyle: pointStyle[1],
@@ -1876,7 +1876,7 @@ const myChart = new Chart(ctx, {
   type: "line",
   plugins: [ChartDataLabels, pluginMultipleImg],
   data: {
-    labels: Array.from({ length: 10 }, (_, i) => i + 2013),
+    labels: Array.from({ length: 16 }, (_, i) => i + 2007),
     datasets: [
       {
         label: "미국",
@@ -2137,7 +2137,7 @@ function fnChart1Fp02() {
     type: "line",
     plugins: [ChartDataLabels, pluginMultipleImg],
     data: {
-      labels: Array.from({ length: 10 }, (_, i) => i + 2013),
+      labels: Array.from({ length: 16 }, (_, i) => i + 2007),
       datasets: [
         {
           label: "미국",
@@ -2222,7 +2222,7 @@ function fnChart1Fp02() {
         {
           label: "러시아",
           data: [
-            1.2,	1.1,	1.2,	0.3,	0.4,	1.3,	2.2,	1.3,	1.6,	1.8,	2,	0.1,	0.8,	0.9,	9.2
+            1.4, 1.2,	1.1,	1.2,	0.3,	0.4,	1.3,	2.2,	1.3,	1.6,	1.8,	2,	0.1,	0.8,	0.9,	9.2
           ],
           backgroundColor: ["rgba(0, 0, 0, 0)"],
           borderColor: borderColors[4],
@@ -5780,7 +5780,7 @@ function fnChart3q4_1_1() {
 
   const myChart = new Chart(ctx, {
     type: "line",
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels,plugin_1img],
     data: {
       labels: Array.from({ length: 9 }, (_, i) => i + 2012),
       datasets: [
@@ -6061,6 +6061,9 @@ function fnChart3q4_1_1() {
           myChart.update();
       },
       plugins: {
+        background_image: {
+          imgSrc : 'img/chart3_6_bg.png',
+        },
         title: {
           display: true,
           text: ["잘사는 직업", "귀하는 북한에 거주할 당시 어느 직업을 가진 사람들이", "가장 잘산다고 생각했습니까? (1순위)"],
@@ -6730,7 +6733,7 @@ function fnChart3q15() {
 
   const myChart = new Chart(ctx, {
     type: "line",
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, plugin_1img],
     data: {
       labels: Array.from({ length: 9 }, (_, i) => i + 2012),
       datasets: [
@@ -6990,9 +6993,12 @@ function fnChart3q15() {
           myChart.update();
       },
       plugins: {
+        background_image: {
+          imgSrc : 'img/chart3_9_bg.png',
+        },
         title: {
           display: true,
-          text: ["잘사는 직업", "귀하는 북한에 거주할 당시 어느 직업을 가진 사람들이", "가장 잘산다고 생각했습니까? (1순위)"],
+          text: ["주요 수입원", "귀하가 북한에 거주할 당시에 가장 많은 수입을 얻은 일거리는", "무엇이었습니까?"],
           color: "white",
           font:{
             size: function(context) {
@@ -7062,13 +7068,13 @@ function fnChart3q15() {
           {
             
             suggestedMin: 0,
-            suggestedMax: 100,
+            suggestedMax: 40,
             grid:{
               color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
               fontSize: 24,
-              stepSize: 20,
+              stepSize: 5,
               font: {
                 size: function(context) {
                   if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
@@ -7275,7 +7281,7 @@ function fnChart3q17() {
         },
         title: {
           display: true,
-          text: ["일상문제", "일상에서 가장 걱정을 많이 했던 문제는 무엇이었습니까?"],
+          text: ["원자재 수입국가", "장사 물건이나 사업용 원료, 자재는 주로 어느 나라", "것이었습니까?"],
           color: "white",
           font:{
             size: function(context) {
@@ -7345,13 +7351,13 @@ function fnChart3q17() {
           {
             
             suggestedMin: 0,
-            suggestedMax: 40,
+            suggestedMax: 80,
             grid:{
               color: ['white'].concat(Array.from({ length: 15 }, (_, i) => '#1D2C4A')),
             },
             ticks: {
               fontSize: 24,
-              stepSize: 5,
+              stepSize: 10,
               font: {
                 size: function(context) {
                   if(context.chart.width < mobileScreenSize) return labelFontSizeMobile;
