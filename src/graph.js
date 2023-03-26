@@ -3,7 +3,7 @@ Chart.defaults.font.family = 'NanumSquare';
 const totalBorderColors = ["#3E5FFF", "#40FF76", "#E94B03", "#FF006E", "#804AA8", "#FF8A0A", "#636363"]
 const totalBorderColorsRGB = [[62,95,255], [64,255,118], [233,75,3], [255,0,110],[128,74,168],[255,138,10], [99,99,99]]
 const totalPointStyle = ['rect', 'cross', 'circle', 'rectRot', 'triangle', 'rectRounded', 'rect']
-const totalPointRadius = [5, 5, 4, 5, 4, 5, 5]
+const totalPointRadius = [5, 5, 4, 5, 4, 4.5, 5]
 const imageSource = ['./img/usa.png', './img/japan.png','./img/n_korea.png','./img/china.png','./img/russia.png']
 
 let curIndex = -1;
