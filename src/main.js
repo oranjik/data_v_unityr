@@ -57,6 +57,19 @@ function show_sub(subBar, subToggle) {
 menu1.addEventListener("click", show_sub(subBar1, subToggle1));
 menu2.addEventListener("click", show_sub(subBar2, subToggle2));
 
+function setLegend(curMenuNum, statusNum, option = { height: "auto" }, flex) {
+  if (window.innerWidth > 901) {
+    document.getElementById("chart-legend").src = `./img/legend/chart${curMenuNum}_${statusNum}_web.png`;
+    document.getElementById(
+      "chart-legend"
+    ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
+    document.getElementById("chart-container").style = `flex-direction: ${flex};`;
+  } else {
+    document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart${curMenuNum}_${statusNum}_mobile.png`;
+    document.getElementById("chart-legend").style.width = "300px";
+  }
+}
+
 function changePage(num) {
   document.querySelector(".mobile-menu").click();
   if (num == 1 || num == 2 || num == 3) {
@@ -83,14 +96,7 @@ function changeSection(num) {
     document.getElementById("arrow-left").style.visibility = "visible";
     document.getElementById("arrow-right").style.visibility = "visible";
     document.getElementById("arrow-bar-container").style.display = "flex";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png";
-      document.getElementById("chart-legend").style = "width: 164px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("1", "1", { width: "178px", padding: "100px" });
     fnChart1Uni01();
   }
   if (num == 2) {
@@ -108,6 +114,7 @@ function changeSection(num) {
     document.getElementById("arrow-left").style.visibility = "hidden";
     document.getElementById("arrow-right").style.visibility = "hidden";
     document.getElementById("arrow-bar-container").style.display = "none";
+    setLegend("4", "", { width: "164px" });
     fnChart4();
   }
 }
@@ -115,76 +122,54 @@ function changeSection(num) {
 function changeMenuNum(num) {
   menuNum = num;
   curChartNum = 1;
-  if (num == 1) {
-    fnChart1Uni01();
+
+  function initFirstSection() {
     document.getElementById("chart-status").innerHTML = "1/10";
-    document.getElementById("menu1").src = "./img/active_1.png";
-    document.getElementById("menu1-container").style = "background-color: rgba(255, 255, 255,0.1);";
+    document.getElementById("menu1").src = "./img/normal_1.png";
+    document.getElementById("menu1-container").style = "background-color: none;";
     document.getElementById("menu2").src = "./img/normal_2.png";
     document.getElementById("menu2-container").style = "background-color: none;";
     document.getElementById("menu3").src = "./img/normal_3.png";
     document.getElementById("menu3-container").style = "background-color: none;";
-    document.getElementById("chart-status").innerHTML = "1/10";
+  }
+  if (num == 1) {
+    fnChart1Uni01();
+    initFirstSection();
+    document.getElementById("menu1").src = "./img/active_1.png";
+    document.getElementById("menu1-container").style = "background-color: rgba(255, 255, 255,0.1);";
     document.getElementById("sub-title-1").innerHTML = "통일의식조사";
     document.getElementById("sub-title-2").innerHTML = "남한주민대상";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart1_1_web.png";
-      document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart1_1_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("1", "1", { width: "178px", padding: "100px" });
   }
   if (num == 2) {
     fnChart2Uni01();
-    document.getElementById("menu1").src = "./img/normal_1.png";
-    document.getElementById("menu1-container").style = "background-color: none;";
+    initFirstSection();
     document.getElementById("menu2").src = "./img/active_2.png";
     document.getElementById("menu2-container").style = "background-color: rgba(255, 255, 255,0.1);";
-    document.getElementById("menu3").src = "./img/normal_3.png";
-    document.getElementById("menu3-container").style = "background-color: none;";
-    document.getElementById("chart-status").innerHTML = "1/10";
     document.getElementById("sub-title-1").innerHTML = "통일의식조사";
     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart2_1_web.png";
-      document.getElementById("chart-legend").style = "width: 178px; height: auto; padding-top: 100px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart2_1_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("2", "1", { width: "178px", padding: "130px" });
   }
   if (num == 3) {
     fnChart3q1_1();
-    document.getElementById("menu1").src = "./img/normal_1.png";
-    document.getElementById("menu1-container").style = "background-color: none;";
-    document.getElementById("menu2").src = "./img/normal_2.png";
-    document.getElementById("menu2-container").style = "background-color: none;";
+    initFirstSection();
     document.getElementById("menu3").src = "./img/active_3.png";
     document.getElementById("menu3-container").style = "background-color: rgba(255, 255, 255,0.1);";
-    document.getElementById("chart-status").innerHTML = "1/10";
     document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
     document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png";
-      document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_1_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("3", "1", { width: "234px", padding: "100px" });
   }
-  if (num == 4) {
-    fnChart4();
-    document.getElementById("menu4").src = "./img/active_4.svg";
-    document.getElementById("menu4-container").style = "background-color: rgba(255, 255, 255,0.1);";
+  function initSecondSection() {
+    document.getElementById("menu4").src = "./img/normal_4.svg";
+    document.getElementById("menu4-container").style = "background-color: none;";
     document.getElementById("menu5").src = "./img/normal_5.svg";
     document.getElementById("menu5-container").style = "background-color: none;";
     document.getElementById("menu6-container").style.display = "none";
     document.getElementById("menu7-container").style.display = "none";
     document.getElementById("menu8-container").style.display = "none";
+    document.getElementById("menu6").src = "./img/normal_6.svg";
+    document.getElementById("menu7").src = "./img/normal_7.svg";
+    document.getElementById("menu8").src = "./img/normal_8.svg";
     document.getElementById("menu9").src = "./img/normal_9.svg";
     document.getElementById("menu9-container").style = "background-color: none;";
     document.getElementById("menu10-container").style.display = "none";
@@ -192,818 +177,395 @@ function changeMenuNum(num) {
     document.getElementById("menu11-container").style = "background-color: none;";
     document.getElementById("sub-title-1").innerHTML = "남북통합지수";
     document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart4_web.png";
-      document.getElementById("chart-legend").style = "width: 164px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart4_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+  }
+  if (num == 4) {
+    fnChart4();
+    initSecondSection();
+    document.getElementById("menu4").src = "./img/active_4.svg";
+    document.getElementById("menu4-container").style = "background-color: rgba(255, 255, 255,0.1);";
+    setLegend("4", "", { width: "164px" });
   }
   if (num == 5 || num == 6) {
     fnChart6();
-    document.getElementById("menu4").src = "./img/normal_4.svg";
-    document.getElementById("menu4-container").style = "background-color: none";
+    initSecondSection();
     document.getElementById("menu5").src = "./img/active_5.svg";
     document.getElementById("menu5-container").style = "background-color: rgba(255, 255, 255,0.1);";
     document.getElementById("menu6-container").style.display = "block";
     document.getElementById("menu7-container").style.display = "block";
     document.getElementById("menu8-container").style.display = "block";
     document.getElementById("menu6").src = "./img/active_6.svg";
-    document.getElementById("menu7").src = "./img/normal_7.svg";
-    document.getElementById("menu8").src = "./img/normal_8.svg";
-    document.getElementById("menu9").src = "./img/normal_9.svg";
-    document.getElementById("menu9-container").style = "background-color: none;";
-    document.getElementById("menu10-container").style.display = "none";
-    document.getElementById("menu11").src = "./img/normal_11.svg";
-    document.getElementById("menu11-container").style = "background-color: none;";
-    document.getElementById("sub-title-1").innerHTML = "남북통합지수";
-    document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart6_web.png";
-      document.getElementById("chart-legend").style = "width: 172px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart6_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("6", "", { width: "172px" });
   }
   if (num == 7) {
     fnChart7();
-    document.getElementById("menu4").src = "./img/normal_4.svg";
-    document.getElementById("menu4-container").style = "background-color: none";
+    initSecondSection();
     document.getElementById("menu5").src = "./img/active_5.svg";
     document.getElementById("menu5-container").style = "background-color: rgba(255, 255, 255,0.1);";
     document.getElementById("menu6-container").style.display = "block";
     document.getElementById("menu7-container").style.display = "block";
     document.getElementById("menu8-container").style.display = "block";
-    document.getElementById("menu6").src = "./img/normal_6.svg";
     document.getElementById("menu7").src = "./img/active_7.svg";
-    document.getElementById("menu8").src = "./img/normal_8.svg";
-    document.getElementById("menu9").src = "./img/normal_9.svg";
-    document.getElementById("menu9-container").style = "background-color: none;";
-    document.getElementById("menu10-container").style.display = "none";
-    document.getElementById("menu11").src = "./img/normal_11.svg";
-    document.getElementById("menu11-container").style = "background-color: none;";
-    document.getElementById("sub-title-1").innerHTML = "남북통합지수";
-    document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart7_web.png";
-      document.getElementById("chart-legend").style = "width: 166px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart7_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("7", "", { width: "166px" });
   }
   if (num == 8) {
     fnChart8();
-    document.getElementById("menu4").src = "./img/normal_4.svg";
-    document.getElementById("menu4-container").style = "background-color: none";
+    initSecondSection();
     document.getElementById("menu5").src = "./img/active_5.svg";
     document.getElementById("menu5-container").style = "background-color: rgba(255, 255, 255,0.1);";
     document.getElementById("menu6-container").style.display = "block";
     document.getElementById("menu7-container").style.display = "block";
     document.getElementById("menu8-container").style.display = "block";
-    document.getElementById("menu6").src = "./img/normal_6.svg";
-    document.getElementById("menu7").src = "./img/normal_7.svg";
     document.getElementById("menu8").src = "./img/active_8.svg";
-    document.getElementById("menu9").src = "./img/normal_9.svg";
-    document.getElementById("menu9-container").style = "background-color: none;";
-    document.getElementById("menu10-container").style.display = "none";
-    document.getElementById("menu11").src = "./img/normal_11.svg";
-    document.getElementById("menu11-container").style = "background-color: none;";
-    document.getElementById("sub-title-1").innerHTML = "남북통합지수";
-    document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart8_web.png";
-      document.getElementById("chart-legend").style = "width: 176px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart8_mobile.png";
-    }
+    setLegend("8", "", { width: "176px" });
   }
   if (num == 9 || num == 10) {
     fnChart9();
-    document.getElementById("menu4").src = "./img/normal_4.svg";
-    document.getElementById("menu4-container").style = "background-color: none";
-    document.getElementById("menu5").src = "./img/normal_5.svg";
-    document.getElementById("menu5-container").style = "background-color: none";
-    document.getElementById("menu6-container").style.display = "none";
-    document.getElementById("menu7-container").style.display = "none";
-    document.getElementById("menu8-container").style.display = "none";
+    initSecondSection();
     document.getElementById("menu9").src = "./img/active_9.svg";
     document.getElementById("menu9-container").style = "background-color: rgba(255, 255, 255,0.1);";
     document.getElementById("menu10").src = "./img/active_10.svg";
-    document.getElementById("menu10-container").style = "background-color: none;";
     document.getElementById("menu10-container").style.display = "block";
-    document.getElementById("menu11").src = "./img/normal_11.svg";
-    document.getElementById("menu11-container").style = "background-color: none;";
-    document.getElementById("sub-title-1").innerHTML = "남북통합지수";
-    document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart9_web.png";
-      document.getElementById("chart-legend").style = "width: 163px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart9_mobile.png";
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-    }
+    setLegend("9", "", { width: "163px" });
   }
   if (num == 11) {
     fnChart11();
-    document.getElementById("menu4").src = "./img/normal_4.svg";
-    document.getElementById("menu4-container").style = "background-color: none";
-    document.getElementById("menu5").src = "./img/normal_5.svg";
-    document.getElementById("menu5-container").style = "background-color: none";
-    document.getElementById("menu6-container").style.display = "none";
-    document.getElementById("menu7-container").style.display = "none";
-    document.getElementById("menu8-container").style.display = "none";
-    document.getElementById("menu9").src = "./img/normal_9.svg";
-    document.getElementById("menu9-container").style = "background-color: none;";
-    document.getElementById("menu10-container").style.display = "none";
+    initSecondSection();
     document.getElementById("menu11").src = "./img/active_11.svg";
     document.getElementById("menu11-container").style = "background-color:  rgba(255, 255, 255,0.1);";
-    document.getElementById("sub-title-1").innerHTML = "남북통합지수";
-    document.getElementById("sub-title-2").innerHTML = "";
-    if (screen.width > 901) {
-      document.getElementById("chart-legend").src = "./img/legend/chart11_web.png";
-      document.getElementById("chart-legend").style = "width: 141px; height: auto; padding-top: 20px;";
-      document.getElementById("chart-container").style = "flex-direction: row;";
-    } else {
-      document.getElementById("chart-legend").style = "width:300px; padding-top: 20px;";
-      document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart11_mobile.png";
-    }
+    setLegend("11", "", { width: "141px" });
   }
 }
-
-function fnMoveNextChart(num) {
-  if (num == 1) {
-    curChartNum += 1;
-    if (curChartNum > 10) {
-      curChartNum = 1;
-    }
-    function unityFirst(chartFunction, statusNumber, option, flex = "row") {
-      chartFunction();
-      document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
+function setSubTitle(curMenuNum, statusNumber) {
+  document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
+  switch (curMenuNum) {
+    case 1:
       document.getElementById("sub-title-1").innerHTML = "통일의식조사";
       document.getElementById("sub-title-2").innerHTML = "남한주민대상";
-      if (window.innerWidth > 901) {
-        document.getElementById("chart-legend").src = `./img/legend/chart1_${statusNumber}_web.png`;
-        document.getElementById(
-          "chart-legend"
-        ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
-        document.getElementById("chart-container").style = `flex-direction: ${flex};`;
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart1_${statusNumber}_mobile.png`;
-        document.getElementById("chart-legend").style = "300px";
-      }
-    }
-
-    if (curChartNum == 1) {
-      unityFirst(fnChart1Uni01, curChartNum, {
+      break;
+    case 2:
+      document.getElementById("sub-title-1").innerHTML = "통일의식조사";
+      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+      break;
+    case 3:
+      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
+      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
+      break;
+  }
+}
+function showUnityFirst(curChartNum) {
+  curMenuNum = 1;
+  switch (curChartNum) {
+    case 1:
+      fnChart1Uni01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "178px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 2) {
-      unityFirst(
-        fnChart1Uni06,
+      break;
+    case 2:
+      fnChart1Uni06();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(
+        curMenuNum,
         curChartNum,
         {
           width: "500px",
           height: "auto",
-          padding: "100px",
+          padding: "20px",
         },
         "column"
       );
-    }
-    if (curChartNum == 3) {
-      unityFirst(fnChart1Nk01, curChartNum, {
+      break;
+    case 3:
+      fnChart1Nk01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "250px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 4) {
-      unityFirst(fnChart1Nk03, curChartNum, {
+      break;
+    case 4:
+      fnChart1Nk03();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "167px",
         height: "auto",
-        padding: "100px",
+        padding: "120px",
       });
-    }
-    if (curChartNum == 5) {
-      unityFirst(fnChart1Nk10, curChartNum, {
+      break;
+    case 5:
+      fnChart1Nk10();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "210px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 6) {
-      unityFirst(fnChart1Nkp03, curChartNum, {
+      break;
+    case 6:
+      fnChart1Nkp03();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "129px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 7) {
-      unityFirst(fnChart1Nkp07_11, curChartNum, {
+      break;
+    case 7:
+      fnChart1Nkp07_11();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "152px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 8) {
-      unityFirst(fnChart1Nkd01_11, curChartNum, {
+      break;
+    case 8:
+      fnChart1Nkd01_11();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "173px",
         height: "auto",
         padding: "120px",
       });
-    }
-    if (curChartNum == 9) {
-      unityFirst(fnChart1Fp01, curChartNum, {
+      break;
+    case 9:
+      fnChart1Fp01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "148px",
-        height: "auto",
-        padding: "120px",
-      });
-    }
-    if (curChartNum == 10) {
-      unityFirst(fnChart1Fp02, curChartNum, {
-        width: "148px",
-        height: "auto",
-        padding: "120px",
-      });
-    }
-  }
-  if (num == 2) {
-    curChartNum += 1;
-    if (curChartNum > 10) {
-      curChartNum = 1;
-    }
-    function unitySecond(chartFunction, statusNumber, option, flex = "row") {
-      chartFunction();
-      document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
-      document.getElementById("sub-title-1").innerHTML = "통일의식조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (window.innerWidth > 901) {
-        document.getElementById("chart-legend").src = `./img/legend/chart2_${statusNumber}_web.png`;
-        document.getElementById(
-          "chart-legend"
-        ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
-        document.getElementById("chart-container").style = `flex-direction: ${flex};`;
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart2_${statusNumber}_mobile.png`;
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 1) {
-      unitySecond(fnChart2Uni01, curChartNum, {
-        width: "178px",
         height: "auto",
         padding: "100px",
       });
-    }
-    if (curChartNum == 2) {
-      unitySecond(fnChart2Uni03, curChartNum, { width: "500px", height: "auto", padding: "20px" }, "column");
-    }
-    if (curChartNum == 3) {
-      unitySecond(fnChart2Sk01, curChartNum, {
+      break;
+    case 10:
+      fnChart1Fp02();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "148px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+  }
+}
+function showUnitySecond(curChartNum) {
+  curMenuNum = 2;
+  switch (curChartNum) {
+    case 1:
+      fnChart2Uni01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "178px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+    case 2:
+      fnChart2Uni03();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, { width: "500px", height: "auto", padding: "20px" }, "column");
+
+      break;
+    case 3:
+      fnChart2Sk01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "238px",
         height: "auto",
-        padding: "100px",
+        padding: "120px",
       });
-    }
-    if (curChartNum == 4) {
-      unitySecond(fnChart2Sk03, curChartNum, {
+      break;
+    case 4:
+      fnChart2Sk03();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "210px",
         height: "auto",
-        padding: "100px",
+        padding: "130px",
       });
-    }
-    if (curChartNum == 5) {
-      unitySecond(fnChart2Sk06, curChartNum, {
+      break;
+    case 5:
+      fnChart2Sk06();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "178px",
         height: "auto",
-        padding: "100px",
+        padding: "130px",
       });
-    }
-    if (curChartNum == 6) {
-      unitySecond(fnChart2Sk07, curChartNum, {
+      break;
+    case 6:
+      fnChart2Sk07();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "164px",
         height: "auto",
-        padding: "100px",
+        padding: "130px",
       });
-    }
-    if (curChartNum == 7) {
-      unitySecond(fnChart2Nk02, curChartNum, {
+      break;
+    case 7:
+      fnChart2Nk02();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "118px",
         height: "auto",
-        padding: "100px",
+        padding: "130px",
       });
-    }
-    if (curChartNum == 8) {
-      unitySecond(fnChart2Nk07, curChartNum, {
+      break;
+    case 8:
+      fnChart2Nk07();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "149px",
         height: "auto",
-        padding: "100px",
+        padding: "120px",
       });
-    }
-    if (curChartNum == 9) {
-      unitySecond(fnChart2Fp01, curChartNum, {
+      break;
+    case 9:
+      fnChart2Fp01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "134px",
         height: "auto",
-        padding: "100px",
+        padding: "130px",
       });
-    }
-    if (curChartNum == 10) {
-      unitySecond(fnChart2Skd01, curChartNum, {
+      break;
+    case 10:
+      fnChart2Skd01();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
         width: "168px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+  }
+}
+function showUnityThird(curChartNum) {
+  curMenuNum = 3;
+  switch (curChartNum) {
+    case 1:
+      fnChart3q1_1();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "234px",
         height: "auto",
         padding: "100px",
       });
-    }
+      break;
+    case 2:
+      fnChart3q1_11();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "123px",
+        height: "auto",
+        padding: "130px",
+      });
+      break;
+    case 3:
+      fnChart3q1_11_1();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "123px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+    case 4:
+      fnChart3q1_12();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "123px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+    case 5:
+      fnChart3q1_13();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "223px",
+        height: "auto",
+        padding: "140px",
+      });
+      break;
+    case 6:
+      fnChart3q4_1_1();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "295px",
+        height: "auto",
+        padding: "130px",
+      });
+      break;
+    case 7:
+      fnChart3q8_1();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "203px",
+        height: "auto",
+        padding: "100px",
+      });
+      break;
+    case 8:
+      fnChart3q12();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "235px",
+        height: "auto",
+        padding: "120px",
+      });
+      break;
+    case 9:
+      fnChart3q15();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "266px",
+        height: "auto",
+        padding: "130px",
+      });
+      break;
+    case 10:
+      fnChart3q17();
+      setSubTitle(curMenuNum, curChartNum);
+      setLegend(curMenuNum, curChartNum, {
+        width: "108px",
+        height: "auto",
+        padding: "130px",
+      });
+      break;
+  }
+}
+function fnMoveNextChart(num) {
+  curChartNum += 1;
+  if (curChartNum > 10) {
+    curChartNum = 1;
+  }
+  if (num == 1) {
+    showUnityFirst(curChartNum);
+  }
+  if (num == 2) {
+    showUnitySecond(curChartNum);
   }
   if (num == 3) {
-    curChartNum += 1;
-    if (curChartNum > 10) {
-      curChartNum = 1;
-    }
-    if (curChartNum == 1) {
-      fnChart3q1_1();
-      document.getElementById("chart-status").innerHTML = "1/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png";
-        document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_1_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 2) {
-      fnChart3q1_11();
-      document.getElementById("chart-status").innerHTML = "2/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_2_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_2_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 3) {
-      fnChart3q1_11_1();
-      document.getElementById("chart-status").innerHTML = "3/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_3_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_3_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 4) {
-      fnChart3q1_12();
-      document.getElementById("chart-status").innerHTML = "4/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_4_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_4_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 5) {
-      fnChart3q1_13();
-      document.getElementById("chart-status").innerHTML = "5/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_5_web.png";
-        document.getElementById("chart-legend").style = "width: 223px; height: auto; padding-top: 140px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_5_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 6) {
-      fnChart3q4_1_1();
-      document.getElementById("chart-status").innerHTML = "6/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_6_web.png";
-        document.getElementById("chart-legend").style = "width: 295px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_6_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 7) {
-      fnChart3q8_1();
-      document.getElementById("chart-status").innerHTML = "7/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_7_web.png";
-        document.getElementById("chart-legend").style = "width: 203px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_7_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 8) {
-      fnChart3q12();
-      document.getElementById("chart-status").innerHTML = "8/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_8_web.png";
-        document.getElementById("chart-legend").style = "width: 235px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_8_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 9) {
-      fnChart3q15();
-      document.getElementById("chart-status").innerHTML = "9/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_9_web.png";
-        document.getElementById("chart-legend").style = "width: 266px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_9_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 10) {
-      fnChart3q17();
-      document.getElementById("chart-status").innerHTML = "10/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_10_web.png";
-        document.getElementById("chart-legend").style = "width: 108px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_10_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
+    showUnityThird(curChartNum);
   }
 }
 function fnMovePrevChart(num) {
+  curChartNum -= 1;
+  if (curChartNum < 1) {
+    curChartNum = 10;
+  }
   if (num == 1) {
-    curChartNum -= 1;
-    if (curChartNum < 1) {
-      curChartNum = 10;
-    }
-    function unityFirst(chartFunction, statusNumber, option, flex = "row") {
-      chartFunction();
-      document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
-      document.getElementById("sub-title-1").innerHTML = "통일의식조사";
-      document.getElementById("sub-title-2").innerHTML = "남한주민대상";
-      if (window.innerWidth > 901) {
-        document.getElementById("chart-legend").src = `./img/legend/chart1_${statusNumber}_web.png`;
-        document.getElementById(
-          "chart-legend"
-        ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
-        document.getElementById("chart-container").style = `flex-direction: ${flex};`;
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart1_${statusNumber}_mobile.png`;
-        document.getElementById("chart-legend").style = "300px";
-      }
-    }
-
-    if (curChartNum == 1) {
-      unityFirst(fnChart1Uni01, curChartNum, {
-        width: "178px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 2) {
-      unityFirst(
-        fnChart1Uni06,
-        curChartNum,
-        {
-          width: "500px",
-          height: "auto",
-          padding: "100px",
-        },
-        "column"
-      );
-    }
-    if (curChartNum == 3) {
-      unityFirst(fnChart1Nk01, curChartNum, {
-        width: "250px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 4) {
-      unityFirst(fnChart1Nk03, curChartNum, {
-        width: "167px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 5) {
-      unityFirst(fnChart1Nk10, curChartNum, {
-        width: "210px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 6) {
-      unityFirst(fnChart1Nkp03, curChartNum, {
-        width: "129px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 7) {
-      unityFirst(fnChart1Nkp07_11, curChartNum, {
-        width: "152px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 8) {
-      unityFirst(fnChart1Nkd01_11, curChartNum, {
-        width: "173px",
-        height: "auto",
-        padding: "120px",
-      });
-    }
-    if (curChartNum == 9) {
-      unityFirst(fnChart1Fp01, curChartNum, {
-        width: "148px",
-        height: "auto",
-        padding: "120px",
-      });
-    }
-    if (curChartNum == 10) {
-      unityFirst(fnChart1Fp02, curChartNum, {
-        width: "148px",
-        height: "auto",
-        padding: "120px",
-      });
-    }
+    showUnityFirst(curChartNum);
   }
   if (num == 2) {
-    curChartNum -= 1;
-    if (curChartNum < 1) {
-      curChartNum = 10;
-    }
-    function unitySecond(chartFunction, statusNumber, option, flex = "row") {
-      chartFunction();
-      document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
-      document.getElementById("sub-title-1").innerHTML = "통일의식조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (window.innerWidth > 901) {
-        document.getElementById("chart-legend").src = `./img/legend/chart2_${statusNumber}_web.png`;
-        document.getElementById(
-          "chart-legend"
-        ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
-        document.getElementById("chart-container").style = `flex-direction: ${flex};`;
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart2_${statusNumber}_mobile.png`;
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 1) {
-      unitySecond(fnChart2Uni01, curChartNum, {
-        width: "178px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 2) {
-      unitySecond(fnChart2Uni03, curChartNum, { width: "500px", height: "auto", padding: "20px" }, "column");
-    }
-    if (curChartNum == 3) {
-      unitySecond(fnChart2Sk01, curChartNum, {
-        width: "238px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 4) {
-      unitySecond(fnChart2Sk03, curChartNum, {
-        width: "210px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 5) {
-      unitySecond(fnChart2Sk06, curChartNum, {
-        width: "178px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 6) {
-      unitySecond(fnChart2Sk07, curChartNum, {
-        width: "164px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 7) {
-      unitySecond(fnChart2Nk02, curChartNum, {
-        width: "118px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 8) {
-      unitySecond(fnChart2Nk07, curChartNum, {
-        width: "149px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 9) {
-      unitySecond(fnChart2Fp01, curChartNum, {
-        width: "134px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
-    if (curChartNum == 10) {
-      unitySecond(fnChart2Skd01, curChartNum, {
-        width: "168px",
-        height: "auto",
-        padding: "100px",
-      });
-    }
+    showUnitySecond(curChartNum);
   }
   if (num == 3) {
-    curChartNum -= 1;
-    if (curChartNum < 1) {
-      curChartNum = 10;
-    }
-    if (curChartNum == 1) {
-      fnChart3q1_1();
-      document.getElementById("chart-status").innerHTML = "1/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_1_web.png";
-        document.getElementById("chart-legend").style = "width: 234px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_1_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 2) {
-      fnChart3q1_11();
-      document.getElementById("chart-status").innerHTML = "2/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_2_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_2_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 3) {
-      fnChart3q1_11_1();
-      document.getElementById("chart-status").innerHTML = "3/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_3_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_3_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 4) {
-      fnChart3q1_12();
-      document.getElementById("chart-status").innerHTML = "4/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_4_web.png";
-        document.getElementById("chart-legend").style = "width: 123px; height: auto; padding-top: 130px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_4_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 5) {
-      fnChart3q1_13();
-      document.getElementById("chart-status").innerHTML = "5/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_5_web.png";
-        document.getElementById("chart-legend").style = "width: 223px; height: auto; padding-top: 140px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_5_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 6) {
-      fnChart3q4_1_1();
-      document.getElementById("chart-status").innerHTML = "6/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_6_web.png";
-        document.getElementById("chart-legend").style = "width: 295px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_6_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 7) {
-      fnChart3q8_1();
-      document.getElementById("chart-status").innerHTML = "7/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_7_web.png";
-        document.getElementById("chart-legend").style = "width: 203px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_7_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 8) {
-      fnChart3q12();
-      document.getElementById("chart-status").innerHTML = "8/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_8_web.png";
-        document.getElementById("chart-legend").style = "width: 235px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_8_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 9) {
-      fnChart3q15();
-      document.getElementById("chart-status").innerHTML = "9/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_9_web.png";
-        document.getElementById("chart-legend").style = "width: 266px; height: auto; padding-top: 120px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_9_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
-    if (curChartNum == 10) {
-      fnChart3q17();
-      document.getElementById("chart-status").innerHTML = "10/10";
-      document.getElementById("sub-title-1").innerHTML = "북한사회변동조사";
-      document.getElementById("sub-title-2").innerHTML = "북한이탈주민 대상";
-      if (screen.width > 901) {
-        document.getElementById("chart-legend").src = "./img/legend/chart3_10_web.png";
-        document.getElementById("chart-legend").style = "width: 108px; height: auto; padding-top: 100px;";
-        document.getElementById("chart-container").style = "flex-direction: row;";
-      } else {
-        document.getElementById("chart-legend-mobile").srcset = "./img/legend/chart3_10_mobile.png";
-        document.getElementById("chart-legend").style.width = "300px";
-      }
-    }
+    showUnityThird(curChartNum);
   }
 }
