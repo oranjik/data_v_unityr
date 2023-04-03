@@ -267,16 +267,11 @@ function showUnityFirst(curChartNum) {
     case 2:
       fnChart1Uni06();
       setSubTitle(curMenuNum, curChartNum);
-      setLegend(
-        curMenuNum,
-        curChartNum,
-        {
-          width: "500px",
-          height: "auto",
-          padding: "20px",
-        },
-        "column"
-      );
+      setLegend(curMenuNum, curChartNum, {
+        width: "250px",
+        height: "auto",
+        padding: "120px",
+      });
       break;
     case 3:
       fnChart1Nk01();
@@ -367,7 +362,7 @@ function showUnitySecond(curChartNum) {
     case 2:
       fnChart2Uni03();
       setSubTitle(curMenuNum, curChartNum);
-      setLegend(curMenuNum, curChartNum, { width: "500px", height: "auto", padding: "20px" }, "column");
+      setLegend(curMenuNum, curChartNum, { width: "250px", height: "auto", padding: "120px" });
 
       break;
     case 3:
@@ -394,7 +389,7 @@ function showUnitySecond(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "178px",
         height: "auto",
-        padding: "130px",
+        padding: "120px",
       });
       break;
     case 6:
@@ -403,7 +398,7 @@ function showUnitySecond(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "164px",
         height: "auto",
-        padding: "130px",
+        padding: "120px",
       });
       break;
     case 7:
@@ -412,7 +407,7 @@ function showUnitySecond(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "118px",
         height: "auto",
-        padding: "130px",
+        padding: "120px",
       });
       break;
     case 8:
@@ -430,7 +425,7 @@ function showUnitySecond(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "134px",
         height: "auto",
-        padding: "130px",
+        padding: "120px",
       });
       break;
     case 10:
@@ -453,23 +448,23 @@ function showUnityThird(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "234px",
         height: "auto",
-        padding: "100px",
+        padding: "120px",
       });
       break;
     case 2:
       fnChart3q1_11();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "123px",
+        width: "160px",
         height: "auto",
-        padding: "130px",
+        padding: "120px",
       });
       break;
     case 3:
       fnChart3q1_11_1();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "123px",
+        width: "160px",
         height: "auto",
         padding: "120px",
       });
@@ -478,7 +473,7 @@ function showUnityThird(curChartNum) {
       fnChart3q1_12();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "123px",
+        width: "160px",
         height: "auto",
         padding: "120px",
       });
@@ -489,14 +484,14 @@ function showUnityThird(curChartNum) {
       setLegend(curMenuNum, curChartNum, {
         width: "223px",
         height: "auto",
-        padding: "140px",
+        padding: "120px",
       });
       break;
     case 6:
       fnChart3q4_1_1();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "295px",
+        width: "250px",
         height: "auto",
         padding: "130px",
       });
@@ -523,7 +518,7 @@ function showUnityThird(curChartNum) {
       fnChart3q15();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "266px",
+        width: "240px",
         height: "auto",
         padding: "130px",
       });
@@ -532,7 +527,7 @@ function showUnityThird(curChartNum) {
       fnChart3q17();
       setSubTitle(curMenuNum, curChartNum);
       setLegend(curMenuNum, curChartNum, {
-        width: "108px",
+        width: "140px",
         height: "auto",
         padding: "130px",
       });
