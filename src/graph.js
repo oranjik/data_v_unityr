@@ -46,6 +46,7 @@ const labelFontSizeWeb = 14;
 
 const borderDashWeb = [10, 5];
 
+// hover로 여러 이미지를 띄우는 경우(예. 국가 별 국기)
 const pluginMultipleImg = {
   beforeDraw: (chart, args, options) => {
     const { ctx } = chart;
@@ -63,6 +64,7 @@ const pluginMultipleImg = {
   },
 };
 
+// 1개의 이미지를 차트 background에 상시로 띄우는 경우
 const plugin_1img = {
   id: "background_image",
   beforeDraw: (chart, args, options) => {
@@ -78,6 +80,7 @@ const plugin_1img = {
   },
 };
 
+// 그라데이션 차트를 만들 때 사용하는 플러그인
 const getGradient = (ctx, chartArea, start_color, stop_color) => {
   let width, height, gradient;
   const chartWidth = chartArea.right - chartArea.left;
@@ -94,6 +97,7 @@ const getGradient = (ctx, chartArea, start_color, stop_color) => {
   return gradient;
 };
 
+// 새로운 차트를 그릴 때 이전 차트를 지우는 코드
 const deleteChart = () => {
   if (Chart.getChart("myChart")) {
     const prevChart = Chart.getChart("myChart");

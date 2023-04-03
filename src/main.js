@@ -1,6 +1,7 @@
 let curChartNum = 1;
 let menuNum = 1;
 
+// 햄버거 메뉴 인터랙션
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".mobile-menu").addEventListener("click", function (e) {
     if (document.querySelector(".menu-wrap").classList.contains("on")) {
@@ -57,6 +58,7 @@ function show_sub(subBar, subToggle) {
 menu1.addEventListener("click", show_sub(subBar1, subToggle1));
 menu2.addEventListener("click", show_sub(subBar2, subToggle2));
 
+// 화면 전환에 따른 범례 설정
 function setLegend(curMenuNum, statusNum, option = { height: "auto" }, display = "none") {
   if (window.innerWidth > 901) {
     document.getElementById("chart-legend").src = `./img/legend/chart${curMenuNum}_${statusNum}_web.png`;
@@ -71,6 +73,7 @@ function setLegend(curMenuNum, statusNum, option = { height: "auto" }, display =
   }
 }
 
+// 페이지 전환(모바일용)
 function changePage(num) {
   document.querySelector(".mobile-menu").click();
   if (num == 1 || num == 2 || num == 3) {
@@ -81,7 +84,9 @@ function changePage(num) {
   changeMenuNum(num);
 }
 
+// 섹션 전환
 function changeSection(num) {
+  // 통일의식조사
   if (num == 1) {
     document.getElementById("section1").src = "./img/header_active_1.png";
     document.getElementById("section2").src = "./img/header_normal_2.png";
@@ -100,6 +105,7 @@ function changeSection(num) {
     setLegend("1", "1", { width: "178px", padding: "100px" });
     fnChart1Uni01();
   }
+  // 남북통합지수
   if (num == 2) {
     document.getElementById("section1").src = "./img/header_normal_1.png";
     document.getElementById("section2").src = "./img/header_active_2.png";
@@ -120,6 +126,7 @@ function changeSection(num) {
   }
 }
 
+// 메뉴 전환
 function changeMenuNum(num) {
   menuNum = num;
   curChartNum = 1;
@@ -236,6 +243,7 @@ function changeMenuNum(num) {
     setLegend("11", "", { width: "141px" });
   }
 }
+// (모바일) 상단 서브타이틀
 function setSubTitle(curMenuNum, statusNumber) {
   document.getElementById("chart-status").innerHTML = `${statusNumber}/10`;
   switch (curMenuNum) {
@@ -253,6 +261,7 @@ function setSubTitle(curMenuNum, statusNumber) {
       break;
   }
 }
+// 남한 주민 대상 통일의식조사 그래프 10개
 function showUnityFirst(curChartNum) {
   curMenuNum = 1;
   switch (curChartNum) {
@@ -353,6 +362,7 @@ function showUnityFirst(curChartNum) {
       break;
   }
 }
+// 북한이탈주민 대상 통일의식조사 그래프 10개
 function showUnitySecond(curChartNum) {
   curMenuNum = 2;
   switch (curChartNum) {
@@ -445,6 +455,7 @@ function showUnitySecond(curChartNum) {
       break;
   }
 }
+// 북한이탈주민 대상 북한사회변동조사 그래프 10개
 function showUnityThird(curChartNum) {
   curMenuNum = 3;
   switch (curChartNum) {
@@ -540,6 +551,7 @@ function showUnityThird(curChartNum) {
       break;
   }
 }
+// 통일의식조사 : 오른쪽 화살표
 function fnMoveNextChart(num) {
   curChartNum += 1;
   if (curChartNum > 10) {
@@ -555,6 +567,7 @@ function fnMoveNextChart(num) {
     showUnityThird(curChartNum);
   }
 }
+// 통일의식조사 : 왼쪽 화살표
 function fnMovePrevChart(num) {
   curChartNum -= 1;
   if (curChartNum < 1) {
