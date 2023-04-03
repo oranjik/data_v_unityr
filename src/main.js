@@ -57,16 +57,17 @@ function show_sub(subBar, subToggle) {
 menu1.addEventListener("click", show_sub(subBar1, subToggle1));
 menu2.addEventListener("click", show_sub(subBar2, subToggle2));
 
-function setLegend(curMenuNum, statusNum, option = { height: "auto" }, flex) {
+function setLegend(curMenuNum, statusNum, option = { height: "auto" }, display = "none") {
   if (window.innerWidth > 901) {
     document.getElementById("chart-legend").src = `./img/legend/chart${curMenuNum}_${statusNum}_web.png`;
     document.getElementById(
       "chart-legend"
     ).style = `width: ${option.width}; height: ${option.height}; padding-top: ${option.padding};`;
-    document.getElementById("chart-container").style = `flex-direction: ${flex};`;
+    document.getElementById("chart-description").style.display = `${display}`;
   } else {
     document.getElementById("chart-legend-mobile").srcset = `./img/legend/chart${curMenuNum}_${statusNum}_mobile.png`;
     document.getElementById("chart-legend").style.width = "300px";
+    document.getElementById("chart-description").style.display = `${display}`;
   }
 }
 
@@ -321,11 +322,16 @@ function showUnityFirst(curChartNum) {
     case 8:
       fnChart1Nkd01_11();
       setSubTitle(curMenuNum, curChartNum);
-      setLegend(curMenuNum, curChartNum, {
-        width: "173px",
-        height: "auto",
-        padding: "120px",
-      });
+      setLegend(
+        curMenuNum,
+        curChartNum,
+        {
+          width: "173px",
+          height: "auto",
+          padding: "120px",
+        },
+        "block"
+      );
       break;
     case 9:
       fnChart1Fp01();
